@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Luna.Communications.QuestPlayerPage"
+             xmlns:communications="clr-namespace:Luna.Communications"
+             xmlns:messages="clr-namespace:Luna.Communications.Messages"
+             xmlns:views="clr-namespace:Luna.Views"
+             x:DataType="communications:QuestPlayerViewModel"
+             NavigationPage.HasNavigationBar="False"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="imageMessageView">
+                <messages:ImageMessageView />
+            </DataTemplate>
+            <DataTemplate x:Key="choiceMessageView">
+                <messages:ChoiceMessageView />
+            </DataTemplate>
+            <DataTemplate x:Key="textMessageView">
+                <messages:TextMessageView />
+            </DataTemplate>
+            <DataTemplate x:Key="backgroundImageView">
+                <messages:BackgroundImageView />
+            </DataTemplate>
+            <messages:MessageTemplateSelector x:Key="messageTemplateSelector"
+                ImageMessageTemplate="{StaticResource imageMessageView}"
+                TextMessageTemplate="{StaticResource textMessageView}"
+                ChoiceMessageTemplate="{StaticResource choiceMessageView}"
+                BackgroundImageTemplate="{StaticResource backgroundImageView}" />
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style TargetType="views:OverflowLabel">
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource Text Color}"/>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            
+
+            <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Source="{Binding BackgroundImage}" Aspect="AspectFill"/>
+
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Label Text="X-j245" TextColor="White" FontSize="Large" BackgroundColor="{StaticResource Window Panel Header}" HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       HeightRequest="30"/>
+                
+                <CollectionView ItemsSource="{Binding DisplayMessages}"
+                                ItemTemplate="{StaticResource messageTemplateSelector}"
+                                Margin="20,10,20,0" ItemSizingStrategy="MeasureAllItems"
+                                ItemsUpdatingScrollMode="KeepLastItemInView">
+                </CollectionView>
+                <Button Text="Continue" Command="{Binding OnContinue}" Margin="80, 10, 80, 20"/>
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

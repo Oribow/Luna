@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:observation="clr-namespace:Luna.Observation" xmlns:valueconverter="clr-namespace:Luna.ValueConverter"
+             x:Class="Luna.Observation.ObservationPage"
+             x:DataType="observation:ObservationViewModel"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueconverter:InvertBoolConverter x:Key="invertBool" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            
+            <Image Grid.RowSpan="3" Source="{Binding BackgroundImage}" Aspect="AspectFill">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseAllWindows}"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+
+            <Label Text="Tc Squared" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  BackgroundColor="{StaticResource Window Panel Header}"/>
+
+            <StackLayout Grid.Row="1" IsVisible="{Binding IsQuestListOpen}" Margin="10, 70" BackgroundColor="#aa161515" Spacing="0">
+                <Label TextColor="White" BackgroundColor="#aa161515" HeightRequest="35" Text="Quests" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                <CollectionView ItemsSource="{Binding Quests}" Margin="4">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="4"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="observation:QuestListItemViewModel">
+                            <Frame BackgroundColor="{StaticResource Window Panel Item}">
+                                <Label Text="{Binding Name}" TextColor="White" />
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding StartQuest}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Orientation="Horizontal" BackgroundColor="#aa161515" FlowDirection="RightToLeft">
+                
+                <Button Text="Jump" Command="{Binding StartTravelling}" IsEnabled="{Binding IsJumpEnabled}"/>
+                <Button Text="Quests" Command="{Binding ToogleQuestListVisibility}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

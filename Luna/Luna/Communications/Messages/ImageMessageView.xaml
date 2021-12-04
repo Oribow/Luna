@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Luna.Communications.Messages"
+             x:Class="Luna.Communications.Messages.ImageMessageView"
+             x:DataType="local:ImageMessageViewModel"
+             xmlns:views="clr-namespace:Luna.Views">
+    <ContentView.Content>
+        <StackLayout Margin="0,0,0,17" Orientation="Vertical" Spacing="0">
+            <views:WidthFittingImage Source="{Binding ImageSrc}" x:Name="image" 
+                   Opacity="0"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
