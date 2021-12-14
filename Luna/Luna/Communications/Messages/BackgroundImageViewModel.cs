@@ -1,21 +1,21 @@
-﻿using System;
+﻿using Luna.Biz.QuestPlayer.Messages;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Luna.Communications.Messages
 {
-    class BackgroundImageViewModel : Instruction
+    class BackgroundImageViewModel : BaseMessage<BackgroundImageMessage>
     {
-        public string ImageSrc { get; }
+        public string ImageSrc => message.ImagePath;
 
-        public BackgroundImageViewModel(string imageSrc, Action<bool> messageCompletedCallback) : base(messageCompletedCallback, false)
+        public BackgroundImageViewModel(bool isNew, BackgroundImageMessage msg) : base(isNew, msg)
         {
-            ImageSrc = imageSrc;
         }
 
         public override void OnStart()
         {
-            OnComplete();
+            Complete(false);
         }
     }
 }

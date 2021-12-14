@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luna.Biz.QuestPlayer.Messages;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -9,20 +10,17 @@ using Xamarin.Forms;
 
 namespace Luna.Communications.Messages
 {
-    class ImageMessageViewModel : Instruction
+    class ImageMessageViewModel : BaseMessage<ImageMessage>
     {
-        public string ImageSrc
+        public string ImageSrc => message.ImagePath;
+
+        public ImageMessageViewModel(bool isNew, ImageMessage message) : base(isNew, message)
         {
-            get => imageSrc;
-            set => SetProperty(ref imageSrc, value);
         }
 
-        string imageSrc;
-
-        public ImageMessageViewModel(Action<bool> messageCompletedCallback, bool autoContinue, Task<string> imageSrc) : base(messageCompletedCallback, autoContinue)
+        public override void OnStart()
         {
-            imageSrc.ContinueWith((result) => ImageSrc = result.Result);
+            Complete(false);
         }
-
     }
 }

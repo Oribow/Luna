@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Luna.Communications.Messages.TextMessageView"
              x:DataType="local:TextMessageViewModel"
-             xmlns:local="clr-namespace:Luna.Communications.Messages">
+             xmlns:local="clr-namespace:Luna.Communications.Messages"
+             Padding="0,0,0,17">
     <ContentView.Content>
-        <StackLayout Orientation="Vertical" Margin="0, 0, 0, 17" Padding="10,5" x:Name="MainLayout"
-                     Spacing="0" BackgroundColor="{StaticResource Window Panel Background}">
-            <Label x:Name="Content" TextColor="White" Text="{Binding Text}"/>
-        </StackLayout>
+        <Frame Padding="10" BackgroundColor="{StaticResource Window Panel Background}">
+            <Label TextColor="White" Text="{Binding Text}"/>
+        </Frame>
     </ContentView.Content>
 </ContentView>

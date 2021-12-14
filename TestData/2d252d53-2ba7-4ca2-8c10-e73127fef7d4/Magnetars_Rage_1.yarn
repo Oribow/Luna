@@ -1,0 +1,536 @@
+title: Start
+tags: 
+colorID: 0
+position: -44,589
+---
+At a distance shines a bright blue ball of flame. It glows with a shimmer before engulfing you with light. All you can see is white. It's as if the light is gnawing away at you. Finally it stops and you are left bewildered as you see space normally.
+“Warning: Pulsar detected. Applying additional radiation filters.”
+The dome of glass that surrounds you becomes tinted, blotting out the stars. The pulsar glows dimly like a blue ember in front of you. The sudden flux of light erases everything outside of the ship but doesn't reach you.
+“Correction: Pulsar/Magnetar detected.”
+“Warning: Extreme magnetic field in proximity.”
+The ship starts to shudder and you feel it being pulled towards the star. You don't know what will happen if you get too close but you suspect it won't be pleasant.
+What will you do?
+[[Reverse thrusters! Now!|Reverse thrusters]]
+[[Attempt a hyperspace jump.|Attempt jump]]
+[[Gun it! Maybe the momentum will break you from the star's magnetic field.|Gun it]]
+===
+title: Reverse thrusters
+tags: 
+colorID: 0
+position: 367,339
+---
+You activate the thrusters but all it seems to do is make the ship's rumbling worse. You think you may be slowing down but it's hard to tell with everything shaking out of focus. Even if you're right it's not enough. The pulsar is growing larger, faster.
+How can you escape?
+[[Keep reversing. You can still avoid getting dragged into it.|Keep reversing]]
+[[Try the opposite. Full power to forward thrusters!|Full power to forward thrusters]]
+===
+title: Attempt jump
+tags: 
+colorID: 0
+position: 388,1397
+---
+You figure you only have one chance and you have to be quick. You don't have time to calculate coordinates so you punch in a random set of numbers. You can only hope it doesn't send you inside a planet's core... or a sun... or a black hole...
+Are you sure you want to do this?
+[[Wait...|Dont jump]]
+[[Absolutely|Confirm Jump]]
+===
+title: Gun it
+tags: 
+colorID: 0
+position: 363,-190
+---
+It's crazy but that's why it might work. You set all forward thrusters to maximum. If you're going to do this you can't hold anything back. You pick a point you hope is far enough to get out of the star's grasp and activate the thrusters. The force of acceleration plasters you against the seat. You're not sure you could lift yourself to change course if you need to. The pulsar grows closer at sickening speed but at least the shaking has stopped.
+You're not sure you're going to make it.
+[[Try to change course|Try changing course]]
+[[Hold steady|Hold steady]]
+===
+title: Keep reversing
+tags: 
+colorID: 0
+position: 717,65
+---
+You continue with your original plan and you do indeed continue to slow. However it seems as if you don't have quite enough power to escape orbit, only maintain it temporarily. Current estimate gives you five hours before your orbit deteriorates and you start to plummet towards the Magnetar.
+What now?
+[[Wait. You have time to come up with a plan.|Wait and think]]
+[[Time to engage forward thrusters.|Full power to forward thrusters]]
+===
+title: Full power to forward thrusters
+tags: 
+colorID: 0
+position: 711,346
+---
+Enough is enough. There's only one way out of this and that's to press forward with all speed. You set the forward thrusters to maximum and engage them. At first this seems promising, but redirecting power from the reverse thrusters means that you quickly become entangled with the star's fields. No matter how fast you fly you see yourself inexorably drawn down to the star's surface.
+As you go descend so smoothly down into your death you notice, sort of feel the ship stretching. The dome above you lowers as the vessel is pulls from all sides, flattening it like a pancake. Your shielding systems fail from the physical distortion and soon you feel the heat of a raging sun burning through you. It melts the metal of the ship, incinerating your flesh until before you can even feel it you are a husk that is crushed within the molten metal of your former ship and hurled into the surface of the magnetar.
+<<death>>
+===
+title: Wait and think
+tags: 
+colorID: 0
+position: 1028,63
+---
+<<wait 1h>>
+For an hour you've had an incredible view of the pulsar but nothing to help you get out. You figure you might be able to use the star's natural fields to propel yourself out of its grip. But you're not exactly sure how to pull it off. Still, it might be worth the risk.
+Should you try something?
+[[Keep waiting. You need a real plan.|Keep waiting]]
+[[Time to engage forward thrusters|Full power to forward thrusters]]
+[[Disengage reverse thrusters and try to use the star's fields to escape.|Use star fields to escape]]
+===
+title: Keep waiting
+tags: 
+colorID: 0
+position: 1374,66
+---
+<<wait 1h>>
+You're getting a little stir-crazy. Scans have revealed nothing useful. However you might be able to program them to specifically scan the fields of the star. Knowing how they work might make all the difference in getting out of this. Or maybe you'd just waste your time.
+What should you do?
+[[Keep waiting. You might miss something if you limit your scans.|Keep waiting 2]]
+[[Time to engage forward thrusters|Full power to forward thrusters]]
+[[Disengage reverse thruster and try to use the star's fields to escape.|Use star fields to escape]]
+[[Program scanner to analyze the star's fields|Program scanner]]
+===
+title: Use star fields to escape
+tags: 
+colorID: 0
+position: 1042,-1105
+---
+You decide it's worth a shot. If you don't have enough power to escape the star then why not use the star to escape? You just hope you have enough of a feel for the star's forces that you can pull this off.
+You disengage the reverse thrusters, letting the star's gravity and magnesis grab hold of you. You wait for your opportunity to engage forward thrusters. In order for this to work you're going to have the get the timing just right.
+[[Engage now!|Engage now 3]]
+[[Hold off.|Hold off]]
+===
+title: Keep waiting 2
+tags: 
+colorID: 0
+position: 1761,64
+---
+<<wait 1h>>
+It looks like your patience might be worth it. Scans have picked up a metallic mass the size of a planet. It's orbit is erratic and structure unusual but it may be worth looking into.
+What do you want to do about this development?
+[[Keep waiting. The planet is too close to the star. If you land on it there's no guarantee you can get back off of it.|Keep waiting 3]]
+[[Attempt to land on the planet.|Attempt to land]]
+[[Disengage reverse thrusters and try to use the star's fields to escape.|Use star fields to escape]]
+[[Program the scanners to analyze the star's fields.|Program scanner]]
+===
+title: Program scanner
+tags: 
+colorID: 0
+position: 700,639
+---
+You decide that your best chance to get out of this is a precise reading of the star's fields. You program the parameters in and hope that it doesn't make you miss anything important. Now all you can do is wait.
+<<wait 1h>>
+Ironically interference from the pulsar/magnetar's fields is slowing down analysis of them. The complexity of their interaction doesn't help matters either. After an hour you've only managed to analyze the basic patterns. It will take more time to get something useful out of the data.
+What do you want to do?
+[[Continue the scan. You want to get this right.|Continue to scan]]
+[[You have enough data to figure it out as you go. Disengage reverse thrusters.|Divert power to dampeners]]
+[[Time to engage forward thrusters.|Full power to forward thrusters]]
+[[You're wasting too much time. Switch the scan back to default settings.|Keep waiting 3]]
+===
+title: Keep waiting 3
+tags: 
+colorID: 0
+position: 2112,63
+---
+<<wait 1h>>
+Nothing else has come up on the scanners. In one hour you'll start to lose orbit.
+What are you going to do?
+[[Keep waiting. There must be something else that can help you. You just need to find it.|Keep waiting 4]]
+[[Time to engage forward thrusters.|Full power to forward thrusters]]
+[[Disengage reverse thrusters and try to use the star's fields to escape.|Divert power to dampeners]]
+[[Program the scanners to analyze the star's fields.|Program scanner]]
+===
+title: Attempt to land
+tags: 
+colorID: 0
+position: 2114,-203
+---
+The readings show that it is in fact a completely solid mass, unlike planets you're used to with molten cores or made out of gas. It may not be much but it's solid and somehow hasn't been annihilated by the star's forces. You disengage reverse engines and begin to fall down towards the star again.
+You spot the planet, a black coin against the splendor of the star, electric blue with waves of plasma strewn around it like vibrant threads. The planet swells in size as you try to match its orbit. Not an easy task since it jitters back and forth.
+As you get closer to the planet suddenly automatic landing systems fail you. Without the advanced calculations from your on-board computer you'll have to navigate the planet's erratic orbit manually.
+Do you think you can do it?
+[[You don't have a choice.|Land manually]]
+[[Abort. Maybe you can change course and ride your way out of here.|Abort landing]]
+===
+title: Keep waiting 4
+tags: 
+colorID: 0
+position: 2510,64
+---
+<<wait 1h>>
+You've hoped against hope for a miracle and have waited patiently for one. Unfortunately your faith is not rewarded as the reverse thrusters begin to weaken and your ship begins to lose stable orbit.
+At first it is a slow descent but it becomes faster and faster, the conflicting forces of the neutron star jostling you as you crash towards its thrumming surface. With a great roar a flare erupts from beneath you like a great, coiling serpent. It arcs up at you, and for a moment you can do nothing but stare at the great shimmering pillar of azure death coming for you. It feels as if a god has personally come to smite you. And then the pillar consumes the ship and you with it.
+<<death>>
+===
+title: Land manually
+tags: 
+colorID: 0
+position: 2510,-488
+---
+Too late the back out now. It's either land on the planet or welcome your death by magnetar. The planet shivers about uncertainly, as if not confident as it careens thousands of miles through the void of space. Trying to pin it down as you aim for its surface is agonizing. No matter what movement you make to course correct it seems to change, as if it's specifically avoiding you. If it keeps going this way you're likely to miss and end up in the star.
+What should you do?
+[[Keep trying. You have to do this.|Keep trying to land]]
+[[It's hopeless. Give up.|Give up landing]]
+===
+title: Abort landing
+tags: 
+colorID: 0
+position: 2508,-207
+---
+You engage forward thrusters in an attempt to escape. They sputter to life but for some reason are only working at half capacity. You only manage a pitiful effort to extricate yourself from the planet's orbit before suddenly it seems to grab hold of your ship, tipping its nose down.
+Before you know it you start crashing down towards it, your engines fluttering in and out of life, pushing you into a wild spin.
+You have a vague notion of the planet looking as if it were built by many metal shards, bits reaching out to you like sharp thorns, before you fall fast into its embrace. The ship crumples with the impact and you know no more.
+<<death>>
+===
+title: Keep trying to land
+tags: 
+colorID: 0
+position: 2809,-751
+---
+No one ever accomplished anything without trying. You continue focusing on the planet, trying to gauge something, anything that could help you track it better. Yet just as you think you have it, it manages to slip away.
+It's strange. You've gotten close enough that the planet's gravity should start doing the work for you, yet you feel nothing. Sensors also detect no effects from its gravitational pull. How is that possible?
+You're getting closer but with the way the planet is moving you're one wrong turn away from losing it altogether at this distance.
+[[Keep trying. Just don't make a mistake.|Keep trying 2]]
+[[Loosen your grip on the controls. The planet might still be able to guide you.|Let go of the controls]]
+[[Give up. It's hopeless.|Give up]]
+===
+title: Give up landing
+tags: 
+colorID: 0
+position: 2806,-495
+---
+You just can't do it. You throw your hands up in despair and your stomach drops as the nose of your ship somehow starts to match the trajectory of the planet. Perhaps it also has magnetic properties.
+You try to gain control of your craft but it's too late. Having lost momentum you now find you can't escape the planet no matter what you try. You fall quickly towards the its surface, watching with awe as its surface gleams in shards like dragon scales. For a moment it strikes you that it looks like an ancient, impossibly large egg before it zooms up to greet you at vicious speed.
+<<death>>
+===
+title: Keep trying 2
+tags: 
+colorID: 0
+position: 3102,-1242
+---
+You just have to focus. It's only impossible if you let yourself think so. You keep the spaceship's nose centered on the planet, adjusting to every minute shake of it.
+You creep so slowly towards it, which is strange considering how fast you're going.
+Suddenly the planet bucks away from you. You try to follow it but somehow all the effects of the planet you hadn't been feeling before kick in. It snags against the nose of the spaceship and sends you spinning. It's so violent that you body bursts out from the safety harness and you smash against the hull. The world around you is briefly vibrating and red before you crash against the metal again and you are blinded by the pain. Then another impact and you feel nothing at all.
+<<death>>
+===
+title: Let go of the controls
+tags: 
+colorID: 0
+position: 3102,-990
+---
+You can't be sure of anything in all this mess. Perhaps the planet does have forces and your sensors just can't read them.
+Against all your better instincts you decide to relax and let the ship guide itself for the moment. At first it seems like nothing happens. The planet shivers in its orbit, threatening to spin away from you.
+Then it happens. The planet veers sharply to the left and you're convinced you'll continue  rocketing past.
+Except you don't. Instead as the planet moves your ship follows. It doesn't make sense. Moments ago you were struggling to match your trajectory yet now it does it on its own.
+Your descent is quick and smooth, as if you were landing in an advanced docking facility. Was there something... guiding you?
+Whatever the case now that you've relinquished control you find there's little to do except admire the flowing blue sunrise as the ship continues to fall to the surface. For a moment you're terrified you'll be smashed against the surface but you find that you decelerate almost imperceptibly until you touch down with delicate grace. You're not sure you could've landed it better yourself.
+You don't have much time to feel relieved before you notice more than a few system malfunctions on the displays around you. But it's already been a long day and you are exhausted. You'll need to rest before you can tackle the next set of problems.
+===
+title: Give up
+tags: 
+colorID: 0
+position: 3105,-748
+---
+You throw your hands up giving in to the inevitable. As you do, your ship shivers in place like a tuning fork.
+Now that you have given up control, the ship has somehow attuned itself to the hidden effects of the planet, which apparently allows your ship to follow it. Unfortunately it follows it too well, making the ship jostle and spin erratically. You're heading towards the planet all right, but the ship is completely out of your control.
+As you crash down to the surface the spinning makes you see the many metal shards stretching all around you, reaching like claws. Blue sunlight glances off of them, erupting towards you like lightning. When it arcs towards you and zaps the ship everything goes black.
+===
+title: Continue to scan
+tags: 
+colorID: 0
+position: 2073,897
+---
+You decide it will be worth it to take the time and make sure you know everything you can about this star. You continue to wait for the scan's results.
+<<wait 1h>>
+You've done it! After all the meticulous scanning you've managed to find a pattern within the fields that can help you out. You've found that there is a consistent predictive eruption that occurs before the pulsar's usual enormous flare of energy. If you can time it right you can safely ride this eruption out of the star's gravitic and magnetic fields.
+The next eruption occurs within an hour, dangerously close to when your thrusters will fail. What will you do?
+[[Wait for a better opportunity.|Keep waiting]]
+[[You'd rather try your luck now. Disengage reverse thrusters.|Use star fields to escape]]
+[[Time to engage forward thrusters.|Full power to forward thrusters]]
+[[Wait for the eruption.|Wait for eruption]]
+===
+title: Wait for eruption
+tags: 
+colorID: 0
+position: 2504,901
+---
+You've come this far. This may be your best chance out of this. Only time will tell.
+<<wait 1h>>
+The ship likes to keep reminding you that catastrophic failure is imminent. You ignore it as you wait for the tell-tale signs that the star will be erupting soon. As the time nears you wonder if you made a mistake. Saw a pattern when there was none. The data was a mess from all the interference from the pulsar. Can you really trust it?
+At last the specific sort of “bubble” that you've been waiting for starts to form on the surface below you. In order for this to work you'll have to disengage reverse thrusters now. Good thing they were about to give anyway.
+As you fall you remind yourself that the timing has to be perfect. Too early and you'll be hit with a direct blast from a pulsar flare. Too late and you'll miss it entirely and get swallowed by the star.
+The “bubble” starts to quake. Soon it will erupt.
+Should you engage forward thrusters now?
+[[Engage now!|Engage now]]
+[[Wait for it.|Wait for it]]
+===
+title: Engage now
+tags: 
+colorID: 0
+position: 2828,895
+---
+You engage the thrusters, arcing your ship as you prepare for the eruption. You're perfectly placed and ready. Except it doesn't come. Your ship drifts out of alignment and you watch as the “bubble” bursts too late. A white hot beam shoots out and erases you and your ship from existence.
+<<death>>
+===
+title: Wait for it
+tags: 
+colorID: 0
+position: 2832,1142
+---
+Not yet. You watch with anxiety as the “bubble” continues to quiver but hold fast to your instinct to hold off for now.
+Any second now...
+[[Engage now!|Engage now 2]]
+[[Wait for it...|Wait for it 2]]
+===
+title: Engage now 2
+tags: 
+colorID: 0
+position: 3169,1142
+---
+Right as you engage the thrusters the eruption explodes, streaking towards you with blinding speed. Your engines roar and they come to life, shooting you forward. You hope it's enough as you gain speed and brace yourself for the impact.
+It hits you so hard for a moment you're sure it will shear off the plating of your ship and incinerate you. Instead you find yourself going faster than you thought possible, riding a geyser of plasma out until somehow you could feel yourself free from the star's hold.
+You manage to slow your ship down till you  idly drift in space. You have escaped danger relatively unscathed but are in a region of space unknown to you.
+For now you should rest. Tomorrow is another day.
+===
+title: Wait for it 2
+tags: 
+colorID: 0
+position: 3172,1403
+---
+You're convinced it's not time until you see the eruption start to happen. Too late you engage the thrusters but you arc below its blast, missing it completely. You don't have much time to regret your mistake as the star pulls you in with greedy insistence. There is no time to feel the different forces tearing you apart as the star consumes your ship.
+<<death>>
+===
+title: Engage now 3
+tags: 
+colorID: 0
+position: 1372,-1106
+---
+You engage the thrusters immediately, having hardly built momentum from the star's fields. It seems fine at first but you quickly notice your descent. As it it your timing managed to place you into the most direct course into the star's heart. Before you have any time to react you plunge into the mantle of the star, all your senses consumed with white hot flame till there is nothing at all.
+<<death>>
+===
+title: Hold off
+tags: 
+colorID: 0
+position: 1370,-1367
+---
+Too soon to go. You wait as your ship continues to plummet down, the star's forces rattling it, dragging it erratically from left to right. You're not sure that's a very good sign.
+Should you engage thrusters now?
+[[Engage now!|Engage now 4]]
+[[Hold off.|Hold off 2]]
+===
+title: Engage now 4
+tags: 
+colorID: 0
+position: 1667,-1370
+---
+You don't like how janky the forces are on the ship. Time to bail. You engage thrusters and find yourself zooming away at incredible speed.
+[[Put everything in engines]]
+===
+title: Hold off 2
+tags: 
+colorID: 0
+position: 1663,-1631
+---
+It's still not the right time. You start to fall towards the star at sickening speed. The ship jerks ominously from side to side but you're not sure you'll have time to wait...
+[[Engage now!|Engage now 5]]
+[[Hold off.|Hold off 3]]
+===
+title: Put everything in engines
+tags: 
+colorID: 0
+position: 2000,-1369
+---
+You have no choice but to trust in the ship's integrity as you shoot back towards the star, hoping the combined forces will give you enough momentum to escape this trap. You start to worry as the ship keens painfully and shakes but there's no turning back now.
+You're jostled painfully as the full, unbridled force of the ship's movement against the star's grip works against you. You wonder how you could take it and still be alive, let alone conscious as the pressure threatens to collapse your body and smear it against the ship's bulkhead like paste.
+The ship lets out a sharp cry which prompts emergency warnings across your console. Life support systems are damaged. Not that you can do much about that at the moment. Perhaps rushing headlong into a neutron star was a mistake...
+Just as you're sure that the ship will snap in two you feel yourself launched even faster forward, as if a cord holding you back had suddenly snapped. The pressure against your body is intense and your brain feels as if it is slowly being pressed into mu sh. Now that you are out of danger from the pulsar the emergency limits should have reactivated on your ship. Something's wrong.
+The ship continues to shoot through empty space past the safety limits for your body's endurance. You may be built tough for an organic but even your body has its limits. If things continue much longer like this you'll die.
+A lever pops up at your feet and you remember that it's the emergency shutoff for this exact situation. The lever only activates during sustained high speed. If you use it, the mechanism will physically cut off power to the engines while deploying emergency thrust to slow down the ship. It will stop you, yes. But it will also cripple your ship and
+leave you stranded.
+Do you have a choice?
+[[Activate the emergency shutoff.|Activate emergency shutoff]]
+[[Wait. The safety limits might come back online.|Wait for safety limits]]
+===
+title: Activate emergency shutoff
+tags: 
+colorID: 0
+position: 2277,-1371
+---
+You kick the emergency shutoff immediately. Being stranded gives better hope for getting out of this mess than being dead. It takes some effort but at last you activate it. The panels around you turn to static then fade to darkness while the hum of the engine dies, replaced by a loud hiss as the emergency thrusters slow you down.
+Soon you're drifting comfortably in space. It's a relief to no longer be pasted to your seat but that fades as you stare into the vast emptiness all around you.
+For now you are safe but exhausted. You'll need to rest before you can tackle this new problem.
+===
+title: Wait for safety limits
+tags: 
+colorID: 0
+position: 2271,-1628
+---
+You decide to give the ship a little more time to recover. You have no idea where you are and don't like the prospect of being stranded here.
+Moments pass and still nothing from the safety limits. What do you do?
+[[Just a little longer...|Wait just a little longer]]
+[[Activate the emergency shutoff.|Activate the emergency shutoff 2]]
+===
+title: Wait just a little longer
+tags: 
+colorID: 0
+position: 2542,-1901
+---
+You still wait, hoping against hope. Maybe it's your brain turning liquid but you can't help but laugh and blackness starts to encroach upon your vision till with a single sharp, searing pain you stop seeing anything at all.
+<<death>>
+===
+title: Activate the emergency shutoff 2
+tags: 
+colorID: 0
+position: 2553,-1641
+---
+You've given the ship long enough. You go to activate the emergency shutoff but find yourself light-headed and dizzy. Try as you might you don't quite have the strength to pull it back. You sit still, practically crushed in your seat as you feel a sharp pop inside your skull and a red tinged blackness overcomes your vision.
+<<death>>
+===
+title: Engage now 5
+tags: 
+colorID: 0
+position: 1977,-1891
+---
+You activate the thrusters but as you do so the ship pitches wildly sending it into a nauseating spin. You try to regain control but you're hardly able to tell up from down. 
+As you look out you see that somehow you've managed to shoot yourself across the star in a trajectory that is perfectly tangent with its surface. For some reason the angle of approach allows your ship to escape the worst of the star's ravages as it descends to the surface.
+Instead of being immediately consumed your ship somehow glances off its surface, skipping like a stone across a pond.
+This repeats twice, sending up crashing waves of fire and lightning till at last the miracle ends and your ship succumbs to the heat and pressures of the star. They attack you so viciously that you are gone before you can feel it.
+<<death>>
+===
+title: Hold off 3
+tags: 
+colorID: 0
+position: 1975,-1633
+---
+It's still not the right time. Too late you realize that it never will be quite perfectly right and that perhaps you have lost your opportunity. Before you can consider engaging the thrusters your ship starts to spin wildly, plunging itself straight into the core of the star, obliterated in an instant.
+<<death>>
+===
+title: Dont jump
+tags: 
+colorID: 0
+position: 737,1391
+---
+You hesitate. There's too many variables. Too many unknowns. Even if you don't jump instantly to your death you could easily end up stranded somewhere worse. Is it really worth the risk?
+Your hesitation takes its toll. Without acting to move the ship the star now has its full grip on your ship and is pulling you towards it at alarming speed. You try to engage forward thrusters, dampeners, anything but all the conflicting forces makes it all useless to initialize. Jumping may be your only option... if it works.
+[[Jump!|Confirm Jump 2]]
+[[Wait for systems to respond.|Wait for system response]]
+===
+title: Confirm Jump
+tags: 
+colorID: 0
+position: 740,1675
+---
+You don't hesitate to activate the hyperdrive. You feel it power up, the distortions it 	creates in the universe as it prepares to tear a hole and force you through it. Finally everything 	shifts and you are plunged into a space beyond space. A realm so full of light and color that you 	can only remember it as a blank canvas of white, even though for a moment you see all of its 	vivid, impossible beauty.
+===
+title: Confirm Jump 2
+tags: 
+colorID: 0
+position: 1058,1125
+---
+You decide to take your chances. It's not like you could end up in a much worse place at the moment. As you activate the jump engines you notice an odd sort of blue electrical aura surround the ship. You'd always noticed things becoming off while powering up the hyperdrive, things becoming askew, distances stretching out. But you've never seen something like this happen before. You think about aborting but before you move to do so the jump activates prematurely. The blue electric current all around you consuming both you and the ship.
+<<wait 1m>>
+It could have been a moment or ten thousand years but later you materialize on a planet that looks like the skin of some great dragon. Sharp metal scales cover the entire surface. They shiver in place.
+Above hangs the magnetar. Something about the atmosphere of this planet makes it look  a much deeper blue here than in space. It almost seems as if it were covered in one great ocean.
+You don't know how, but you managed to jump to a planet within the neutron star's system. You wonder what the chances of that are and decide it must not have been random. Perhaps that blue lightning had something to do with it.
+In any case your ship seems to have power but almost no systems outside of life support are functional. You should probably run a diagnostic.
+-> Quick Diagnostic. More general scan. Finds faults within systems but recommends more involved fixes to avoid complications.
+    <<wait 1h>>
+-> Precise Diagnostic: More thorough diagnostic. Takes longer but often finds the 			specific problem and offers easier solutions.
+    <<wait 2h>>
+===
+title: Wait for system response
+tags: 
+colorID: 0
+position: 1059,1396
+---
+You still don't want to risk it. Pretty soon the magnetic fields become so strong they interfere with your systems. Lights flicker in and out ominously until they die for good. Now you can't jump even if you wanted to.
+The spinning and all the forces working on you quickly make you lose consciousness. A mercy as your ship becomes engulfed in the terrible fury of the neutron star.
+<<death>>
+===
+title: Try changing course
+tags: 
+colorID: 0
+position: 699,-464
+---
+You feel as heavy as ten thousand suns but you have to steer further out. You try to lift your hand but it doesn't budge. It takes all of your strength and focus just to lift it from your arm rest. Slowly, achingly slowly, you inch towards the steering panel. It feels as if your arm will snap in two from the effort.
+But even with all your effort your arm gives out, slamming back onto the rest. The effort has exhausted you. You don't think you'll be able to try again. All you can do is hope you got it right the first time.
+[[Hold steady 2]]
+===
+title: Hold steady
+tags: 
+colorID: 0
+position: 705,-188
+---
+There's no reason to second-guess yourself now. You look at the ever growing star and  	wonder if it will be your grave. If being torn down to atoms and scattered into space could be 	considered a grave.
+[[Hold steady 2]]
+===
+title: Hold steady 2
+tags: 
+colorID: 0
+position: 1012,-191
+---
+The pulsar looms closer. You can feel its pull and you're sure that even with every display 	around you blaring warnings that you're exceeding engine power limits, you're not going fast 	enough. The rattling of the ship starts to worsen again, accompanied by groans as the engines 	try to outrun the star's magnetic field.
+Even though you're certain that the ship will give and dive directly into the star itself you see it 	slowly start pass below you. This may be it! It just might work!
+The ship accelerates as the magnetic field and thrust of engines align, shooting you towards the 	star again. Your starship is screaming for mercy, its metal chassis threatening to buckle with the 	shifting of forces. They're at enough equilibrium that you can move again but not for long.
+What will you do?
+[[Divert power to inertial dampeners.|Divert power to dampeners]]
+[[Put everything you've got into the engines.|Put everything in engines]]
+===
+title: Divert power to dampeners
+tags: 
+colorID: 0
+position: 1374,-193
+---
+A ship can only take so much. There's not much point in escaping the star's pull in pieces. You access the power distribution panel and divert a small portion to inertial dampeners. It will slow you down, but the ship seems to groan in relief.
+The ship careens impossibly fast back towards the star. Once again you're forced into your seat as you fall, hoping to be tossed away for good this time.
+The star passes you once again, faster this time. The ship once again starts to shriek as the magnetic forces tear at its hull. There are a few alarming cracks and some malfunctions you'll have to look over but it seems the ship will hold.
+You feel you're almost there. The star seems so much further than when you first arrived. But your ship starts to decelerate. You can still make it. Just need to move forward a little more...
+But it's not enough. Eventually the star's pull grabs you once again and you begin to fall back into its open arms. You know your ship won't survive a pass close enough to get the speed you need.
+Is there anything you can do?
+[[Accept your fate|Accept fate]]
+[[Try anyway.|Try anyway]]
+===
+title: Accept fate
+tags: 
+colorID: 0
+position: 1743,-463
+---
+You feel you've done enough and now it's time to accept the inevitable. If the ship is to be destroyed anyway, and you along with it, then you might as well look upon the terrifying beauty of what kills you. It burns placidly in the shrinking distance, entirely unaware of the predicament it is causing you.
+Still it's stunningly beautiful. A blue ball of pulsing flame that makes it seem alive its surface covered in plasma storms with bursts of blinding light and radiation. It may kill you but it's almost worth it to witness something so incredible and rare with your own eyes.
+As you continue to look on you notice a sort of dark... spot crossing in front of it. It's moving fast so it's hard to tell but there is definitely something obstructing the light from the magnetar in front of you.
+Automatic sensors pick it up as well. You're surprised they're still working, although you begin to question that after seeing the readings.
+The dark spot is apparently some sort of planet, or so the sensors claim. However it is of unusual structure. While planets tended towards gases or earthy masses with varied insides this seemed to be one great, homogeneous lump of unknown metal. Though that might just be the radiation wreaking havoc on the sensors.
+Still it's big and it's solid. What do you want to do?
+[[Go for it.|Go for it]]
+[[Leave it alone|Leave it alone]]
+===
+title: Try anyway
+tags: 
+colorID: 0
+position: 1744,-202
+---
+You're not going to let impossible odds make you give up now. You once again put everything you can into the engines. The ship whines and whimpers but you ignore it. It'll just have to hold and that's all there is to it.
+You continue riding the forces of the star. They grip your ship, trying to tear it back into its deadly orbit, but you continue to push even when you can hear the ship tearing itself apart at the seams.
+At last it all proves too much and the glass dome bursts into countless shards. They rain down on you, punching many holes through your suit as the metal encasing you peels back like an onion.
+As you continue to drift away with the many pieces of your broken ship you realize that ironically you've made it outside the pulsar's grasp. Yet even now your suit runs out of air and you feel light-headed and very cold as your blood seeps out of you in little globules.
+In moments you succumb. So quiet. So peaceful.
+<<death>>
+===
+title: Go for it
+tags: 
+colorID: 0
+position: 2101,-736
+---
+The only other option is to dive head first into that star. This close to the pulsar the forces rattle the ship enough that you manage to ride one of the jerks to slam your hand on the panel. You feel like your hand might be crushed and your arm broken but you should be able to make minor adjustments to your course.
+You find it hard to pin down the planet. Its orbit is erratic, buzzing about like a fly in the wind. You've never seen anything like this before. Still, you manage to keep up with its movements so that it starts to swell as you close in on it.
+Your ship groans and shudders with a loud crack that feels like it slaps against your spine. Major engine failure warnings blare loudly all around you so that you can hardly see the planet through their glow. Not that it matters much.That shudder was from the planet grabbing hold of you. Without the engines you can only hope you have enough thrusters to survive the landing.
+Oddly enough you find that the closer you get to the planet the smoother your descent becomes. As if the planet itself resisted the roiling gravitic and magnetic forces of the magnetar. Still, you are descending very fast. You hardly have time to activate landing thrusters to slow yourself down before you skid across a surface of shattered, shivering metal. You bounce off of it hard again and again, spinning and careering through endless shards of metal. It makes your head swim and ache until your consciousness gives in and you black out.
+===
+title: Leave it alone
+tags: 
+colorID: 0
+position: 2106,-462
+---
+There's no point. Whether you land on that heap of metal or dive into the star you'll be just as dead. You lean back and close your eyes, letting the ship make its own decision.
+When you open your eyes again the planet is gone and the pulsar takes up the entirety of your vision. You gaze upon it in wonder. A vast, fiery ocean with ripples of sapphire flame. You watch as these ripples shoot up into great gouts wreathed by pinions of lightning. It all looks so... alive.
+Your ship finally gives under the colossal stress placed upon it. The dome cracks and then shatters, the metal twisting like putty. Remnants of the protective field give you a brief, peaceful moment in space before the terrible roar of the pulsar overtakes you. The light, the heat, the gravity, the magnetic field all all tearing at you until you are less than dust.
+<<death>>
+===

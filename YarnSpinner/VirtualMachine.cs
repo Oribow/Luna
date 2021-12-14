@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-
+using System.IO;
+using YamlDotNet.Serialization;
+using YarnSpinner;
 using static Yarn.Instruction.Types;
 
 namespace Yarn
@@ -141,7 +143,7 @@ namespace Yarn
             public List<KeyValuePair<Line, string>> currentOptions = new List<KeyValuePair<Line, string>>();
 
             /// The value stack
-            private Stack<Value> stack = new Stack<Value>();
+            public Stack<Value> stack = new Stack<Value>();
 
             /// Methods for working with the stack
             public void PushValue(object o)
@@ -250,6 +252,27 @@ namespace Yarn
         }
 
         Node currentNode;
+
+        public void LoadState(Stream stream)
+        {
+            IDeserializer deserializer = new DeserializerBuilder()
+                .WithTypeConverter(new StackYamlTypeConverter())
+                .WithTypeConverter(new KeyValuePairTypeConverter())
+                .Build();
+            using (var reader = new StreamReader(stream))
+                state = deserializer.Deserialize<State>(reader);
+            currentNode = Program.Nodes[state.currentNodeName];
+        }
+
+        public void DumpState(Stream stream)
+        {
+            ISerializer serializer = new SerializerBuilder()
+                .WithTypeConverter(new StackYamlTypeConverter())
+                .WithTypeConverter(new KeyValuePairTypeConverter())
+                .Build();
+            using (var writer = new StreamWriter(stream))
+                serializer.Serialize(writer, state);
+        }
 
         public bool SetNode(string nodeName)
         {

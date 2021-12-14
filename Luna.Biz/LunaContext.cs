@@ -10,6 +10,8 @@ namespace Luna.Biz
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<VisitedScene> VisitedScenes { get; set; }
+        public DbSet<QuestLog> QuestLogs { get; set; }
+        public DbSet<QuestMessage> QuestMessages { get; set; }
 
         protected LunaContext(DbContextOptions options) : base(options)
         {

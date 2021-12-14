@@ -12,8 +12,6 @@ namespace Luna.Communications.Messages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChoiceMessageView : ContentView
     {
-        bool choiceMade = false;
-
         public ChoiceMessageView()
         {
             InitializeComponent();
@@ -37,29 +35,8 @@ namespace Luna.Communications.Messages
                     Command = optionVM.OnChoiceMade,
                     TextTransform = TextTransform.None,
                 };
-                btn.Clicked += Btn_Clicked;
                 ButtonLayout.Children.Add(btn);
             }
-        }
-
-        private void Btn_Clicked(object sender, EventArgs e)
-        {
-            if (choiceMade)
-                return;
-            choiceMade = true;
-
-            ButtonLayout.FadeTo(0, 400).ContinueWith(
-                (state) =>
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        MainLayout.Children.Remove(ButtonLayout);
-                        MainLayout.Children.Add(new TextMessageView()
-                        {
-                            BindingContext = ((ChoiceMessageViewModel)BindingContext).TextMessage
-                        });
-                    });
-                });
         }
     }
 }

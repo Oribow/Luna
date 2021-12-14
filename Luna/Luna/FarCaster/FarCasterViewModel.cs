@@ -1,6 +1,7 @@
 ﻿using Luna.Biz.Services;
 using Luna.Communications;
 using Luna.Extensions;
+using Luna.Observation;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -79,7 +80,7 @@ namespace Luna.FarCaster
             arrive.ChangeCanExecute();
 
             var scene = await sceneService.Arrive(App.PlayerId);
-            await Application.Current.MainPage.Navigation.SwapPage(new QuestPlayerPage(scene.Id, scene.IntroQuestId));
+            await Application.Current.MainPage.Navigation.SwapPage(new ObservationPage());
         }
     }
 }

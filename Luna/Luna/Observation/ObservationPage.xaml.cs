@@ -19,7 +19,7 @@ namespace Luna.Observation
             InitializeComponent();
 
             var lss = App.Container.Resolve<SceneService>();
-            var qs = App.Container.Resolve<QuestService>();
+            var qs = App.Container.Resolve<QuestLogService>();
             BindingContext = new ObservationViewModel(lss, qs);
         }
     }

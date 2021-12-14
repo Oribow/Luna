@@ -17,36 +17,21 @@ namespace Luna.Droid.Data
 {
     class Quest : IQuest
     {
-        public IScene Scene => scene;
-
-        public string Id { get; }
-
-        public string Name { get; }
-
-        public string StartNode { get; }
-
         private string yarnFile;
-        private Scene scene;
 
-        public Quest(Scene scene, string id, string name, string startNode, string yarnFile)
+        public Quest(string yarnFile)
         {
-            this.scene = scene;
-            Id = id;
-            Name = name;
-            StartNode = startNode;
             this.yarnFile = yarnFile;
         }
 
         public async Task<Dictionary<string, string>> GetLinesTable()
         {
-            string path = Path.Combine(scene.PathToFolder, yarnFile + ".csv");
+            string path = yarnFile + ".csv";
 
             Dictionary<string, string> strings = new Dictionary<string, string>();
 
             using (var reader = File.OpenText(path))
             {
-                // skip header
-                reader.ReadLine();
                 while (!reader.EndOfStream)
                 {
                     string[] parts = (await reader.ReadLineAsync()).Split(';');
@@ -58,7 +43,7 @@ namespace Luna.Droid.Data
 
         public Task<Program> GetYarnProgramm()
         {
-            string path = Path.Combine(scene.PathToFolder, yarnFile + ".yrc");
+            string path = yarnFile + ".yrc";
 
             return Task.Run(() =>
             {

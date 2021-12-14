@@ -22,24 +22,23 @@ namespace Luna.Droid.Data
 
         public string BackgroundImage { get; }
 
-        public string IntroQuest { get; }
-
-        public Dictionary<string, IQuest> Quests { get; internal set; }
         public string PathToFolder { get; }
 
-        public Scene(Guid id, string name, string backgroundImage, string introQuest)
+        public IQuest Quest { get; }
+
+        public Scene(Guid id, string name, string backgroundImage, IQuest quest)
         {
             Id = id;
             Name = name;
             BackgroundImage = backgroundImage;
-            IntroQuest = introQuest;
+            Quest = quest;
 
             PathToFolder = Path.Combine(SceneRepository.BasePath, id.ToString());
         }
 
-        public Task<string> GetImagePath(string imageName)
+        public string ResolveAssetPath(string imageName)
         {
-            return Task.FromResult(Path.Combine(PathToFolder, imageName));
+            return Path.Combine(PathToFolder, imageName);
         }
     }
 }

@@ -6,8 +6,6 @@ namespace Luna.Biz.Scenes.Schemas
 {
     public class Quest
     {
-        public string name;
         public string yarnFile = "quests";
-        public string startNode = "start";
     }
 }

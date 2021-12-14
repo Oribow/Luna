@@ -27,7 +27,6 @@ namespace Luna.Biz.Services
             {
                 var player = await context.Players
                     .Include(p => p.VisitedScenes)
-                    .ThenInclude(v => v.AvailableQuests)
                     .Where(p => p.Id == playerId).FirstAsync();
 
                 if (!player.IsTraveling)
@@ -48,13 +47,12 @@ namespace Luna.Biz.Services
                     var scene = await sceneRepo.Get(nextSceneId.Value);
                     var vs = new VisitedScene(nextSceneId.Value);
                     player.VisitedScenes.Add(vs);
-                    vs.AvailableQuests.Add(new AvailableQuest(scene.IntroQuest));
                 }
                 await context.SaveChangesAsync();
 
                 var loc = await sceneRepo.Get(nextSceneId.Value);
 
-                return new SceneDTO(loc.Id, loc.IntroQuest, loc.Name, loc.GetImagePath(loc.BackgroundImage));
+                return new SceneDTO(loc.Id, loc.Name, loc.ResolveAssetPath(loc.BackgroundImage));
             }
         }
 
@@ -103,7 +101,7 @@ namespace Luna.Biz.Services
 
                 var loc = await sceneRepo.Get(locId.Value);
 
-                return new SceneDTO(loc.Id, loc.IntroQuest, loc.Name, loc.GetImagePath(loc.BackgroundImage));
+                return new SceneDTO(loc.Id, loc.Name, loc.ResolveAssetPath(loc.BackgroundImage));
             }
         }
 

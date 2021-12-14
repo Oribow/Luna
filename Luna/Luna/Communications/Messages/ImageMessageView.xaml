@@ -4,9 +4,10 @@
              xmlns:local="clr-namespace:Luna.Communications.Messages"
              x:Class="Luna.Communications.Messages.ImageMessageView"
              x:DataType="local:ImageMessageViewModel"
-             xmlns:views="clr-namespace:Luna.Views">
+             xmlns:views="clr-namespace:Luna.Views"
+             Padding="0,0,0,17">
     <ContentView.Content>
-        <StackLayout Margin="0,0,0,17" Orientation="Vertical" Spacing="0">
+        <StackLayout>
             <views:WidthFittingImage Source="{Binding ImageSrc}" x:Name="image" 
                    Opacity="0"/>
         </StackLayout>

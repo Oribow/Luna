@@ -16,12 +16,6 @@ namespace Luna.Communications.Messages
         public ImageMessageView()
         {
             InitializeComponent();
-            image.FadeTo(1, 1000).ContinueWith((canceled) =>
-            {
-                if (BindingContext != null)
-                    MainThread.BeginInvokeOnMainThread(
-                    ((ImageMessageViewModel)BindingContext).OnComplete);
-            });
         }
     }
 }

@@ -1,14 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:Luna.Communications.Messages"
+             xmlns:local="clr-namespace:Luna.Communications.Messages" 
+             xmlns:valueconverter="clr-namespace:Luna.ValueConverter"
              x:Class="Luna.Communications.Messages.ChoiceMessageView"
-             x:DataType="local:ChoiceMessageViewModel">
+             x:DataType="local:ChoiceMessageViewModel"
+             Padding="0,0,0,17">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <valueconverter:InvertBoolConverter x:Key="invertBool" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
-        <StackLayout x:Name="MainLayout">
-            <StackLayout x:Name="ButtonLayout">
+        <StackLayout>
+            <StackLayout x:Name="ButtonLayout" IsVisible="{Binding ChoiceOpen}">
                 <!--Buttons are added by the view class-->
             </StackLayout>
+            <Frame Padding="10" BackgroundColor="{StaticResource Window Panel Background}" IsVisible="{Binding ChoiceOpen, Converter={StaticResource invertBool}}">
+                <Label TextColor="White" Text="{Binding ReplacementText}"/>
+            </Frame>
         </StackLayout>
     </ContentView.Content>
 </ContentView>

@@ -1,34 +1,26 @@
 ﻿using Luna.Biz.Scenes;
-using Luna.Biz.QuestPlayer.Instructions;
+using Luna.Biz.QuestPlayer.Messages;
 using Luna.Biz.Services;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
 using Yarn;
 using static Yarn.Dialogue;
+using System.Threading.Tasks;
+using System.IO;
+using System;
+using Luna.Biz.Extensions;
 
 namespace Luna.Biz.QuestPlayer.Yarn
 {
-    public class YarnPlayer : IQuestPlayer
+    class YarnPlayer : IMessageSource
     {
-        public bool AutoContinue => dialogueVM.CurrentOpCode == Instruction.Types.OpCode.AddOption;
-
         readonly Dialogue dialogueVM;
-        readonly IQuest quest;
-        readonly QuestService questService;
-        readonly int playerId;
         readonly IReadOnlyDictionary<string, string> lines;
 
-        InstructionDTO currentMessage;
-
-        public YarnPlayer(IQuest quest, QuestService questService, int playerId, Dictionary<string, string> lines, Program program)
+        private Message currentMessage;
+        
+        public YarnPlayer(Dictionary<string, string> lines, Program program)
         {
-            this.quest = quest;
-            this.questService = questService;
-            this.playerId = playerId;
-
             dialogueVM = new Dialogue(new MemoryVariableStore())
             {
                 lineHandler = HandleLine,
@@ -43,7 +35,7 @@ namespace Luna.Biz.QuestPlayer.Yarn
 
             this.lines = lines;
             dialogueVM.SetProgram(program);
-            dialogueVM.SetNode(quest.StartNode);
+            dialogueVM.SetNode();
         }
 
         public void SelectOption(int index)
@@ -51,10 +43,10 @@ namespace Luna.Biz.QuestPlayer.Yarn
             dialogueVM.SetSelectedOption(index);
         }
 
-        public InstructionDTO NextInstruction()
+        public Task<Message> Continue()
         {
             dialogueVM.Continue();
-            return dialogueVM.IsActive ? currentMessage : null;
+            return Task.FromResult(currentMessage);
         }
 
         private HandlerExecutionType HandleNodeStart(string startedNodeName)
@@ -71,59 +63,64 @@ namespace Luna.Biz.QuestPlayer.Yarn
                 if (lineStr.Length > semiIndex + 1)
                     lineStr = lineStr.Substring(semiIndex + 1).Trim();
             }
-            currentMessage = new TextMessageDTO()
-            {
-                Text = lineStr
-            };
+
+            var msg = new TextMessage(lineStr);
+            currentMessage = msg;
             return HandlerExecutionType.PauseExecution;
         }
 
         private HandlerExecutionType HandleCommand(Command command)
         {
             var argV = command.Text.Split(' ');
-
+            Message msg;
             switch (argV[0])
             {
                 case "image":
-                    currentMessage = new ImageMessageDTO()
-                    {
-                        ImagePath = quest.Scene.GetImagePath(argV[1])
-                    };
-                    return HandlerExecutionType.PauseExecution;
-                case "queue":
-                    TimeSpan delay;
-                    if (argV.Length == 3)
-                    {
-                        delay = TimeSpan.Parse(argV[2], CultureInfo.InvariantCulture);
-                    }
-                    else
-                    {
-                        delay = TimeSpan.Zero;
-                    }
-                    _ = questService.ActivateQuest(quest.Scene.Id, argV[1], playerId);
+                    msg = new ImageMessage(argV[1]);
                     break;
+                case "wait":
+                    TimeSpan delay = TimeSpanExtensions.ParseTwitchTime(argV[1]);
+                    msg = new WaitMessage(DateTime.UtcNow + delay);
+                    break;
+                case "death":
+                    msg = new DeathMessage();
+                    break;
+                default:
+                    return HandlerExecutionType.ContinueExecution;
             }
-            return HandlerExecutionType.ContinueExecution;
+            currentMessage = msg;
+            return HandlerExecutionType.PauseExecution;
         }
 
         private void HandleOptions(OptionSet options)
         {
             var ops = options.Options.Select(
-                op => new DialogueOptionDTO()
+                op => new DialogueOption()
                 {
                     Id = op.ID,
                     Name = lines[op.Line.ID]
                 }).ToArray();
 
-            currentMessage = new ChoiceMessageDTO()
+            var msg = new ChoiceMessage()
             {
                 Choices = ops
             };
+            currentMessage = msg;
         }
 
         private void HandleDialogComplete()
         {
+            currentMessage = new EndOfStreamMessage();
+        }
 
+        public void DumpTo(Stream stream)
+        {
+            dialogueVM.DumpState(stream);
+        }
+
+        public void LoadFrom(Stream stream)
+        {
+            dialogueVM.LoadState(stream);
         }
     }
 }

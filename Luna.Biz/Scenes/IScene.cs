@@ -13,9 +13,8 @@ namespace Luna.Biz.Scenes
         Guid Id { get; }
         string Name { get; }
         string BackgroundImage { get; }
-        string IntroQuest { get; }
-        Dictionary<string, IQuest> Quests { get; }
+        IQuest Quest { get; }
 
-        Task<string> GetImagePath(string imageName);
+        string ResolveAssetPath(string name);
     }
 }

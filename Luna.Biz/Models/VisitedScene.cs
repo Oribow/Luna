@@ -10,7 +10,6 @@ namespace Luna.Biz.Models
         public Guid LocationId { get; set; }
         public Player Player { get; set; }
         public int PlayerId { get; set; }
-        public List<AvailableQuest> AvailableQuests { get; set; } = new List<AvailableQuest>();
 
         private VisitedScene() { }
         public VisitedScene(Guid locationId)

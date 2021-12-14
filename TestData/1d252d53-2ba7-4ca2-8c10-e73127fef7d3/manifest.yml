@@ -1,16 +1,4 @@
 name: Hyperion
-introQuest: intro
 backgroundImage: barren_landscape.jpg
-quests:
-  - name: intro
-    yarnFile: daily
-    startNode: Briefing_today1
-  - name: daily2
-    yarnFile: daily
-    startNode: Briefing_today2
-  - name: daily3
-    yarnFile: daily
-    startNode: Briefing_today3
-  - name: daily4
-    yarnFile: daily
-    startNode: Briefing_today4
+quest:
+  yarnFile: daily

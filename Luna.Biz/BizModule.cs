@@ -15,8 +15,9 @@ namespace Luna.Biz
             var constrFinder = new AllConstructorFinder();
 
             builder.RegisterType<GameStateService>().FindConstructorsWith(constrFinder).SingleInstance();
-            builder.RegisterType<QuestService>().FindConstructorsWith(constrFinder).SingleInstance();
+            builder.RegisterType<QuestLogService>().FindConstructorsWith(constrFinder).SingleInstance();
             builder.RegisterType<SceneService>().FindConstructorsWith(constrFinder).SingleInstance();
+            builder.RegisterType<MessageSerializer>().SingleInstance();
         }
     }
 }

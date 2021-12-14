@@ -32,14 +32,13 @@ namespace Luna.Droid.Data
 
         public Task<IScene> Get(Guid sceneId)
         {
-            string path = Path.Combine(BasePath, sceneId.ToString(), "manifest.yml");
+            string packagePath = Path.Combine(BasePath, sceneId.ToString());
+            string path = Path.Combine(packagePath, "manifest.yml");
             using (var reader = File.OpenText(path))
             {
                 var manifest = deserializer.Deserialize<Manifest>(reader);
-                var scene = new Scene(sceneId, manifest.name, manifest.backgroundImage, manifest.introQuest);
-
-                var quests = manifest.quests.Select(q => (IQuest)new Quest(scene, q.name, q.name, q.startNode, q.yarnFile)).ToDictionary(q => q.Id);
-                scene.Quests = quests;
+                var quest = new Quest(Path.Combine(packagePath, manifest.quest.yarnFile));
+                var scene = new Scene(sceneId, manifest.name, manifest.backgroundImage, quest);
 
                 return Task.FromResult<IScene>(scene);
             }

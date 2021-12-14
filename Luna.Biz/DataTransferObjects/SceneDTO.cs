@@ -8,14 +8,12 @@ namespace Luna.Biz.DataTransferObjects
     public class SceneDTO
     {
         public Guid Id { get; }
-        public string IntroQuestId { get; }
         public string Name { get; }
-        public Task<string> BackgroundImage { get; }
+        public string BackgroundImage { get; }
 
-        public SceneDTO(Guid id, string introQuestId, string name, Task<string> backgroundImage)
+        public SceneDTO(Guid id, string name, string backgroundImage)
         {
             Id = id;
-            IntroQuestId = introQuestId;
             Name = name;
             BackgroundImage = backgroundImage;
         }

@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Luna.Biz.QuestPlayer.Instructions
+namespace Luna.Biz.QuestPlayer.Messages
 {
-    public class DialogueOptionDTO
+    public class DialogueOption
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public DialogueOption()
+        {
+        }
     }
 }

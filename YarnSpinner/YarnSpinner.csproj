@@ -19,6 +19,7 @@ Write your conversations in Yarn, a simple programming language that's designed 
 
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.10.0" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
   
 </Project>

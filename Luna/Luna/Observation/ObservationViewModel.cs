@@ -1,4 +1,7 @@
-﻿using Luna.Biz.Services;
+﻿using Luna.Biz.DataTransferObjects;
+using Luna.Biz.Services;
+using Luna.Communications;
+using Luna.Extensions;
 using Luna.FarCaster;
 using System;
 using System.Collections.Generic;
@@ -11,69 +14,56 @@ namespace Luna.Observation
 {
     class ObservationViewModel : BaseViewModel
     {
-        public string BackgroundImage
-        {
-            get => backgroundImage;
-            set => SetProperty(ref backgroundImage, value);
-        }
-        public string LocationName
-        {
-            get => locationName;
-            set => SetProperty(ref locationName, value);
-        }
+        public string BackgroundImage => scene.BackgroundImage;
+        public string LocationName => scene.Name;
         public string Description { get; }
-        public bool IsQuestListOpen { get => isQuestListOpen; set => SetProperty(ref isQuestListOpen, value); }
-        public bool IsJumpEnabled { get => isJumpEnabled; set => SetProperty(ref isJumpEnabled, value); }
+        public bool IsJumpBtnEnabled { get => isJumpBtnEnabled; set => SetProperty(ref isJumpBtnEnabled, value); }
+        public bool IsQuestBtnEnabled { get => isQuestBtnEnabled; set => SetProperty(ref isQuestBtnEnabled, value); }
         public ICommand StartTravelling { get; }
-        public ICommand ToogleQuestListVisibility { get; }
-        public ICommand CloseAllWindows { get; }
-        public List<QuestListItemViewModel> Quests
-        {
-            get => quests;
-            set => SetProperty(ref quests, value);
-        }
+        public ICommand OpenQuestLog { get; }
 
-        string backgroundImage;
-        string locationName;
-        bool isQuestListOpen;
+        SceneDTO scene;
         SceneService lss;
-        QuestService qs;
-        bool isJumpEnabled = true;
-        List<QuestListItemViewModel> quests;
+        QuestLogService qs;
+        bool isJumpBtnEnabled = true;
+        bool isQuestBtnEnabled = true;
 
-        public ObservationViewModel(SceneService lss, QuestService qs)
+        public ObservationViewModel(SceneService lss, QuestLogService qs)
         {
             this.lss = lss;
             this.qs = qs;
-            ToogleQuestListVisibility = new Command(() => IsQuestListOpen = !IsQuestListOpen);
             StartTravelling = new Command(HandleJump);
-            CloseAllWindows = new Command(() => IsQuestListOpen = false);
+            OpenQuestLog = new Command(HandleOpenQuestLog);
 
             LoadData();
         }
 
         private async void LoadData()
         {
-            var scene = await lss.GetCurrentScene(App.PlayerId);
-            var quests = await qs.ListAvailableQuests(App.PlayerId);
-            Quests = quests.Select(q => new QuestListItemViewModel(q.Name, q.SceneId, q.Id)).ToList();
-
-            LocationName = scene.Name;
-            BackgroundImage = await scene.BackgroundImage;
+            scene = await lss.GetCurrentScene(App.PlayerId);
+            OnPropertyChanged(nameof(LocationName));
+            OnPropertyChanged(nameof(BackgroundImage));
         }
 
         private async void HandleJump()
         {
             try
             {
-                IsJumpEnabled = false;
+                IsJumpBtnEnabled = false;
                 await lss.Travel(App.PlayerId);
-                await Application.Current.MainPage.Navigation.PushAsync(new FarCasterPage());
+                await Application.Current.MainPage.Navigation.SwapPage(new FarCasterPage());
+                IsJumpBtnEnabled = true;
             }
             catch (InvalidOperationException e)
             {
                 // TODO: do something here later
             }
+        }
+
+        private async void HandleOpenQuestLog() {
+            IsQuestBtnEnabled = false;
+            await Application.Current.MainPage.Navigation.PushAsync(new QuestLogPage(scene.Id));
+            IsQuestBtnEnabled = true;
         }
     }
 }

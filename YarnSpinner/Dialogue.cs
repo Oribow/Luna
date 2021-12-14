@@ -577,9 +577,13 @@ namespace Yarn {
             library.ImportLibrary(new StandardLibrary());
         }
 
-        public void ResumeExecution()
+        public void LoadState(Stream stream)
         {
-            vm.executionState = VirtualMachine.ExecutionState.Running;
+            vm.LoadState(stream);
+        }
+
+        public void DumpState(Stream stream) {
+            vm.DumpState(stream);
         }
 
         /// <summary>

@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Luna.Communications.QuestPlayerPage"
+             x:Class="Luna.Communications.QuestLogPage"
              xmlns:communications="clr-namespace:Luna.Communications"
              xmlns:messages="clr-namespace:Luna.Communications.Messages"
              xmlns:views="clr-namespace:Luna.Views"
-             x:DataType="communications:QuestPlayerViewModel"
-             NavigationPage.HasNavigationBar="False"
-             Title="{Binding Title}">
-
+             x:DataType="communications:QuestLogViewModel"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="imageMessageView">
@@ -23,10 +21,18 @@
             <DataTemplate x:Key="backgroundImageView">
                 <messages:BackgroundImageView />
             </DataTemplate>
+            <DataTemplate x:Key="endOfStreamView">
+                <messages:EndOfStreamView />
+            </DataTemplate>
+            <DataTemplate x:Key="waitView">
+                <messages:WaitView />
+            </DataTemplate>
             <messages:MessageTemplateSelector x:Key="messageTemplateSelector"
                 ImageMessageTemplate="{StaticResource imageMessageView}"
                 TextMessageTemplate="{StaticResource textMessageView}"
                 ChoiceMessageTemplate="{StaticResource choiceMessageView}"
+                WaitTemplate="{StaticResource waitView}"
+                EndOfStreamTemplate="{StaticResource endOfStreamView}"
                 BackgroundImageTemplate="{StaticResource backgroundImageView}" />
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="Medium"/>
@@ -57,21 +63,21 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
-            
-
             <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Source="{Binding BackgroundImage}" Aspect="AspectFill"/>
-
-            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Spacing="0">
                 <Label Text="X-j245" TextColor="White" FontSize="Large" BackgroundColor="{StaticResource Window Panel Header}" HorizontalTextAlignment="Center"
                        VerticalTextAlignment="Center"
                        HeightRequest="30"/>
-                
+
                 <CollectionView ItemsSource="{Binding DisplayMessages}"
                                 ItemTemplate="{StaticResource messageTemplateSelector}"
-                                Margin="20,10,20,0" ItemSizingStrategy="MeasureAllItems"
+                                Margin="20,0" ItemSizingStrategy="MeasureAllItems"
                                 ItemsUpdatingScrollMode="KeepLastItemInView">
                 </CollectionView>
-                <Button Text="Continue" Command="{Binding OnContinue}" Margin="80, 10, 80, 20"/>
+                <Button Text="Continue" Command="{Binding OnContinue}" 
+                        IsEnabled="{Binding CanContinue}"
+                        IsVisible="{Binding HasReachedEnd, Converter={StaticResource InvertedBoolConverter}}"
+                        Margin="80, 10, 80, 20"/>
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

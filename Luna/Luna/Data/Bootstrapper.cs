@@ -49,7 +49,7 @@ namespace Luna.Data
             }
 
             if (!Directory.Exists(platformBootstrapHelper.LocPackageDir)
-                || !Directory.EnumerateDirectories(platformBootstrapHelper.LocPackageDir).Any() || true)
+                || !Directory.EnumerateDirectories(platformBootstrapHelper.LocPackageDir).Any())
             {
                 Directory.CreateDirectory(platformBootstrapHelper.LocPackageDir);
 

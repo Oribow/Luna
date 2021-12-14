@@ -26,18 +26,27 @@
     <EmbeddedResource Update="Communications\Messages\BackgroundImageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Communications\Messages\EndOfStreamView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Communications\Messages\WaitView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="FarCaster\FarCasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Observation\ObservationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Communications\QuestPlayerPage.xaml">
+    <EmbeddedResource Update="Communications\QuestLogPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Communications\QuestLogPage.xaml.cs">
+      <DependentUpon>QuestLogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Observation\ObservationPage.xaml.cs">
       <DependentUpon>ObservationPage.xaml</DependentUpon>
     </Compile>

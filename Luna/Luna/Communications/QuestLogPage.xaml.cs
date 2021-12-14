@@ -11,14 +11,14 @@ using Xamarin.Forms.Xaml;
 namespace Luna.Communications
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class QuestPlayerPage : ContentPage
+    public partial class QuestLogPage : ContentPage
     {
-        public QuestPlayerPage(Guid locationId, string questName)
+        public QuestLogPage(Guid locationId)
         {
             InitializeComponent();
-            var qs = App.Container.Resolve<QuestService>();
-            var qpvm = new QuestPlayerViewModel(qs);
-            _ = qpvm.LoadQuest(locationId, questName);
+            var qs = App.Container.Resolve<QuestLogService>();
+            var qpvm = new QuestLogViewModel(qs);
+            _ = qpvm.LoadQuestLog(locationId);
             BindingContext = qpvm;
         }
     }

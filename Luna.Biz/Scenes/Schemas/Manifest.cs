@@ -7,8 +7,7 @@ namespace Luna.Biz.Scenes.Schemas
     public class Manifest
     {
         public string name;
-        public string introQuest;
         public string backgroundImage;
-        public Quest[] quests;
+        public Quest quest;
     }
 }

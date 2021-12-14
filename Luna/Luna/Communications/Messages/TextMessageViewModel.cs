@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Luna.Biz.QuestPlayer.Messages;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
@@ -6,19 +7,17 @@ using Xamarin.Forms;
 
 namespace Luna.Communications.Messages
 {
-    class TextMessageViewModel : Instruction
+    class TextMessageViewModel : BaseMessage<TextMessage>
     {
-        public string Text { get; }
-        public Color TextColor { get; }
+        public string Text => message.Text;
 
-        public TextMessageViewModel(string text, Color textColor, Action<bool> messageCompletedCallback, bool autoContinue) : base(messageCompletedCallback, autoContinue)
+        public TextMessageViewModel(bool isNew, TextMessage message) : base(isNew, message)
         {
-            this.Text = text;
         }
 
         public override void OnStart()
         {
-            OnComplete();
+            Complete(false);
         }
     }
 }
