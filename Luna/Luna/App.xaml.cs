@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Core;
+using Luna.Biz.Models;
 using Luna.Biz.Services;
+using Luna.Death;
 using Luna.FarCaster;
 using Luna.Observation;
 using System;
@@ -28,7 +30,7 @@ namespace Luna
             var gss = Container.Resolve<GameStateService>();
             var gameState = await gss.GetGameState(PlayerId);
 
-            switch (gameState)
+            switch (gameState.State)
             {
                 case GameState.Traveling:
                     MainPage = new NavigationPage(new FarCasterPage());
@@ -36,6 +38,11 @@ namespace Luna
                 case GameState.Observing:
                     MainPage = new NavigationPage(new ObservationPage());
                     break;
+                case GameState.Dead:
+                    MainPage = new NavigationPage(new DeathPage());
+                    break;
+                default:
+                    throw new Exception("No page specified for game state");
             }
         }
 

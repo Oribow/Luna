@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Luna.Communications.Messages.TextMessageView"
              x:DataType="local:TextMessageViewModel"
-             xmlns:local="clr-namespace:Luna.Communications.Messages"
-             Padding="0,0,0,17">
+             xmlns:local="clr-namespace:Luna.Communications.Messages" xmlns:views="clr-namespace:Luna.Views"
+             Padding="0,8,0,8">
     <ContentView.Content>
         <Frame Padding="10" BackgroundColor="{StaticResource Window Panel Background}">
-            <Label TextColor="White" Text="{Binding Text}"/>
+            <views:TypeWriterLabel TextColor="White" 
+                                   IsTypingAnimationEnabled="{Binding TypingAnimationWanted}"
+                                   TextToWrite="{Binding Text}"
+                                   FinishedWriting="{Binding CompleteMessage}"/>
         </Frame>
     </ContentView.Content>
 </ContentView>

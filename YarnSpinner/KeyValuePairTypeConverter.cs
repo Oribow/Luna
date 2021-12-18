@@ -18,7 +18,6 @@ namespace YarnSpinner
         public object ReadYaml(IParser parser, Type type)
         {
             parser.Consume<MappingStart>();
-
             parser.Consume<Scalar>();
             parser.Consume<MappingStart>();
 
@@ -40,7 +39,6 @@ namespace YarnSpinner
 
             parser.Consume<Scalar>();
             string value = parser.Consume<Scalar>().Value;
-
             parser.Consume<MappingEnd>();
 
             var line = new Line(id);
@@ -52,8 +50,8 @@ namespace YarnSpinner
         {
             KeyValuePair<Line, string> pair = (KeyValuePair<Line, string>)value;
             emitter.Emit(new MappingStart());
-
             emitter.Emit(new Scalar("key"));
+
             emitter.Emit(new MappingStart());
 
             emitter.Emit(new Scalar("ID"));
@@ -72,7 +70,6 @@ namespace YarnSpinner
 
             emitter.Emit(new Scalar("Value"));
             emitter.Emit(new Scalar(pair.Value));
-
             emitter.Emit(new MappingEnd());
         }
     }

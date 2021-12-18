@@ -9,18 +9,17 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Luna.Observation
+namespace Luna.Death
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ObservationPage : ContentPage
+    public partial class DeathPage : ContentPage
     {
-        public ObservationPage()
+        public DeathPage()
         {
             InitializeComponent();
 
             var gss = App.Container.Resolve<GameStateService>();
-            var qs = App.Container.Resolve<QuestLogService>();
-            BindingContext = new ObservationViewModel(gss);
+            BindingContext = new DeathViewModel(gss);
         }
     }
 }

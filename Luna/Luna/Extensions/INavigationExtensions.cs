@@ -12,7 +12,16 @@ namespace Luna.Extensions
         public static async Task SwapPage(this INavigation nav, Page newPage)
         {
             await nav.PushAsync(newPage);
-            nav.RemovePage(nav.NavigationStack.First());
+            nav.RemovePage(nav.NavigationStack[nav.NavigationStack.Count - 2]);
+        }
+
+        public static async Task ClearAndSetPage(this INavigation nav, Page newPage)
+        {
+            await nav.PushAsync(newPage);
+            while (nav.NavigationStack.Count > 1)
+            {
+                nav.RemovePage(nav.NavigationStack[0]);
+            }
         }
     }
 }

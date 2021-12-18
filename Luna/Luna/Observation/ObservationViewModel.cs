@@ -23,15 +23,13 @@ namespace Luna.Observation
         public ICommand OpenQuestLog { get; }
 
         SceneDTO scene;
-        SceneService lss;
-        QuestLogService qs;
+        GameStateService gameStateService;
         bool isJumpBtnEnabled = true;
         bool isQuestBtnEnabled = true;
 
-        public ObservationViewModel(SceneService lss, QuestLogService qs)
+        public ObservationViewModel(GameStateService gss)
         {
-            this.lss = lss;
-            this.qs = qs;
+            this.gameStateService = gss;
             StartTravelling = new Command(HandleJump);
             OpenQuestLog = new Command(HandleOpenQuestLog);
 
@@ -40,7 +38,7 @@ namespace Luna.Observation
 
         private async void LoadData()
         {
-            scene = await lss.GetCurrentScene(App.PlayerId);
+            scene = await gameStateService.GetPlayerScene(App.PlayerId);
             OnPropertyChanged(nameof(LocationName));
             OnPropertyChanged(nameof(BackgroundImage));
         }
@@ -50,8 +48,8 @@ namespace Luna.Observation
             try
             {
                 IsJumpBtnEnabled = false;
-                await lss.Travel(App.PlayerId);
-                await Application.Current.MainPage.Navigation.SwapPage(new FarCasterPage());
+                await gameStateService.StartTravelling(App.PlayerId);
+                await Application.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage());
                 IsJumpBtnEnabled = true;
             }
             catch (InvalidOperationException e)
@@ -60,7 +58,8 @@ namespace Luna.Observation
             }
         }
 
-        private async void HandleOpenQuestLog() {
+        private async void HandleOpenQuestLog()
+        {
             IsQuestBtnEnabled = false;
             await Application.Current.MainPage.Navigation.PushAsync(new QuestLogPage(scene.Id));
             IsQuestBtnEnabled = true;

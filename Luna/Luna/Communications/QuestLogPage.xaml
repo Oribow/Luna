@@ -37,7 +37,7 @@
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="Medium"/>
             </Style>
-            <Style TargetType="views:OverflowLabel">
+            <Style TargetType="views:TypeWriterLabel">
                 <Setter Property="FontSize" Value="Medium"/>
             </Style>
             <Style TargetType="Button">
@@ -65,19 +65,15 @@
         <AbsoluteLayout>
             <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Source="{Binding BackgroundImage}" Aspect="AspectFill"/>
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Spacing="0">
-                <Label Text="X-j245" TextColor="White" FontSize="Large" BackgroundColor="{StaticResource Window Panel Header}" HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center"
-                       HeightRequest="30"/>
-
                 <CollectionView ItemsSource="{Binding DisplayMessages}"
                                 ItemTemplate="{StaticResource messageTemplateSelector}"
                                 Margin="20,0" ItemSizingStrategy="MeasureAllItems"
                                 ItemsUpdatingScrollMode="KeepLastItemInView">
                 </CollectionView>
                 <Button Text="Continue" Command="{Binding OnContinue}" 
-                        IsEnabled="{Binding CanContinue}"
+                        IsEnabled="{Binding OnContinueEnabled}"
                         IsVisible="{Binding HasReachedEnd, Converter={StaticResource InvertedBoolConverter}}"
-                        Margin="80, 10, 80, 20"/>
+                        Margin="80, 10, 80, 10"/>
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

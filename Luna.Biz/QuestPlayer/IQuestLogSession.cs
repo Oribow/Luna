@@ -13,6 +13,5 @@ namespace Luna.Biz.QuestPlayer
         Task<IEnumerable<Message>> GetHistory();
         string ResolveAssetPath(string assetName);
         Task SaveCompletedMessage(Message msg);
-        Task SaveStartedMessage(Message msg);
     }
 }

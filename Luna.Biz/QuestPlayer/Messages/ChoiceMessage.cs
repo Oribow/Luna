@@ -13,6 +13,5 @@ namespace Luna.Biz.QuestPlayer.Messages
 
         public DialogueOption[] Choices { get; set; }
         public int SelectedChoice { get; set; } = -1;
-        public override bool RequiresSaveOnComplete => true;
     }
 }

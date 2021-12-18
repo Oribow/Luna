@@ -10,35 +10,6 @@ namespace Luna.FarCaster
 {
     class FarCasterViewModel : BaseViewModel
     {
-        private static void StartCountdown(FarCasterViewModel self)
-        {
-            var weakView = new WeakReference<FarCasterViewModel>(self);
-            Func<bool> updateCallback = () =>
-            {
-                FarCasterViewModel vm;
-                if (!weakView.TryGetTarget(out vm))
-                {
-                    return false;
-                }
-
-                TimeSpan timeLeft = self.TimeOfArrival - DateTime.UtcNow;
-                if (timeLeft.Ticks < 0)
-                {
-                    vm.TimeOfArrivalLabel = "00:00:00";
-                    vm.CanArrive = true;
-                    return false;
-                }
-                else
-                {
-                    vm.TimeOfArrivalLabel = $"{timeLeft.TotalHours:00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}";
-                    return true;
-                }
-            };
-
-            Device.StartTimer(new TimeSpan(0, 0, 1), updateCallback);
-        }
-
-
         public string TimeOfArrivalLabel { get => timeLeftToTravel; set => SetProperty(ref timeLeftToTravel, value); }
         public bool CanArrive
         {
@@ -49,7 +20,6 @@ namespace Luna.FarCaster
             }
         }
         public ICommand Arrive => arrive;
-        public DateTime TimeOfArrival { get => timeOfArrivalUTC; }
 
         string timeLeftToTravel;
         bool canArrive;
@@ -57,21 +27,24 @@ namespace Luna.FarCaster
         Command arrive;
         bool arriveWasPressed;
 
-        readonly SceneService sceneService;
+        readonly GameStateService gameStateService;
 
-        public FarCasterViewModel(SceneService locService)
+        public FarCasterViewModel(GameStateService gameStateService)
         {
-            this.sceneService = locService;
+            this.gameStateService = gameStateService;
             arrive = new Command(HandleArrive, (state) => !arriveWasPressed);
             LoadData();
         }
 
         private async void LoadData()
         {
-            var travelState = await sceneService.GetTravelState(App.PlayerId);
-            this.timeOfArrivalUTC = travelState.TimeOfArrival;
+            var travelState = await gameStateService.GetGameState(App.PlayerId);
+            this.timeOfArrivalUTC = travelState.StateTransitionTimeUTC;
             CanArrive = timeOfArrivalUTC < DateTime.UtcNow;
-            StartCountdown(this);
+            ViewModelExtensions.StartCountdown(this,
+                timeOfArrivalUTC,
+                (self, timeLeft) => self.TimeOfArrivalLabel = $"{timeLeft.TotalHours:00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}",
+                (self) => { self.CanArrive = true; self.TimeOfArrivalLabel = "00:00:00"; });
         }
 
         private async void HandleArrive(object state)
@@ -79,8 +52,8 @@ namespace Luna.FarCaster
             arriveWasPressed = true;
             arrive.ChangeCanExecute();
 
-            var scene = await sceneService.Arrive(App.PlayerId);
-            await Application.Current.MainPage.Navigation.SwapPage(new ObservationPage());
+            var scene = await gameStateService.Arrive(App.PlayerId);
+            await Application.Current.MainPage.Navigation.ClearAndSetPage(new ObservationPage());
         }
     }
 }

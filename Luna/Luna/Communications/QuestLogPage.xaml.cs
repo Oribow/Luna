@@ -17,7 +17,8 @@ namespace Luna.Communications
         {
             InitializeComponent();
             var qs = App.Container.Resolve<QuestLogService>();
-            var qpvm = new QuestLogViewModel(qs);
+            var gss = App.Container.Resolve<GameStateService>();
+            var qpvm = new QuestLogViewModel(qs, gss);
             _ = qpvm.LoadQuestLog(locationId);
             BindingContext = qpvm;
         }

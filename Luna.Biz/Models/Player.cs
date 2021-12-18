@@ -4,15 +4,20 @@ using System.Text;
 
 namespace Luna.Biz.Models
 {
+    public enum GameState
+    {
+        Traveling,
+        Observing,
+        Dead
+    }
+
     public class Player
     {
         public int Id { get; set; }
         public Guid? CurrentSceneId { get; internal set; }
-        public DateTime ArrivalPossibleAfterUTC { get; internal set; }
+        public DateTime StateTransitionTimeUTC { get; internal set; }
         public List<VisitedScene> VisitedScenes { get; internal set; }
-
-        public bool IsTraveling => CurrentSceneId == null;
-        public bool CanArrive => DateTime.UtcNow > ArrivalPossibleAfterUTC;
+        public GameState GameState { get; internal set; }
 
         private Player() { }
 

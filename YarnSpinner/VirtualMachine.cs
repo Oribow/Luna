@@ -253,6 +253,12 @@ namespace Yarn
 
         Node currentNode;
 
+        class SerializableState
+        {
+            public State state;
+            public ExecutionState executionState;
+        }
+
         public void LoadState(Stream stream)
         {
             IDeserializer deserializer = new DeserializerBuilder()
@@ -260,8 +266,13 @@ namespace Yarn
                 .WithTypeConverter(new KeyValuePairTypeConverter())
                 .Build();
             using (var reader = new StreamReader(stream))
-                state = deserializer.Deserialize<State>(reader);
-            currentNode = Program.Nodes[state.currentNodeName];
+            {
+                var ss = deserializer.Deserialize<SerializableState>(reader);
+                state = ss.state;
+                _executionState = ss.executionState;
+            }
+            if (state.currentNodeName != null)
+                currentNode = Program.Nodes[state.currentNodeName];
         }
 
         public void DumpState(Stream stream)
@@ -271,7 +282,13 @@ namespace Yarn
                 .WithTypeConverter(new KeyValuePairTypeConverter())
                 .Build();
             using (var writer = new StreamWriter(stream))
-                serializer.Serialize(writer, state);
+            {
+                serializer.Serialize(writer, new SerializableState()
+                {
+                    state = state,
+                    executionState = _executionState
+                });
+            }
         }
 
         public bool SetNode(string nodeName)

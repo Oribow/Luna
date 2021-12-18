@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Luna.Communications.Messages
 {
@@ -9,6 +11,7 @@ namespace Luna.Communications.Messages
     {
         public event Action<Message, bool> OnComplete;
         public bool IsCompleted { get; private set; }
+        public Command Skip { get; protected set; }
 
         protected readonly bool isNew;
         protected readonly T message;
@@ -26,6 +29,9 @@ namespace Luna.Communications.Messages
 
         protected void Complete(bool autoContinue)
         {
+            if (IsCompleted)
+                return;
+
             IsCompleted = true;
             OnComplete?.Invoke(message, autoContinue);
         }

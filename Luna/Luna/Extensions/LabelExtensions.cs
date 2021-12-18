@@ -36,5 +36,50 @@ namespace Luna.Extensions
 
             return tcs.Task;
         }
+
+        public static Task<bool> TextTypingAnimation(this Label self, string text, int timePerCharacter = 50)
+        {
+            if (string.IsNullOrEmpty(text))
+                return Task.FromResult(true);
+
+            var weakView = new WeakReference<Label>(self);
+            var tcs = new TaskCompletionSource<bool>();
+
+            string textWithPauses = AddPausesToTypeString(text);
+            Action<double> animCallback = (t) =>
+            {
+                Label label;
+                if (weakView.TryGetTarget(out label))
+                {
+                    int charsToShow = (int)(textWithPauses.Length * t);
+                    string textToShow = textWithPauses.Substring(0, charsToShow);
+                    label.Text = RemovePausesFromTypeString(textToShow);
+                }
+            };
+
+            int duration = timePerCharacter * textWithPauses.Length;
+            new Animation(
+                animCallback, 0, 1, Easing.Linear
+            ).Commit(self, nameof(TextTypingAnimation), 16, (uint)duration, null, (f, aborted) =>
+            {
+                Label label;
+                if (aborted && weakView.TryGetTarget(out label))
+                    label.Text = text;
+
+                tcs.SetResult(aborted);
+            });
+
+            return tcs.Task;
+        }
+
+        private static string AddPausesToTypeString(string str)
+        {
+            return str.Replace(".", ".");
+        }
+
+        private static string RemovePausesFromTypeString(string str)
+        {
+            return str.Replace("", "");
+        }
     }
 }

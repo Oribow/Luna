@@ -4,6 +4,7 @@ using Luna.Biz.Scenes;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -58,22 +59,6 @@ namespace Luna.Biz.QuestPlayer
 
         public async Task SaveCompletedMessage(Message msg)
         {
-            if (!msg.RequiresSaveOnComplete)
-                return;
-
-            using (var context = contextFactory.CreateDbContext())
-            {
-                var qm = messageSerializer.Serialize(msg, questLogId);
-                var latestMsg = await context.QuestMessages.OrderByDescending(qm => qm.Id)
-                    .FirstAsync();
-                qm.Id = latestMsg.Id;
-                context.Entry<QuestMessage>(latestMsg).CurrentValues.SetValues(qm);
-                await context.SaveChangesAsync();
-            }
-        }
-
-        public async Task SaveStartedMessage(Message msg)
-        {
             using (var context = contextFactory.CreateDbContext())
             {
                 var qm = messageSerializer.Serialize(msg, questLogId);
@@ -84,6 +69,8 @@ namespace Luna.Biz.QuestPlayer
                 {
                     messageSource.DumpTo(stream);
                     questLog.DialogState = stream.ToArray();
+
+                    Debug.WriteLine(Encoding.Default.GetString(questLog.DialogState));
                 }
 
                 await context.SaveChangesAsync();

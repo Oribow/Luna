@@ -5,7 +5,7 @@
              xmlns:valueconverter="clr-namespace:Luna.ValueConverter"
              x:Class="Luna.Communications.Messages.ChoiceMessageView"
              x:DataType="local:ChoiceMessageViewModel"
-             Padding="0,0,0,17">
+             Padding="0,8,0,8">
     <ContentView.Resources>
         <ResourceDictionary>
             <valueconverter:InvertBoolConverter x:Key="invertBool" />

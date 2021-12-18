@@ -7,7 +7,7 @@ namespace Luna.Communications.Messages
 {
     class MessageTemplateSelector : DataTemplateSelector
     {
-        // MUST BE >= 20 different things because of android
+        // MUST BE <= 20 different things because of android
         public DataTemplate TextMessageTemplate { get; set; }
         public DataTemplate ImageMessageTemplate { get; set; }
         public DataTemplate ChoiceMessageTemplate { get; set; }
@@ -30,6 +30,8 @@ namespace Luna.Communications.Messages
             if (itemType == typeof(WaitViewModel))
                 return WaitTemplate;
             if (itemType == typeof(EndOfStreamViewModel))
+                return EndOfStreamTemplate;
+            if (itemType == typeof(DeathViewModel))
                 return EndOfStreamTemplate;
 
             throw new ArgumentException("Unknown feed item type of " + item.GetType());

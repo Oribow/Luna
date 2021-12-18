@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Luna.Communications.Messages
 {
@@ -10,6 +12,6 @@ namespace Luna.Communications.Messages
         void OnStart();
         event Action<Message, bool> OnComplete;
         bool IsCompleted { get; }
-
+        public Command Skip { get; }
     }
 }

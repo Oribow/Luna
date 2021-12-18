@@ -5,7 +5,7 @@
              x:Class="Luna.Communications.Messages.ImageMessageView"
              x:DataType="local:ImageMessageViewModel"
              xmlns:views="clr-namespace:Luna.Views"
-             Padding="0,0,0,17">
+             Padding="0,8,0,8">
     <ContentView.Content>
         <StackLayout>
             <views:WidthFittingImage Source="{Binding ImageSrc}" x:Name="image" 

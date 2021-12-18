@@ -18,32 +18,61 @@ namespace Luna.Communications
     class QuestLogViewModel : BaseViewModel
     {
         public ObservableCollection<IMessageViewModel> DisplayMessages { get; } = new ObservableCollection<IMessageViewModel>();
-        public bool CanContinue
+
+        public bool HasReachedEnd
         {
-            get => canContinue;
+            get => hasReachedEnd;
             set
             {
-                SetProperty(ref canContinue, value);
+                SetProperty(ref hasReachedEnd, value);
+                OnContinue?.ChangeCanExecute();
+                OnPropertyChanged(nameof(OnContinueEnabled));
             }
         }
 
-        public bool HasReachedEnd { get => hasReachedEnd; set => SetProperty(ref hasReachedEnd, value); }
-
-        public ICommand OnContinue => onContinue;
+        public Command OnContinue
+        {
+            get => onContinue;
+            set
+            {
+                SetProperty(ref onContinue, value);
+                OnPropertyChanged(nameof(OnContinueEnabled));
+            }
+        }
+        public bool OnContinueEnabled { get => onContinue?.CanExecute(null) ?? false; }
         public string BackgroundImage { get => backgroundImage; set => SetProperty(ref backgroundImage, value); }
 
+        private bool ReadyForNextMessage
+        {
+            get => readyForNextMessage;
+            set
+            {
+                readyForNextMessage = value;
+                OnContinue?.ChangeCanExecute();
+                OnPropertyChanged(nameof(OnContinueEnabled));
+            }
+        }
+
         string backgroundImage;
-        bool canContinue = false;
         bool hasReachedEnd = false;
-        IQuestLogSession questSession;
+
         Command onContinue;
+        bool readyForNextMessage = false;
+
+        Command nextMessage;
+
+        IQuestLogSession questSession;
 
         readonly QuestLogService questService;
+        readonly GameStateService gameStateService;
 
-        public QuestLogViewModel(QuestLogService questService)
+        public QuestLogViewModel(QuestLogService questService, GameStateService gameStateService)
         {
             this.questService = questService;
-            onContinue = new Command(Continue);
+            this.gameStateService = gameStateService;
+            nextMessage = new Command(Continue, () => ReadyForNextMessage && !HasReachedEnd);
+
+            OnContinue = nextMessage;
         }
 
         public async Task LoadQuestLog(Guid locationId)
@@ -51,27 +80,17 @@ namespace Luna.Communications
             questSession = await questService.GetOrCreateQuestLogSession(locationId, App.PlayerId);
             var history = (await questSession.GetHistory()).ToArray();
 
-            for (int iMsg = 0; iMsg < history.Length - 1; iMsg++)
+            for (int iMsg = 0; iMsg < history.Length; iMsg++)
                 ProcessMessage(history[iMsg], false);
 
-            CanContinue = false;
-            if (history.Length > 0)
-            {
-                ProcessMessage(history[history.Length - 1], true);
-            }
-            else
-            {
-                CanContinue = true;
-                Continue();
-            }
+            ReadyForNextMessage = true;
         }
 
         async void Continue()
         {
-            if (!CanContinue)
-                return;
+            ReadyForNextMessage = false;
+            OnContinue = null;
 
-            CanContinue = false;
             var msg = await questSession.Continue();
             ProcessMessage(msg, true);
         }
@@ -82,11 +101,20 @@ namespace Luna.Communications
             {
                 questSession.SelectOption(((ChoiceMessage)message).SelectedChoice);
             }
-
             questSession.SaveCompletedMessage(message);
-            CanContinue = true;
+
+            if (message.MarksStreamEnd)
+            {
+                ReadyForNextMessage = false;
+                HasReachedEnd = true;
+            }
+
+            OnContinue = nextMessage;
+            ReadyForNextMessage = true;
             if (autoContinue)
+            {
                 Continue();
+            }
         }
 
         private void ProcessMessage(Message message, bool isNew)
@@ -124,26 +152,23 @@ namespace Luna.Communications
                 var waitMsg = (WaitMessage)message;
                 msgVM = new WaitViewModel(isNew, waitMsg);
             }
+            else if (instrType == typeof(DeathMessage))
+            {
+                var deathMsg = (DeathMessage)message;
+                msgVM = new DeathViewModel(isNew, deathMsg, gameStateService);
+            }
             else
             {
                 throw new ArgumentException();
             }
 
             DisplayMessages.Add(msgVM);
-
-            if (message.MarksStreamEnd)
-            {
-                CanContinue = false;
-                HasReachedEnd = true;
-            }
-
             if (isNew)
             {
                 msgVM.OnComplete += OnMessageCompleted;
+                OnContinue = msgVM.Skip;
             }
-
             msgVM.OnStart();
-            questSession.SaveStartedMessage(message);
         }
     }
 }
