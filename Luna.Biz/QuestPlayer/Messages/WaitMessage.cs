@@ -12,8 +12,8 @@ namespace Luna.Biz.QuestPlayer.Messages
 
         public WaitMessage(DateTime waitTillUtc)
         {
-            WaitTillUTC = DateTime.UtcNow + new TimeSpan(0, 0, 10);
-            //this.WaitTillUTC = waitTillUtc;
+            //WaitTillUTC = DateTime.UtcNow + new TimeSpan(0, 0, 10);
+            this.WaitTillUTC = waitTillUtc;
         }
 
 

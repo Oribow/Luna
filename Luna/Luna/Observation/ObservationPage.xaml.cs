@@ -18,7 +18,7 @@ namespace Luna.Observation
         {
             InitializeComponent();
 
-            var gss = App.Container.Resolve<GameStateService>();
+            var gss = App.Container.Resolve<IGameStateService>();
             var qs = App.Container.Resolve<QuestLogService>();
             BindingContext = new ObservationViewModel(gss);
         }

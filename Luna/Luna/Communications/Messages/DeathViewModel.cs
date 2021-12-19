@@ -10,16 +10,16 @@ namespace Luna.Communications.Messages
 {
     class DeathViewModel : BaseMessage<DeathMessage>
     {
-        GameStateService gss;
+        IGameStateService gss;
 
-        public DeathViewModel(bool isNew, DeathMessage message, GameStateService gss) : base(isNew, message)
+        public DeathViewModel(DeathMessage message, IGameStateService gss) : base(message)
         {
             this.gss = gss;
         }
 
         public override async void OnStart()
         {
-            if(isNew)
+            if(!IsCompleted)
             {
                 await gss.KillPlayer(App.PlayerId);
                 await App.Current.MainPage.Navigation.ClearAndSetPage(new DeathPage());

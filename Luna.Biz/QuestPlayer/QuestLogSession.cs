@@ -57,7 +57,7 @@ namespace Luna.Biz.QuestPlayer
             return scene.ResolveAssetPath(assetName);
         }
 
-        public async Task SaveCompletedMessage(Message msg)
+        public async Task SaveNewMessage(Message msg)
         {
             using (var context = contextFactory.CreateDbContext())
             {
@@ -73,6 +73,19 @@ namespace Luna.Biz.QuestPlayer
                     Debug.WriteLine(Encoding.Default.GetString(questLog.DialogState));
                 }
 
+                await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task SaveExistingMessage(Message msg)
+        {
+            using (var context = contextFactory.CreateDbContext())
+            {
+                var qm = messageSerializer.Serialize(msg, questLogId);
+                var latestMsg = await context.QuestMessages.OrderByDescending(qm => qm.Id)
+                    .FirstAsync();
+                qm.Id = latestMsg.Id;
+                context.Entry<QuestMessage>(latestMsg).CurrentValues.SetValues(qm);
                 await context.SaveChangesAsync();
             }
         }

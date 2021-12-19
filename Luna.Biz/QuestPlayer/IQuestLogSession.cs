@@ -12,6 +12,7 @@ namespace Luna.Biz.QuestPlayer
         void SelectOption(int option);
         Task<IEnumerable<Message>> GetHistory();
         string ResolveAssetPath(string assetName);
-        Task SaveCompletedMessage(Message msg);
+        Task SaveNewMessage(Message msg);
+        Task SaveExistingMessage(Message msg);
     }
 }

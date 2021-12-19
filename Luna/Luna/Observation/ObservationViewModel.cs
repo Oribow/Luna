@@ -23,11 +23,11 @@ namespace Luna.Observation
         public ICommand OpenQuestLog { get; }
 
         SceneDTO scene;
-        GameStateService gameStateService;
+        IGameStateService gameStateService;
         bool isJumpBtnEnabled = true;
         bool isQuestBtnEnabled = true;
 
-        public ObservationViewModel(GameStateService gss)
+        public ObservationViewModel(IGameStateService gss)
         {
             this.gameStateService = gss;
             StartTravelling = new Command(HandleJump);

@@ -17,7 +17,7 @@ namespace Luna.FarCaster
         public FarCasterPage()
         {
             InitializeComponent();
-            var gss = App.Container.Resolve<GameStateService>();
+            var gss = App.Container.Resolve<IGameStateService>();
             BindingContext = new FarCasterViewModel(gss);
         }
     }

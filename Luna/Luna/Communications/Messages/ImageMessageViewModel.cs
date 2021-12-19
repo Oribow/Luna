@@ -14,7 +14,7 @@ namespace Luna.Communications.Messages
     {
         public string ImageSrc => message.ImagePath;
 
-        public ImageMessageViewModel(bool isNew, ImageMessage message) : base(isNew, message)
+        public ImageMessageViewModel(ImageMessage message) : base(message)
         {
         }
 

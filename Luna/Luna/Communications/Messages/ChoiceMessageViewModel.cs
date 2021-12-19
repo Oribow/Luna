@@ -25,7 +25,7 @@ namespace Luna.Communications.Messages
         bool choiceOpen = true;
         string replacementText;
 
-        public ChoiceMessageViewModel(bool isNew, ChoiceMessage msg) : base(isNew, msg)
+        public ChoiceMessageViewModel(ChoiceMessage msg) : base(msg)
         {
             OnChoiceMade = new Command<int>(HandleChoiceMade);
         }

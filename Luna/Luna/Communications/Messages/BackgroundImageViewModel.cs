@@ -9,7 +9,7 @@ namespace Luna.Communications.Messages
     {
         public string ImageSrc => message.ImagePath;
 
-        public BackgroundImageViewModel(bool isNew, BackgroundImageMessage msg) : base(isNew, msg)
+        public BackgroundImageViewModel(BackgroundImageMessage msg) : base(msg)
         {
         }
 

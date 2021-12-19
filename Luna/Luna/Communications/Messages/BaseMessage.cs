@@ -13,12 +13,11 @@ namespace Luna.Communications.Messages
         public bool IsCompleted { get; private set; }
         public Command Skip { get; protected set; }
 
-        protected readonly bool isNew;
         protected readonly T message;
 
-        protected BaseMessage(bool isNew, T message)
+        protected BaseMessage(T message)
         {
-            this.isNew = isNew;
+            this.IsCompleted = message.IsCompleted;
             this.message = message;
         }
 
@@ -33,6 +32,7 @@ namespace Luna.Communications.Messages
                 return;
 
             IsCompleted = true;
+            message.IsCompleted = true;
             OnComplete?.Invoke(message, autoContinue);
         }
     }

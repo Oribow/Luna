@@ -12,16 +12,26 @@ namespace Luna.Communications.Messages
         public string TimeToWaitLabel { get => timeToWaitLabel; set => SetProperty(ref timeToWaitLabel, value); }
 
         string timeToWaitLabel = "Time to wait -";
-        public WaitViewModel(bool isNew, WaitMessage message) : base(isNew, message)
+        INotificationManager notificationManager;
+        public WaitViewModel(WaitMessage message, INotificationManager notificationManager) : base(message)
         {
+            this.notificationManager = notificationManager;
         }
 
         public override void OnStart()
         {
-            ViewModelExtensions.StartCountdown(this,
-                message.WaitTillUTC,
-                (self, timeLeft) => self.TimeToWaitLabel = $"Time to wait - {Math.Floor(timeLeft.TotalHours):00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}",
-                (self) => { self.TimeToWaitLabel = "Ready!"; self.Complete(false); });
+            if (IsCompleted)
+            {
+                TimeToWaitLabel = "Ready!";
+            }
+            else
+            {
+                ViewModelExtensions.StartCountdown(this,
+                    message.WaitTillUTC,
+                    (self, timeLeft) => self.TimeToWaitLabel = $"Time to wait - {Math.Floor(timeLeft.TotalHours):00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}",
+                    (self) => { self.TimeToWaitLabel = "Ready!"; self.Complete(false); });
+                notificationManager.SendNotification("Continue Story Now!", "You can continue the story now!", message.WaitTillUTC);
+            }
         }
     }
 }

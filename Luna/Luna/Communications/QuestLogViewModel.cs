@@ -64,10 +64,12 @@ namespace Luna.Communications
         IQuestLogSession questSession;
 
         readonly QuestLogService questService;
-        readonly GameStateService gameStateService;
+        readonly IGameStateService gameStateService;
+        readonly INotificationManager notificationManager;
 
-        public QuestLogViewModel(QuestLogService questService, GameStateService gameStateService)
+        public QuestLogViewModel(QuestLogService questService, IGameStateService gameStateService, INotificationManager notificationManager)
         {
+            this.notificationManager = notificationManager;
             this.questService = questService;
             this.gameStateService = gameStateService;
             nextMessage = new Command(Continue, () => ReadyForNextMessage && !HasReachedEnd);
@@ -81,9 +83,12 @@ namespace Luna.Communications
             var history = (await questSession.GetHistory()).ToArray();
 
             for (int iMsg = 0; iMsg < history.Length; iMsg++)
-                ProcessMessage(history[iMsg], false);
+                ProcessMessage(history[iMsg]);
 
-            ReadyForNextMessage = true;
+            if (history.Length > 0)
+                ReadyForNextMessage = history[history.Length - 1].IsCompleted && !history[history.Length - 1].MarksStreamEnd;
+            else
+                ReadyForNextMessage = true;
         }
 
         async void Continue()
@@ -92,16 +97,17 @@ namespace Luna.Communications
             OnContinue = null;
 
             var msg = await questSession.Continue();
-            ProcessMessage(msg, true);
+            await questSession.SaveNewMessage(msg);
+            ProcessMessage(msg);
         }
 
         void OnMessageCompleted(Message message, bool autoContinue)
         {
+            questSession.SaveExistingMessage(message);
             if (message.GetType() == typeof(ChoiceMessage))
             {
                 questSession.SelectOption(((ChoiceMessage)message).SelectedChoice);
             }
-            questSession.SaveCompletedMessage(message);
 
             if (message.MarksStreamEnd)
             {
@@ -117,45 +123,45 @@ namespace Luna.Communications
             }
         }
 
-        private void ProcessMessage(Message message, bool isNew)
+        private void ProcessMessage(Message message)
         {
             var instrType = message.GetType();
             IMessageViewModel msgVM;
             if (instrType == typeof(TextMessage))
             {
                 var textMessage = (TextMessage)message;
-                msgVM = new TextMessageViewModel(isNew, textMessage);
+                msgVM = new TextMessageViewModel(textMessage);
             }
             else if (instrType == typeof(ImageMessage))
             {
                 var imageMessage = (ImageMessage)message;
-                msgVM = new ImageMessageViewModel(isNew, imageMessage);
+                msgVM = new ImageMessageViewModel(imageMessage);
             }
             else if (instrType == typeof(ChoiceMessage))
             {
                 var choiceMessage = (ChoiceMessage)message;
-                msgVM = new ChoiceMessageViewModel(isNew, choiceMessage);
+                msgVM = new ChoiceMessageViewModel(choiceMessage);
             }
             else if (instrType == typeof(BackgroundImageMessage))
             {
                 var bgInstr = (BackgroundImageMessage)message;
                 BackgroundImage = bgInstr.ImagePath;
-                msgVM = new BackgroundImageViewModel(isNew, bgInstr);
+                msgVM = new BackgroundImageViewModel(bgInstr);
             }
             else if (instrType == typeof(EndOfStreamMessage))
             {
                 var eosMsg = (EndOfStreamMessage)message;
-                msgVM = new EndOfStreamViewModel(isNew, eosMsg);
+                msgVM = new EndOfStreamViewModel(eosMsg);
             }
             else if (instrType == typeof(WaitMessage))
             {
                 var waitMsg = (WaitMessage)message;
-                msgVM = new WaitViewModel(isNew, waitMsg);
+                msgVM = new WaitViewModel(waitMsg, notificationManager);
             }
             else if (instrType == typeof(DeathMessage))
             {
                 var deathMsg = (DeathMessage)message;
-                msgVM = new DeathViewModel(isNew, deathMsg, gameStateService);
+                msgVM = new DeathViewModel(deathMsg, gameStateService);
             }
             else
             {
@@ -163,7 +169,7 @@ namespace Luna.Communications
             }
 
             DisplayMessages.Add(msgVM);
-            if (isNew)
+            if (!message.IsCompleted)
             {
                 msgVM.OnComplete += OnMessageCompleted;
                 OnContinue = msgVM.Skip;

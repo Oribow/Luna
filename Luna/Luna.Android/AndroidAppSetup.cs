@@ -9,6 +9,7 @@ using Autofac;
 using Luna;
 using Luna.Biz.Scenes;
 using Luna.Droid.Data;
+using Luna.Droid.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace Celestia.App.Droid
             base.RegisterDependencies(builder);
 
             builder.RegisterType<SceneRepository>().As<ISceneRepository>();
+            builder.RegisterType<AndroidNotificationManager>().As<INotificationManager>();
         }
     }
 }

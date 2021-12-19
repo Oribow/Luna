@@ -15,12 +15,12 @@ namespace Luna.Death
         public bool CanRevive { get => canRevive; set => SetProperty(ref canRevive, value); }
         public ICommand RevivePlayer { get; }
 
-        readonly GameStateService gameStateService;
+        readonly IGameStateService gameStateService;
         private DateTime reviveTimeUTC;
         private string reviveTimerLabel;
         private bool canRevive = false;
 
-        public DeathViewModel(GameStateService gameStateService)
+        public DeathViewModel(IGameStateService gameStateService)
         {
             this.gameStateService = gameStateService;
             RevivePlayer = new Command(HandleRevivePlayer);

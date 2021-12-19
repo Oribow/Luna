@@ -10,5 +10,6 @@ namespace Luna.Biz.QuestPlayer.Messages
     {
         [YamlIgnore]
         public virtual bool MarksStreamEnd => false;
+        public bool IsCompleted { get; set; }
     }
 }

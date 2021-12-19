@@ -27,7 +27,7 @@ namespace Luna
 
         public async Task Initialize()
         {
-            var gss = Container.Resolve<GameStateService>();
+            var gss = Container.Resolve<IGameStateService>();
             var gameState = await gss.GetGameState(PlayerId);
 
             switch (gameState.State)

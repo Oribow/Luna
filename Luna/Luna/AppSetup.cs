@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Luna.Biz.Services;
+using Luna.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +19,7 @@ namespace Luna
         protected virtual void RegisterDependencies(ContainerBuilder builder)
         {
             builder.RegisterModule(new LunaModule());
+            builder.RegisterType<NotifyingGameStateService>().As<IGameStateService>();
         }
     }
 }

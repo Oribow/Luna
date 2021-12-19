@@ -7,7 +7,7 @@ namespace Luna.Communications.Messages
 {
     class EndOfStreamViewModel : BaseMessage<EndOfStreamMessage>
     {
-        public EndOfStreamViewModel(bool isNew, EndOfStreamMessage message) : base(isNew, message)
+        public EndOfStreamViewModel(EndOfStreamMessage message) : base(message)
         {
         }
 

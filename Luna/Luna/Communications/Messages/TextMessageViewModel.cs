@@ -19,20 +19,14 @@ namespace Luna.Communications.Messages
 
         bool typingAnimationWanted;
 
-        public TextMessageViewModel(bool isNew, TextMessage message) : base(isNew, message)
+        public TextMessageViewModel(TextMessage message) : base(message)
         {
-            typingAnimationWanted = isNew;
+            typingAnimationWanted = !IsCompleted;
             CompleteMessage = new Command(() => { 
                 Complete(false);
                 TypingAnimationWanted = false;
             });
             Skip = new Command(() => TypingAnimationWanted = false);
-        }
-
-        public override void OnStart()
-        {
-            if (!isNew)
-                Complete(false);
         }
     }
 }

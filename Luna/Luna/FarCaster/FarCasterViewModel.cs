@@ -27,9 +27,9 @@ namespace Luna.FarCaster
         Command arrive;
         bool arriveWasPressed;
 
-        readonly GameStateService gameStateService;
+        readonly IGameStateService gameStateService;
 
-        public FarCasterViewModel(GameStateService gameStateService)
+        public FarCasterViewModel(IGameStateService gameStateService)
         {
             this.gameStateService = gameStateService;
             arrive = new Command(HandleArrive, (state) => !arriveWasPressed);

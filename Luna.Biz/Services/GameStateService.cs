@@ -10,7 +10,7 @@ using Luna.Biz.DataTransferObjects;
 
 namespace Luna.Biz.Services
 {
-    public class GameStateService
+    public class GameStateService : IGameStateService
     {
         IDbContextFactory<LunaContext> contextFactory;
         SceneService sceneService;
@@ -112,7 +112,7 @@ namespace Luna.Biz.Services
             }
         }
 
-        public async Task KillPlayer(int playerId)
+        public async Task<GameStateDTO> KillPlayer(int playerId)
         {
             using (var context = contextFactory.CreateDbContext())
             {
@@ -130,6 +130,8 @@ namespace Luna.Biz.Services
                 context.QuestLogs.RemoveRange(context.QuestLogs.Where(q => q.PlayerId == playerId && q.LocationId == player.CurrentSceneId.Value));
 
                 await context.SaveChangesAsync();
+
+                return new GameStateDTO(player.GameState, player.StateTransitionTimeUTC);
             }
         }
     }
