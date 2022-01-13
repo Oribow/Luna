@@ -6,7 +6,7 @@
              x:DataType="messages:WaitViewModel"
              Padding="0,8,0,8">
   <ContentView.Content>
-        <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="{StaticResource Window Panel Background}" Spacing="20">
+        <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="{StaticResource Panel Background}" Spacing="20">
             <Image Source="timemanagement.png" WidthRequest="50"/>
             <Label TextColor="White" Text="{Binding TimeToWaitLabel}" VerticalTextAlignment="Center"/>
         </StackLayout>

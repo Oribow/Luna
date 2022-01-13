@@ -26,7 +26,7 @@ namespace Luna.Biz.Services
             using (var context = contextFactory.CreateDbContext())
             {
                 return await context.Players.Where(p => p.Id == playerId)
-                    .Select(p => new GameStateDTO(p.GameState, p.StateTransitionTimeUTC)).FirstAsync();
+                    .Select(p => new GameStateDTO(p.GameState, p.StateTransitionTimeUTC, p.StateStartTimeUTC)).FirstAsync();
             }
         }
 
@@ -86,11 +86,12 @@ namespace Luna.Biz.Services
                     throw new InvalidOperationException("No unvisited location left to travel to.");
 
                 player.StateTransitionTimeUTC = DateTime.UtcNow + new TimeSpan(6, 0, 0);
+                player.StateStartTimeUTC = DateTime.UtcNow;
                 player.CurrentSceneId = null;
                 player.GameState = GameState.Traveling;
                 await context.SaveChangesAsync();
 
-                return new GameStateDTO(player.GameState, player.StateTransitionTimeUTC);
+                return new GameStateDTO(player.GameState, player.StateTransitionTimeUTC, player.StateStartTimeUTC);
             }
         }
 
@@ -125,13 +126,14 @@ namespace Luna.Biz.Services
 
                 player.GameState = GameState.Dead;
                 player.StateTransitionTimeUTC = DateTime.UtcNow + new TimeSpan(0, 1, 0);
+                player.StateStartTimeUTC = DateTime.UtcNow;
 
                 player.VisitedScenes.RemoveAll(vs => vs.LocationId == player.CurrentSceneId);
                 context.QuestLogs.RemoveRange(context.QuestLogs.Where(q => q.PlayerId == playerId && q.LocationId == player.CurrentSceneId.Value));
 
                 await context.SaveChangesAsync();
 
-                return new GameStateDTO(player.GameState, player.StateTransitionTimeUTC);
+                return new GameStateDTO(player.GameState, player.StateTransitionTimeUTC, player.StateStartTimeUTC);
             }
         }
     }

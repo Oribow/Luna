@@ -33,7 +33,7 @@ namespace Luna.Droid
         async void Startup()
         {
             var helper = new PlatformBootstrapHelper(Assets);
-            await new Bootstrapper(helper).Bootstrap();
+            await new Bootstrapper(helper).EnsureGameDataExists();
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 

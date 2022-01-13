@@ -1,0 +1,49 @@
+title: Start
+tags: 
+colorID: 0
+position: 935,-103
+---
+One planet in this system seems to contain a big biomass that covers most of its surface.
+Additional scans reveal this biomass to some sort of plant. It uses sunlight for energy.
+You see deep valleys which must have been oceans at some point. Now all the water is stored in the plant itself.
+The climate of the planet is also quite peculiar. The temperatures is about the same every where, no matter how much sunlight the place gets. 
+The plant must somehow redistribute warmth through its vines. If the atmosphere was breathable, it could be very pleasant to life here.
+Based on a few genetic samples taken from all over the planet, you conclude that the growth belongs to only one single organism spanning the entire planet. Quite impressive and one of the largest singular living being you have ever seen.
+While the plant mass mostly just covers the ground, there are also a few kilometer high towers of plant matter reaching into the upper atmosphere.
+At the top of these towers you can see something that reminds you of a seed capsule.
+You realize that this is an alien plant. It must have arrived in a seed capsule like those on top of the tower. 
+And now its preparing to launch new offspring into the void.
+Preparing to colonize another planet.
+But should you let it?
+There are few planets in the galaxy with the capability to host life.
+And this organism as beautiful as it is, competes for these planets with local lifeforms. Lifeforms with the potential for more than just being a mindless plant. (No offense plants!)
+If one of these seed pods had landed on your home planet, before your species had the means to destroy it, you would not be here now.
+But on the other hand, who are you to decide what is "better" for the galaxy? At least a plant would never try to take your head of with a laser pistol.
+Will you score one for sentient life or just let nature have it its way?
+[[Destroy the plant|Destroy_the_plant]]
+[[Let it be|Let_it_be]]
+-> Destroy the plant
+   
+-> Let it be
+===
+title: Destroy_the_plant
+tags: 
+colorID: 0
+position: 1316,-208
+---
+This plant isn't the last of its kind. There are are probably a lot of them and this is just the first one you found.
+Also this plant might have already launched pods. Maybe hundreds.
+So all you are really doing is cutting down an overgrowing tree to give other a chance to grow as well.
+With this thought, you alter the trajectory of a nearby asteroid and let it collide with the planet.
+An awesome explosion follows and a few of the towers close to the impact begin to fall.
+The rest will be taken care of the dust cloud blocking the sunlight for next few years.
+===
+title: Let_it_be
+tags: 
+colorID: 0
+position: 1313,37
+---
+After all the galaxy is huge. The pods will take centuries to arrive anywhere. Any civilization smart enough to figure out explosives will take care of any approaching pods easily.
+The plant isn't evil, it just is and doesn't deserve to be executed.
+Maybe it will even be useful for something in the future! When the galaxy suddenly decides to need giant amounts of biomass, perhaps.
+===

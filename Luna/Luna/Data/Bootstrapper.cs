@@ -31,11 +31,11 @@ namespace Luna.Data
             this.platformBootstrapHelper = platformBootstrapHelper;
         }
 
-        public async Task Bootstrap()
+        public async Task EnsureGameDataExists()
         {
             var contextFactory = new LunaContextFactory(ConnectionString);
 
-            await RecreateDatabase(contextFactory);
+            await CreateDatabase(contextFactory);
             using (var context = contextFactory.CreateDbContext())
             {
 
@@ -54,11 +54,22 @@ namespace Luna.Data
                 Directory.CreateDirectory(platformBootstrapHelper.LocPackageDir);
 
                 using (var stream = platformBootstrapHelper.OpenTestPackage())
-                using(var archive = new ZipArchive(stream))
+                using (var archive = new ZipArchive(stream))
                 {
                     archive.ExtractToDirectory(platformBootstrapHelper.LocPackageDir, true);
                 }
             }
+        }
+
+        public async Task ResetGameData()
+        {
+            var contextFactory = new LunaContextFactory(ConnectionString);
+            using (var context = contextFactory.CreateDbContext())
+            {
+                if (File.Exists(DBPath))
+                    await context.Database.EnsureDeletedAsync();
+            }
+            await EnsureGameDataExists();
         }
 
         private async Task RecreateDatabase(IDbContextFactory<LunaContext> contextFactory)

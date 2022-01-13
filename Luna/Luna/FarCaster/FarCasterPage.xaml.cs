@@ -14,7 +14,7 @@ namespace Luna.FarCaster
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FarCasterPage : ContentPage
     {
-        public FarCasterPage()
+        public FarCasterPage(bool isNewJump)
         {
             InitializeComponent();
             var gss = App.Container.Resolve<IGameStateService>();

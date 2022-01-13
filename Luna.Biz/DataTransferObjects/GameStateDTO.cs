@@ -10,11 +10,13 @@ namespace Luna.Biz.DataTransferObjects
     {
         public GameState State { get; }
         public DateTime StateTransitionTimeUTC { get; }
+        public DateTime StateStartTimeUTC { get; }
 
-        public GameStateDTO(GameState gameState, DateTime stateTransitionTimeUTC)
+        public GameStateDTO(GameState gameState, DateTime stateTransitionTimeUTC, DateTime stateStartTimeUTC)
         {
             State = gameState;
             StateTransitionTimeUTC = stateTransitionTimeUTC;
+            StateStartTimeUTC = stateStartTimeUTC;
         }
     }
 }

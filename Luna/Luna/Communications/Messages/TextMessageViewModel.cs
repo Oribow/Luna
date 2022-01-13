@@ -22,7 +22,10 @@ namespace Luna.Communications.Messages
         public TextMessageViewModel(TextMessage message) : base(message)
         {
             typingAnimationWanted = !IsCompleted;
-            CompleteMessage = new Command(() => { 
+            CompleteMessage = new Command((param) => {
+                if (((string)param) == null)
+                    return;
+
                 Complete(false);
                 TypingAnimationWanted = false;
             });

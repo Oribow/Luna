@@ -20,12 +20,18 @@ namespace Luna.FarCaster
             }
         }
         public ICommand Arrive => arrive;
+        public string BackgroundImage
+        {
+            get => backgroundImage;
+            set => SetProperty(ref backgroundImage, value);
+        }
 
         string timeLeftToTravel;
         bool canArrive;
         DateTime timeOfArrivalUTC;
         Command arrive;
         bool arriveWasPressed;
+        string backgroundImage;
 
         readonly IGameStateService gameStateService;
 
@@ -43,8 +49,19 @@ namespace Luna.FarCaster
             CanArrive = timeOfArrivalUTC < DateTime.UtcNow;
             ViewModelExtensions.StartCountdown(this,
                 timeOfArrivalUTC,
-                (self, timeLeft) => self.TimeOfArrivalLabel = $"{timeLeft.TotalHours:00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}",
+                (self, timeLeft) => self.TimeOfArrivalLabel = $"Arrive in {timeLeft.TotalHours:00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}",
                 (self) => { self.CanArrive = true; self.TimeOfArrivalLabel = "00:00:00"; });
+
+            // slide show didnt look good
+            /*
+            double percentageComplete;
+            if ((travelState.StateTransitionTimeUTC - travelState.StateStartTimeUTC).TotalSeconds == 0)
+                percentageComplete = 1;
+            else
+                percentageComplete = (DateTime.UtcNow - travelState.StateStartTimeUTC).TotalSeconds / (travelState.StateTransitionTimeUTC - travelState.StateStartTimeUTC).TotalSeconds;
+            int imageNum = (int)Math.Clamp(Math.Floor(percentageComplete * 7) + 1, 1, 7);
+            */
+            BackgroundImage = "flower_opening_7";
         }
 
         private async void HandleArrive(object state)
@@ -53,7 +70,7 @@ namespace Luna.FarCaster
             arrive.ChangeCanExecute();
 
             var scene = await gameStateService.Arrive(App.PlayerId);
-            await Application.Current.MainPage.Navigation.ClearAndSetPage(new ObservationPage());
+            await Application.Current.MainPage.Navigation.ClearAndSetPage(new ObservationPage(true));
         }
     }
 }

@@ -4,7 +4,7 @@
              x:Class="Luna.Communications.Messages.EndOfStreamView"
              Padding="0,8,0,8">
     <ContentView.Content>
-        <Frame Padding="10" BackgroundColor="{StaticResource Window Panel Background}">
+        <Frame Padding="10" >
             <Label TextColor="White" Text="-- End of messages --"/>
         </Frame>
     </ContentView.Content>

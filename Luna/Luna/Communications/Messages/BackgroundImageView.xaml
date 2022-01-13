@@ -5,8 +5,8 @@
              Padding="0,8,0,8">
   <ContentView.Content>
         <StackLayout Spacing="0">
-            <Label HeightRequest="30" FontAttributes="Italic" VerticalTextAlignment="Center" Padding="10,0,0,0" Text="* Scene Changes *" BackgroundColor="{StaticResource Window Panel Background}" TextColor="White"/>
-            <Frame Padding="2" BackgroundColor="{StaticResource Window Panel Background}">
+            <Label HeightRequest="30" FontAttributes="Italic" VerticalTextAlignment="Center" Padding="10,0,0,0" Text="* Scene Changes *" BackgroundColor="{StaticResource Panel Background}" TextColor="White"/>
+            <Frame Padding="2">
                 <views:WidthFittingImage Source="{Binding ImageSrc}"/>
             </Frame>
         </StackLayout>

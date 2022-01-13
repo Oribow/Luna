@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Luna.Settings.SettingsButton">
+  <ContentView.Content>
+      <StackLayout>
+            <ImageButton
+                HeightRequest="40"
+                Source="cog_wheel.png"
+                Clicked="Button_Clicked"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"/>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

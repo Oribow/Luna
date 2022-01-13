@@ -18,6 +18,7 @@ namespace Luna.Biz
             builder.RegisterType<SceneService>().FindConstructorsWith(constrFinder).SingleInstance();
             builder.RegisterType<GameStateService>().FindConstructorsWith(constrFinder).SingleInstance();
             builder.RegisterType<MessageSerializer>().SingleInstance();
+            builder.RegisterType<ShipAIService>().SingleInstance();
         }
     }
 }

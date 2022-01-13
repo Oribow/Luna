@@ -1,5 +1,6 @@
 ﻿using Luna.Biz.DataTransferObjects;
 using Luna.Biz.Services;
+using Luna.Biz.ShipAISystems;
 using Luna.Communications;
 using Luna.Extensions;
 using Luna.FarCaster;
@@ -24,6 +25,7 @@ namespace Luna.Observation
 
         SceneDTO scene;
         IGameStateService gameStateService;
+        
         bool isJumpBtnEnabled = true;
         bool isQuestBtnEnabled = true;
 
@@ -39,6 +41,7 @@ namespace Luna.Observation
         private async void LoadData()
         {
             scene = await gameStateService.GetPlayerScene(App.PlayerId);
+            
             OnPropertyChanged(nameof(LocationName));
             OnPropertyChanged(nameof(BackgroundImage));
         }
@@ -49,7 +52,7 @@ namespace Luna.Observation
             {
                 IsJumpBtnEnabled = false;
                 await gameStateService.StartTravelling(App.PlayerId);
-                await Application.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage());
+                await Application.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage(true));
                 IsJumpBtnEnabled = true;
             }
             catch (InvalidOperationException e)

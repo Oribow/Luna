@@ -14,13 +14,20 @@ namespace Luna.Observation
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ObservationPage : ContentPage
     {
-        public ObservationPage()
+        public ObservationPage(bool isNewArrival)
         {
             InitializeComponent();
 
             var gss = App.Container.Resolve<IGameStateService>();
-            var qs = App.Container.Resolve<QuestLogService>();
             BindingContext = new ObservationViewModel(gss);
+        }
+
+        private async void JumpButton_Clicked(object sender, EventArgs e)
+        {
+            bool confirm = await DisplayAlert("Confirm jump", "Do you really want to leave? You won't be able to come back.", "Leave", "Stay");
+
+            if (confirm)
+                ((ObservationViewModel)BindingContext).StartTravelling.Execute(null);
         }
     }
 }

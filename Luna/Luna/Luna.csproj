@@ -11,6 +11,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\Neuropolitical\neuropolitical.ttf" />
+    <None Remove="Assets\Fonts\source-code-pro\SourceCodePro-Black.ttf" />
+    <None Remove="Assets\Fonts\source-code-pro\SourceCodePro-Bold.ttf" />
+    <None Remove="Assets\Fonts\source-code-pro\SourceCodePro-ExtraLight.ttf" />
+    <None Remove="Assets\Fonts\source-code-pro\SourceCodePro-Light.ttf" />
+    <None Remove="Assets\Fonts\source-code-pro\SourceCodePro-Regular.ttf" />
+    <None Remove="Assets\Fonts\source-code-pro\SourceCodePro-Semibold.ttf" />
+    <None Remove="Assets\Fonts\Xolonium\Xolonium-Bold.otf" />
+    <None Remove="Assets\Fonts\Xolonium\Xolonium-Regular.otf" />
+    <None Remove="Assets\Fonts\Xolonium\Xolonium-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\Neuropolitical\neuropolitical.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\source-code-pro\SourceCodePro-Black.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\source-code-pro\SourceCodePro-Bold.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\source-code-pro\SourceCodePro-ExtraLight.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\source-code-pro\SourceCodePro-Light.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\source-code-pro\SourceCodePro-Regular.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\source-code-pro\SourceCodePro-Semibold.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\Xolonium\Xolonium-Bold.otf" />
+    <EmbeddedResource Include="Assets\Fonts\Xolonium\Xolonium-Regular.otf" />
+    <EmbeddedResource Include="Assets\Fonts\Xolonium\Xolonium-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.12" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
@@ -43,6 +69,15 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Communications\QuestLogPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Settings\SettingsButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="ShipAISystem\ShipAIView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

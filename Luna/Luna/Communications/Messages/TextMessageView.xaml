@@ -6,11 +6,12 @@
              xmlns:local="clr-namespace:Luna.Communications.Messages" xmlns:views="clr-namespace:Luna.Views"
              Padding="0,8,0,8">
     <ContentView.Content>
-        <Frame Padding="10" BackgroundColor="{StaticResource Window Panel Background}">
+        <Frame Padding="10">
             <views:TypeWriterLabel TextColor="White" 
                                    IsTypingAnimationEnabled="{Binding TypingAnimationWanted}"
                                    TextToWrite="{Binding Text}"
-                                   FinishedWriting="{Binding CompleteMessage}"/>
+                                   FinishedWriting="{Binding CompleteMessage}"
+                                   KeepConsistentSize="True"/>
         </Frame>
     </ContentView.Content>
 </ContentView>

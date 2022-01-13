@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:shipaisystem="clr-namespace:Luna.ShipAISystem" xmlns:views="clr-namespace:Luna.Views"
+             x:Class="Luna.ShipAISystem.ShipAIView"
+             x:DataType="shipaisystem:ShipAIViewModel">
+  <ContentView.Content>
+        <AbsoluteLayout>
+            <Frame AbsoluteLayout.LayoutFlags="XProportional" AbsoluteLayout.LayoutBounds="1,0,120,120"
+                        Padding="5" BackgroundColor="{StaticResource Panel Background}">
+                <Image Source="tonia_portrait">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Interact}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+
+            <StackLayout AbsoluteLayout.LayoutFlags="WidthProportional" AbsoluteLayout.LayoutBounds="0,120,1,AutoSize"
+                         FlowDirection="RightToLeft" IsVisible="{Binding ShowDialog}">
+                <Frame Margin="10" Padding="13,8" BorderColor="White" HorizontalOptions="Start">
+                    <views:TypeWriterLabel TextToWrite="{Binding DialogText}" TextColor="Black"/>
+                </Frame>
+            </StackLayout>
+        </AbsoluteLayout>
+  </ContentView.Content>
+</ContentView>

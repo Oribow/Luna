@@ -40,7 +40,10 @@ namespace Luna.Extensions
         public static Task<bool> TextTypingAnimation(this Label self, string text, int timePerCharacter = 50)
         {
             if (string.IsNullOrEmpty(text))
+            {
+                self.Text = text;
                 return Task.FromResult(true);
+            }
 
             var weakView = new WeakReference<Label>(self);
             var tcs = new TaskCompletionSource<bool>();
@@ -53,7 +56,8 @@ namespace Luna.Extensions
                 {
                     int charsToShow = (int)(textWithPauses.Length * t);
                     string textToShow = textWithPauses.Substring(0, charsToShow);
-                    label.Text = RemovePausesFromTypeString(textToShow);
+                    textToShow = RemovePausesFromTypeString(textToShow);
+                    label.Text = textToShow;
                 }
             };
 

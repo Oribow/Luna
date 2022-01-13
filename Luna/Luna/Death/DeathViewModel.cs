@@ -40,7 +40,7 @@ namespace Luna.Death
         {
             CanRevive = false;
             await gameStateService.RevivePlayer(App.PlayerId);
-            await App.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage());
+            await App.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage(false));
         }
     }
 }

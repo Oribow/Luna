@@ -25,7 +25,7 @@ namespace Luna
             InitializeComponent();
         }
 
-        public async Task Initialize()
+        public async Task OpenLandingPage()
         {
             var gss = Container.Resolve<IGameStateService>();
             var gameState = await gss.GetGameState(PlayerId);
@@ -33,10 +33,10 @@ namespace Luna
             switch (gameState.State)
             {
                 case GameState.Traveling:
-                    MainPage = new NavigationPage(new FarCasterPage());
+                    MainPage = new NavigationPage(new FarCasterPage(false));
                     break;
                 case GameState.Observing:
-                    MainPage = new NavigationPage(new ObservationPage());
+                    MainPage = new NavigationPage(new ObservationPage(false));
                     break;
                 case GameState.Dead:
                     MainPage = new NavigationPage(new DeathPage());
@@ -48,6 +48,7 @@ namespace Luna
 
         protected override void OnStart()
         {
+            Container.Resolve<INotificationManager>().CancelAll();
         }
 
         protected override void OnSleep()

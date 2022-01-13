@@ -14,6 +14,7 @@ namespace Luna.Views
         public static readonly BindableProperty IsWritingProperty = BindableProperty.Create(nameof(IsWriting), typeof(bool), typeof(TypeWriterLabel), false, BindingMode.OneWayToSource);
         public static readonly BindableProperty FinishedWritingProperty = BindableProperty.Create(nameof(FinishedWriting), typeof(ICommand), typeof(TypeWriterLabel), null, BindingMode.OneWay);
         public static readonly BindableProperty IsTypingAnimationEnabledProperty = BindableProperty.Create(nameof(IsTypingAnimationEnabled), typeof(bool), typeof(TypeWriterLabel), true, BindingMode.OneWay, propertyChanged: OnIsTypingAnimationEnabledChanged);
+        public static readonly BindableProperty KeepConsistentSizeProperty = BindableProperty.Create(nameof(KeepConsistentSize), typeof(bool), typeof(TypeWriterLabel), false, BindingMode.OneWay);
 
 
         static void OnTextToTypeChanged(BindableObject bindable, object oldValue, object newValue)
@@ -27,7 +28,7 @@ namespace Luna.Views
                     label.IsWriting = false;
                     Device.InvokeOnMainThreadAsync(() =>
                     {
-                        label.FinishedWriting?.Execute(null);
+                        label.FinishedWriting?.Execute(label.Text);
                         label.OnTypingFinished?.Invoke();
                     });
                 });
@@ -47,7 +48,7 @@ namespace Luna.Views
             }
         }
 
-        public string TextToWrite
+        public virtual string TextToWrite
         {
             get { return (string)GetValue(TextToWriteProperty); }
             set { SetValue(TextToWriteProperty, value); }
@@ -61,6 +62,10 @@ namespace Luna.Views
         {
             get { return (bool)GetValue(IsWritingProperty); }
             set { SetValue(IsWritingProperty, value); }
+        }public bool KeepConsistentSize
+        {
+            get { return (bool)GetValue(KeepConsistentSizeProperty); }
+            set { SetValue(KeepConsistentSizeProperty, value); }
         }
         public bool IsTypingAnimationEnabled
         {
@@ -79,5 +84,22 @@ namespace Luna.Views
         }
 
         public event Action OnTypingFinished;
+
+        protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+        {
+            if (KeepConsistentSize)
+            {
+                string truncatedText = Text;
+                Text = TextToWrite;
+                var m = base.OnMeasure(widthConstraint, heightConstraint);
+                Text = truncatedText;
+
+                return m;
+            }
+            else
+            {
+                return base.OnMeasure(widthConstraint, heightConstraint);
+            }
+        }
     }
 }

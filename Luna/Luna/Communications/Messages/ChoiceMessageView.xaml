@@ -16,7 +16,7 @@
             <StackLayout x:Name="ButtonLayout" IsVisible="{Binding ChoiceOpen}">
                 <!--Buttons are added by the view class-->
             </StackLayout>
-            <Frame Padding="10" BackgroundColor="{StaticResource Window Panel Background}" IsVisible="{Binding ChoiceOpen, Converter={StaticResource invertBool}}">
+            <Frame Padding="10" IsVisible="{Binding ChoiceOpen, Converter={StaticResource invertBool}}">
                 <Label TextColor="White" Text="{Binding ReplacementText}"/>
             </Frame>
         </StackLayout>
