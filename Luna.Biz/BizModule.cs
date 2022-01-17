@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Luna.Biz.Scenes;
+using Luna.Biz.DataAccessors;
 using Luna.Biz.QuestPlayer;
 using Luna.Biz.Services;
 using System;
@@ -16,7 +16,7 @@ namespace Luna.Biz
 
             builder.RegisterType<QuestLogService>().FindConstructorsWith(constrFinder).SingleInstance();
             builder.RegisterType<SceneService>().FindConstructorsWith(constrFinder).SingleInstance();
-            builder.RegisterType<GameStateService>().FindConstructorsWith(constrFinder).SingleInstance();
+            builder.RegisterType<PlayerService>().FindConstructorsWith(constrFinder).SingleInstance();
             builder.RegisterType<MessageSerializer>().SingleInstance();
             builder.RegisterType<ShipAIService>().SingleInstance();
         }

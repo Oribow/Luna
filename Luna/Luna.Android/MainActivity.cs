@@ -18,7 +18,7 @@ namespace Luna.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            var app = new App(new AndroidAppSetup(Assets));
+            var app = new App();
             await app.OpenLandingPage();
             LoadApplication(app);
         }

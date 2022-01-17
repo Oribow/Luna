@@ -1,4 +1,4 @@
-﻿using Luna.Biz.Scenes;
+﻿using Luna.Biz.DataAccessors;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,40 +10,43 @@ using Luna.Biz.DataTransferObjects;
 using Luna.Biz.Models;
 using Luna.Biz.QuestPlayer;
 using System.IO;
+using Luna.Biz.DataAccessors.Scenes;
 
 namespace Luna.Biz.Services
 {
     public class QuestLogService
     {
         IDbContextFactory<LunaContext> contextFactory;
-        ISceneRepository sceneRepo;
+        ISceneDataRepository sceneRepo;
         MessageSerializer messageSerializer;
+        SceneService sceneService;
 
-        internal QuestLogService(IDbContextFactory<LunaContext> contextFactory, ISceneRepository sceneRepo, MessageSerializer messageSerializer)
+        internal QuestLogService(IDbContextFactory<LunaContext> contextFactory, ISceneDataRepository sceneRepo, MessageSerializer messageSerializer, SceneService sceneService)
         {
             this.contextFactory = contextFactory;
             this.sceneRepo = sceneRepo;
             this.messageSerializer = messageSerializer;
+            this.sceneService = sceneService;
         }
 
-        public async Task<IQuestLogSession> GetOrCreateQuestLogSession(Guid locId, int playerId)
+        public async Task<IQuestLogSession> GetOrCreateQuestLogSession(int playerId, int sceneId)
         {
-            var scene = await sceneRepo.Get(locId);
-            var quest = scene.Quest;
+            var sceneDataInfo = await sceneService.GetSceneDataInfo(sceneId);
+            var scene = await sceneRepo.GetSceneData(sceneDataInfo.Id);
 
-            var lines = await quest.GetLinesTable();
-            var program = await quest.GetYarnProgramm();
+            var lines = await scene.GetLinesTable();
+            var program = await scene.GetYarnProgramm();
 
             QuestLog questLog;
             using (var context = contextFactory.CreateDbContext())
             {
-                questLog = await context.QuestLogs.Where(q => q.LocationId == locId && q.PlayerId == playerId).FirstOrDefaultAsync();
+                questLog = await context.QuestLogs.Where(q => q.SceneDataId == sceneDataInfo.Id && q.PlayerId == playerId).FirstOrDefaultAsync();
 
                 if (questLog == null)
                 {
-                    context.QuestLogs.Add(new QuestLog(playerId, locId));
+                    context.QuestLogs.Add(new QuestLog(playerId, sceneDataInfo.Id));
                     await context.SaveChangesAsync();
-                    questLog = await context.QuestLogs.Where(q => q.LocationId == locId && q.PlayerId == playerId).FirstOrDefaultAsync();
+                    questLog = await context.QuestLogs.Where(q => q.SceneDataId == sceneDataInfo.Id && q.PlayerId == playerId).FirstOrDefaultAsync();
                 }
             }
 

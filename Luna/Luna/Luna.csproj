@@ -21,6 +21,80 @@
     <None Remove="Assets\Fonts\Xolonium\Xolonium-Bold.otf" />
     <None Remove="Assets\Fonts\Xolonium\Xolonium-Regular.otf" />
     <None Remove="Assets\Fonts\Xolonium\Xolonium-Regular.ttf" />
+    <None Remove="GalaxyMap\Assets\Background\tile000.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile001.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile002.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile003.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile004.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile005.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile006.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile007.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile008.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile009.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile010.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile011.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile012.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile013.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile014.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile015.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile016.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile017.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile018.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile019.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile020.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile021.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile022.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile023.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile024.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile025.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile026.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile027.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile028.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile029.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile030.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile031.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile032.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile033.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile034.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile035.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile036.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile037.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile038.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile039.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile040.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile041.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile042.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile043.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile044.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile045.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile046.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile047.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile048.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile049.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile050.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile051.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile052.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile053.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile054.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile055.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile056.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile057.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile058.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile059.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile060.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile061.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile062.png" />
+    <None Remove="GalaxyMap\Assets\Background\tile063.png" />
+    <None Remove="GalaxyMap\Assets\Nebula Blue.jpg" />
+    <None Remove="GalaxyMap\Assets\Nebula Blue.png" />
+    <None Remove="GalaxyMap\Assets\Nebula Blue_ws.jpg" />
+    <None Remove="GalaxyMap\Assets\spaceship.png" />
+    <None Remove="GalaxyMap\Assets\spaceship2.png" />
+    <None Remove="GalaxyMap\Assets\Stars Small_1.png" />
+    <None Remove="GalaxyMap\Assets\sun1.png" />
+    <None Remove="GalaxyMap\Assets\sun2.png" />
+    <None Remove="GalaxyMap\Assets\sun3.png" />
+    <None Remove="GalaxyMap\Assets\sun4.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,12 +108,89 @@
     <EmbeddedResource Include="Assets\Fonts\Xolonium\Xolonium-Bold.otf" />
     <EmbeddedResource Include="Assets\Fonts\Xolonium\Xolonium-Regular.otf" />
     <EmbeddedResource Include="Assets\Fonts\Xolonium\Xolonium-Regular.ttf" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile000.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile001.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile002.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile003.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile004.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile005.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile006.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile007.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile008.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile009.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile010.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile011.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile012.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile013.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile014.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile015.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile016.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile017.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile018.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile019.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile020.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile021.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile022.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile023.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile024.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile025.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile026.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile027.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile028.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile029.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile030.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile031.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile032.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile033.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile034.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile035.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile036.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile037.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile038.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile039.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile040.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile041.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile042.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile043.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile044.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile045.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile046.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile047.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile048.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile049.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile050.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile051.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile052.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile053.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile054.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile055.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile056.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile057.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile058.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile059.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile060.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile061.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile062.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Background\tile063.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Nebula Blue.jpg" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Nebula Blue.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Nebula Blue_ws.jpg" />
+    <EmbeddedResource Include="GalaxyMap\Assets\spaceship.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\spaceship2.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\Stars Small_1.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\sun1.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\sun2.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\sun3.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\sun4.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="6.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.12" />
+    <PackageReference Include="SkiaScene.TouchManipulation" Version="2.2.1" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.0-preview.179" />
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
@@ -59,9 +210,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Death\DeathPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FarCaster\FarCasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Observation\ObservationPage.xaml">

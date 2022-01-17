@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Luna.Biz.Models
 {
-    public class QuestLog
+    internal class QuestLog
     {
         public int Id { get; set; }
         public Player Player { get; set; }
         public int PlayerId { get; set; }
-        public Guid LocationId { get; set; }
+        public Guid SceneDataId { get; set; }
 
         public string BackgroundImage { get; set; }
         public List<QuestMessage> Messages { get; set; } = new List<QuestMessage>();
@@ -17,10 +17,10 @@ namespace Luna.Biz.Models
 
         private QuestLog() { }
 
-        public QuestLog(int playerId, Guid locationId)
+        public QuestLog(int playerId, Guid sceneDataId)
         {
             PlayerId = playerId;
-            LocationId = locationId;
+            SceneDataId = sceneDataId;
         }
 
 

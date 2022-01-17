@@ -18,7 +18,7 @@ namespace Luna.Death
         {
             InitializeComponent();
 
-            var gss = App.Container.Resolve<IGameStateService>();
+            var gss = App.Container.Resolve<PlayerService>();
             BindingContext = new DeathViewModel(gss);
         }
     }

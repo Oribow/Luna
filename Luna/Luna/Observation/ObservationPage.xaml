@@ -39,7 +39,6 @@
 
             <StackLayout Grid.Row="2" Orientation="Horizontal" BackgroundColor="{StaticResource Panel Background}" FlowDirection="RightToLeft"
                          Padding="5" Spacing="5" HorizontalOptions="End">
-                <Button Text="Jump" IsEnabled="{Binding IsJumpBtnEnabled}" Clicked="JumpButton_Clicked"/>
                 <Button Text="Quest Log" Command="{Binding OpenQuestLog}" IsEnabled="{Binding IsQuestBtnEnabled}"/>
             </StackLayout>
         </Grid>

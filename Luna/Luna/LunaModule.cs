@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Luna.Biz;
-using Luna.Data;
+using Luna.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Luna
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterInstance(new LunaContextFactory(Bootstrapper.ConnectionString)).As<IDbContextFactory<LunaContext>>().SingleInstance();
+            builder.RegisterInstance(new LunaContextFactory(DatabaseCreator.ConnectionString)).As<IDbContextFactory<LunaContext>>().SingleInstance();
             builder.RegisterModule(new BizModule());
         }
     }

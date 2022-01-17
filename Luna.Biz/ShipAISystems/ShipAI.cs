@@ -32,14 +32,14 @@ namespace Luna.Biz.ShipAISystems
             output.Say(g);
         }
 
-        public string OnArrive()
+        public void OnArrive()
         {
-            return "I wonder what we will find here...";
+            output.Say("I wonder what we will find here...");
         }
 
-        public string OnJump()
+        public void OnJump()
         {
-            return "Of to a new place!";
+            output.Say("Of to a new place!");
         }
 
         public void SetOutput(IShipAIOutput output)

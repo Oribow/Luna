@@ -3,7 +3,6 @@ using Luna.Biz.Services;
 using Luna.Biz.ShipAISystems;
 using Luna.Communications;
 using Luna.Extensions;
-using Luna.FarCaster;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +14,22 @@ namespace Luna.Observation
 {
     class ObservationViewModel : BaseViewModel
     {
-        public string BackgroundImage => scene.BackgroundImage;
-        public string LocationName => scene.Name;
+        public string BackgroundImage => sceneData.BackgroundImage;
+        public string LocationName => sceneData.Name;
         public string Description { get; }
-        public bool IsJumpBtnEnabled { get => isJumpBtnEnabled; set => SetProperty(ref isJumpBtnEnabled, value); }
         public bool IsQuestBtnEnabled { get => isQuestBtnEnabled; set => SetProperty(ref isQuestBtnEnabled, value); }
-        public ICommand StartTravelling { get; }
         public ICommand OpenQuestLog { get; }
 
-        SceneDTO scene;
-        IGameStateService gameStateService;
+        SceneDataInfoDTO sceneData;
+        PlayerService playerService;
+        SceneService sceneService;
         
-        bool isJumpBtnEnabled = true;
         bool isQuestBtnEnabled = true;
 
-        public ObservationViewModel(IGameStateService gss)
+        public ObservationViewModel(PlayerService gss, SceneService sceneService)
         {
-            this.gameStateService = gss;
-            StartTravelling = new Command(HandleJump);
+            this.playerService = gss;
+            this.sceneService = sceneService;
             OpenQuestLog = new Command(HandleOpenQuestLog);
 
             LoadData();
@@ -40,31 +37,17 @@ namespace Luna.Observation
 
         private async void LoadData()
         {
-            scene = await gameStateService.GetPlayerScene(App.PlayerId);
-            
+            var playerInfo = await playerService.GetPlayersState(App.PlayerId);
+            sceneData = await sceneService.GetSceneDataInfo(playerInfo.CurrentSceneId);
+
             OnPropertyChanged(nameof(LocationName));
             OnPropertyChanged(nameof(BackgroundImage));
-        }
-
-        private async void HandleJump()
-        {
-            try
-            {
-                IsJumpBtnEnabled = false;
-                await gameStateService.StartTravelling(App.PlayerId);
-                await Application.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage(true));
-                IsJumpBtnEnabled = true;
-            }
-            catch (InvalidOperationException e)
-            {
-                // TODO: do something here later
-            }
         }
 
         private async void HandleOpenQuestLog()
         {
             IsQuestBtnEnabled = false;
-            await Application.Current.MainPage.Navigation.PushAsync(new QuestLogPage(scene.Id));
+            //await Application.Current.MainPage.Navigation.PushAsync(new QuestLogPage(sceneData));
             IsQuestBtnEnabled = true;
         }
     }

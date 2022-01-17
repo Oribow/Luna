@@ -10,9 +10,9 @@ namespace Luna.Communications.Messages
 {
     class DeathViewModel : BaseMessage<DeathMessage>
     {
-        IGameStateService gss;
+        PlayerService gss;
 
-        public DeathViewModel(DeathMessage message, IGameStateService gss) : base(message)
+        public DeathViewModel(DeathMessage message, PlayerService gss) : base(message)
         {
             this.gss = gss;
         }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Luna.Biz.Models
 {
-    public class QuestMessage
+    internal class QuestMessage
     {
         public int Id { get; set; }
         public QuestLog QuestLog { get; set; }

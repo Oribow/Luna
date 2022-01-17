@@ -64,22 +64,22 @@ namespace Luna.Communications
         IQuestLogSession questSession;
 
         readonly QuestLogService questService;
-        readonly IGameStateService gameStateService;
+        readonly PlayerService playerService;
         readonly INotificationManager notificationManager;
 
-        public QuestLogViewModel(QuestLogService questService, IGameStateService gameStateService, INotificationManager notificationManager)
+        public QuestLogViewModel(QuestLogService questService, PlayerService playerService, INotificationManager notificationManager)
         {
             this.notificationManager = notificationManager;
             this.questService = questService;
-            this.gameStateService = gameStateService;
+            this.playerService = playerService;
             nextMessage = new Command(Continue, () => ReadyForNextMessage && !HasReachedEnd);
 
             OnContinue = nextMessage;
         }
 
-        public async Task LoadQuestLog(Guid locationId)
+        public async Task LoadQuestLog(int sceneId)
         {
-            questSession = await questService.GetOrCreateQuestLogSession(locationId, App.PlayerId);
+            questSession = await questService.GetOrCreateQuestLogSession(App.PlayerId, sceneId);
             var history = (await questSession.GetHistory()).ToArray();
 
             for (int iMsg = 0; iMsg < history.Length; iMsg++)
@@ -161,7 +161,7 @@ namespace Luna.Communications
             else if (instrType == typeof(DeathMessage))
             {
                 var deathMsg = (DeathMessage)message;
-                msgVM = new DeathViewModel(deathMsg, gameStateService);
+                msgVM = new DeathViewModel(deathMsg, playerService);
             }
             else
             {

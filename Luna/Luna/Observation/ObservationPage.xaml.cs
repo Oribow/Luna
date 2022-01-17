@@ -18,16 +18,9 @@ namespace Luna.Observation
         {
             InitializeComponent();
 
-            var gss = App.Container.Resolve<IGameStateService>();
-            BindingContext = new ObservationViewModel(gss);
-        }
-
-        private async void JumpButton_Clicked(object sender, EventArgs e)
-        {
-            bool confirm = await DisplayAlert("Confirm jump", "Do you really want to leave? You won't be able to come back.", "Leave", "Stay");
-
-            if (confirm)
-                ((ObservationViewModel)BindingContext).StartTravelling.Execute(null);
+            var ps = App.Container.Resolve<PlayerService>();
+            var ss = App.Container.Resolve<SceneService>();
+            BindingContext = new ObservationViewModel(ps, ss);
         }
     }
 }

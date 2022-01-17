@@ -11,14 +11,16 @@
 
             
             <Color x:Key="Panel Background">#aa151515</Color>
+            <Color x:Key="Panel Background Opaque">#636363</Color>
             <Color x:Key="Panel Item">#ee111111</Color>
+            <Color x:Key="Panel Item Opaque">#202020</Color>
 
             <vc:InvertBoolConverter x:Key="InvertedBoolConverter" />
             <vc:IsNotNullOrEmptyConverter x:Key="IsNotNullOrEmptyConverter" />
         </ResourceDictionary>
 
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="#ee111111"/>
+            <Setter Property="BarBackgroundColor" Value="{StaticResource Panel Item Opaque}}"/>
             <Setter Property="BarTextColor" Value="White"/>
         </Style>
 
@@ -33,12 +35,12 @@
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="{StaticResource Panel Item}"/>
+                                <Setter Property="BackgroundColor" Value="{StaticResource Panel Item Opaque}"/>
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="Disabled">
                             <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="{StaticResource Panel Item}"/>
+                                <Setter Property="BackgroundColor" Value="{StaticResource Panel Item Opaque}"/>
                                 <Setter Property="TextColor" Value="Gray"/>
                             </VisualState.Setters>
                         </VisualState>

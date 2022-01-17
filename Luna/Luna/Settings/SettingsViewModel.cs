@@ -1,5 +1,8 @@
 ﻿using Autofac;
-using Luna.Data;
+using Luna.Biz.Services;
+using Luna.Biz;
+using Luna.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,9 +18,14 @@ namespace Luna.Settings
         public Command ContactUs { get; }
 
         private bool resetInProgress = false;
+        IDbContextFactory<LunaContext> contextFactory;
+        PlayerService playerService;
 
-        public SettingsViewModel()
+        public SettingsViewModel(IDbContextFactory<LunaContext> contextFactory, PlayerService playerService)
         {
+            this.contextFactory = contextFactory;
+            this.playerService = playerService;
+
             ResetData = new Command(HandleResetData, () => !resetInProgress);
             ContactUs = new Command(HandleContactUs);
         }
@@ -27,9 +35,7 @@ namespace Luna.Settings
             resetInProgress = true;
             ResetData.ChangeCanExecute();
 
-            var platformHelper = App.Container.Resolve<IPlatformBootstrapHelper>();
-            Bootstrapper bootstrapper = new Bootstrapper(platformHelper);
-            await bootstrapper.ResetGameData();
+            await GameCreator.StartNewGame(contextFactory, playerService);
             await ((App)App.Current).OpenLandingPage();
         }
 

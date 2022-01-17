@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:galaxymap="clr-namespace:Luna.GalaxyMap" xmlns:views="clr-namespace:Luna.Views"
+             x:Class="Luna.GalaxyMap.GalaxyMapPage"
+             x:DataType="galaxymap:GalaxyMapViewModel"
+             NavigationPage.HasNavigationBar="False">
+    <AbsoluteLayout>
+        <views:GalaxyMapView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                             SolarSystems="{Binding SolarSystems}" PlayerPosition="{Binding PlayerPosition}"
+                             Sectors="{Binding Sectors}" x:Name="GalaxyMapView"
+                             OnSolarSystemClicked="GalaxyMapView_OnSolarSystemClicked"
+                             OnViewMoved="GalaxyMapView_OnViewMoved"/>
+        <Frame x:Name="ContextWindow" AbsoluteLayout.LayoutFlags="WidthProportional" AbsoluteLayout.LayoutBounds="50,50,0.4,AutoSize"
+               BackgroundColor="{StaticResource Panel Background Opaque}" x:DataType="galaxymap:ContextWindowViewModel"
+               IsVisible="{Binding IsVisible}">
+            <StackLayout>
+                <Label Text="Hello World" TextColor="White"/>
+                <Button Text="{Binding MainButtonText}" Command="{Binding MainButtonPressed}"/>
+            </StackLayout>
+        </Frame>
+    </AbsoluteLayout>
+</ContentPage>

@@ -5,7 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
-using Luna.Data;
+using Luna.Database;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -32,8 +32,8 @@ namespace Luna.Droid
 
         async void Startup()
         {
-            var helper = new PlatformBootstrapHelper(Assets);
-            await new Bootstrapper(helper).EnsureGameDataExists();
+            var setup = new AndroidAppSetup(Assets);
+            await setup.Setup();
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 

@@ -3,7 +3,7 @@ using Autofac.Core;
 using Luna.Biz.Models;
 using Luna.Biz.Services;
 using Luna.Death;
-using Luna.FarCaster;
+using Luna.GalaxyMap;
 using Luna.Observation;
 using System;
 using System.IO;
@@ -17,26 +17,22 @@ namespace Luna
     {
         public const int PlayerId = 1;
 
-        public static IContainer Container { get; private set; }
+        public static IContainer Container { get; set; }
 
-        public App(AppSetup appSetup)
+        public App()
         {
-            Container = appSetup.CreateContainer();
             InitializeComponent();
         }
 
         public async Task OpenLandingPage()
         {
-            var gss = Container.Resolve<IGameStateService>();
-            var gameState = await gss.GetGameState(PlayerId);
+            var gss = Container.Resolve<PlayerService>();
+            var gameState = await gss.GetPlayersState(PlayerId);
 
             switch (gameState.State)
             {
-                case GameState.Traveling:
-                    MainPage = new NavigationPage(new FarCasterPage(false));
-                    break;
-                case GameState.Observing:
-                    MainPage = new NavigationPage(new ObservationPage(false));
+                case GameState.Alive:
+                    MainPage = new NavigationPage(new GalaxyMapPage());
                     break;
                 case GameState.Dead:
                     MainPage = new NavigationPage(new DeathPage());

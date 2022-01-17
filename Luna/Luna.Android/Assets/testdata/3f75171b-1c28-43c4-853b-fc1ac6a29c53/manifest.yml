@@ -1,0 +1,4 @@
+name: Overgrowth
+backgroundImage: background.png
+quest:
+  yarnFile: Overgrowth.yarn

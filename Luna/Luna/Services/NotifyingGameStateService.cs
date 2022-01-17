@@ -7,51 +7,51 @@ using System.Threading.Tasks;
 
 namespace Luna.Services
 {
-    class NotifyingGameStateService : IGameStateService
+    class NotifyingGameStateService : IPlayerService
     {
-        readonly GameStateService gameStateService;
+        readonly PlayerService gameStateService;
         readonly INotificationManager notificationManager;
 
-        public NotifyingGameStateService(GameStateService gameStateService, INotificationManager notificationManager)
+        public NotifyingGameStateService(PlayerService gameStateService, INotificationManager notificationManager) : base()
         {
             this.gameStateService = gameStateService;
             this.notificationManager = notificationManager;
         }
 
-        public Task<SceneDTO> Arrive(int playerId)
+        public Task CreatePlayer(int id)
         {
-            return gameStateService.Arrive(playerId);
+            return ((IPlayerService)gameStateService).CreatePlayer(id);
         }
 
-        public Task<GameStateDTO> GetGameState(int playerId)
+        public Task<bool> DoesPlayerExist(int id)
         {
-            return gameStateService.GetGameState(playerId);
+            return ((IPlayerService)gameStateService).DoesPlayerExist(id);
         }
 
-        public Task<SceneDTO> GetPlayerScene(int playerId)
+        public Task<PlayerStateDTO> GetPlayersState(int playerId)
         {
-            return gameStateService.GetPlayerScene(playerId);
+            return ((IPlayerService)gameStateService).GetPlayersState(playerId);
         }
 
-        public async Task<GameStateDTO> KillPlayer(int playerId)
+        public async Task<PlayerStateDTO> KillPlayer(int playerId)
         {
             var state = await gameStateService.KillPlayer(playerId);
 
-            notificationManager.SendNotification("Revive now!", "You can revive now!", state.StateTransitionTimeUTC);
+            notificationManager.SendNotification("Revive now!", "You can revive now!", state.LockoutEndUTC);
+            return state;
+        }
+
+        public async Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, int sceneId)
+        {
+            var state = await gameStateService.LetPlayerTravelTo(playerId, sceneId);
+
+            notificationManager.SendNotification("Arrive now!", "You can arrive now!", state.LockoutEndUTC);
             return state;
         }
 
         public Task RevivePlayer(int playerId)
         {
-            return gameStateService.RevivePlayer(playerId);
-        }
-
-        public async Task<GameStateDTO> StartTravelling(int playerId)
-        {
-            var state = await gameStateService.StartTravelling(playerId);
-
-            notificationManager.SendNotification("Arrive now!", "You can arrive now!", state.StateTransitionTimeUTC);
-            return state;
+            return ((IPlayerService)gameStateService).RevivePlayer(playerId);
         }
     }
 }

@@ -6,12 +6,13 @@ using System.Text;
 
 namespace Luna.Biz
 {
-    public abstract class LunaContext : DbContext
+    public class LunaContext : DbContext
     {
-        public DbSet<Player> Players { get; set; }
-        public DbSet<VisitedScene> VisitedScenes { get; set; }
-        public DbSet<QuestLog> QuestLogs { get; set; }
-        public DbSet<QuestMessage> QuestMessages { get; set; }
+        internal DbSet<Player> Players { get; set; }
+        internal DbSet<AssignedScene> AssignedScenes { get; set; }
+        internal DbSet<QuestLog> QuestLogs { get; set; }
+        internal DbSet<QuestMessage> QuestMessages { get; set; }
+
 
         protected LunaContext(DbContextOptions options) : base(options)
         {
@@ -20,6 +21,10 @@ namespace Luna.Biz
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Player>().HasMany<AssignedScene>().WithOne(sc => sc.Player);
+            modelBuilder.Entity<Player>().HasOne(pl => pl.CurrentScene).WithOne().HasForeignKey<Player>(pl => pl.CurrentSceneId).IsRequired(false);
+            modelBuilder.Entity<Player>().HasOne(pl => pl.PrevScene).WithOne().HasForeignKey<Player>(pl => pl.PrevSceneId).IsRequired(false);
         }
     }
 }

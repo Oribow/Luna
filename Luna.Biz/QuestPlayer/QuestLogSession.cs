@@ -1,6 +1,6 @@
 ﻿using Luna.Biz.Models;
 using Luna.Biz.QuestPlayer.Messages;
-using Luna.Biz.Scenes;
+using Luna.Biz.DataAccessors;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Luna.Biz.DataAccessors.Scenes;
 
 namespace Luna.Biz.QuestPlayer
 {
@@ -17,10 +18,10 @@ namespace Luna.Biz.QuestPlayer
         IDbContextFactory<LunaContext> contextFactory;
         int questLogId;
         IMessageSource messageSource;
-        IScene scene;
+        ISceneData scene;
         MessageSerializer messageSerializer;
 
-        public QuestLogSession(IDbContextFactory<LunaContext> contextFactory, int questLogId, IMessageSource messageSource, MessageSerializer messageSerializer, IScene scene)
+        public QuestLogSession(IDbContextFactory<LunaContext> contextFactory, int questLogId, IMessageSource messageSource, MessageSerializer messageSerializer, ISceneData scene)
         {
             this.contextFactory = contextFactory;
             this.questLogId = questLogId;

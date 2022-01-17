@@ -1,6 +1,6 @@
 ﻿using Luna.Biz.Services;
 using Luna.Extensions;
-using Luna.FarCaster;
+using Luna.GalaxyMap;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,12 +15,12 @@ namespace Luna.Death
         public bool CanRevive { get => canRevive; set => SetProperty(ref canRevive, value); }
         public ICommand RevivePlayer { get; }
 
-        readonly IGameStateService gameStateService;
+        readonly PlayerService gameStateService;
         private DateTime reviveTimeUTC;
         private string reviveTimerLabel;
         private bool canRevive = false;
 
-        public DeathViewModel(IGameStateService gameStateService)
+        public DeathViewModel(PlayerService gameStateService)
         {
             this.gameStateService = gameStateService;
             RevivePlayer = new Command(HandleRevivePlayer);
@@ -29,8 +29,8 @@ namespace Luna.Death
 
         async void LoadData()
         {
-            var gs = await gameStateService.GetGameState(App.PlayerId);
-            reviveTimeUTC = gs.StateTransitionTimeUTC;
+            var gs = await gameStateService.GetPlayersState(App.PlayerId);
+            reviveTimeUTC = gs.LockoutEndUTC;
             ViewModelExtensions.StartCountdown(this,
                 reviveTimeUTC,
                 (self, timeLeft) => self.ReviveTimerLabel = $"Ponder your death for {timeLeft.TotalHours:00}:{timeLeft.Minutes:00}:{timeLeft.Seconds:00}", (self) => { self.ReviveTimerLabel = "Revive"; self.CanRevive = true; });
@@ -40,7 +40,7 @@ namespace Luna.Death
         {
             CanRevive = false;
             await gameStateService.RevivePlayer(App.PlayerId);
-            await App.Current.MainPage.Navigation.ClearAndSetPage(new FarCasterPage(false));
+            await App.Current.MainPage.Navigation.ClearAndSetPage(new GalaxyMapPage());
         }
     }
 }
