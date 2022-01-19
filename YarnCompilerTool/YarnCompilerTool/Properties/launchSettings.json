@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "YarnCompilerTool": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\bomhardt\\source\\repos\\Luna\\Stories"
+    }
+  }
+}

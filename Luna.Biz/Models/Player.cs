@@ -17,10 +17,8 @@ namespace Luna.Biz.Models
         public DateTime LockoutStartUTC { get; internal set; }
         public GameState GameState { get; internal set; }
 
-        public int? CurrentSceneId { get; internal set; }
-        public AssignedScene CurrentScene { get; internal set; }
-        public int? PrevSceneId { get; internal set; }
-        public AssignedScene PrevScene { get; internal set; }
+        public Guid? CurrentSceneId { get; internal set; }
+        public Guid? PrevSceneId { get; internal set; }
 
         private Player() { }
 

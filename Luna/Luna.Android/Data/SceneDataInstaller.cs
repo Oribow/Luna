@@ -63,7 +63,9 @@ namespace Luna.Droid.Data
         {
             foreach (ZipArchiveEntry file in archive.Entries)
             {
-                string completeFileName = Path.Combine(BasePath, file.FullName);
+                string fileName = file.FullName.Replace("\\", "/");
+
+                string completeFileName = Path.Combine(BasePath, fileName);
                 Directory.CreateDirectory(Path.GetDirectoryName(completeFileName));
                 
                 using (var streamIn = file.Open())

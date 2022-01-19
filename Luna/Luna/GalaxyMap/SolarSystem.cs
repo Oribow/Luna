@@ -9,14 +9,12 @@ namespace Luna.GalaxyMap
     {
         public SKPoint Position { get; }
         public string Name { get; }
-        public bool HasBeenVisited { get; }
-        public int SceneId { get; }
+        public Guid SceneId { get; }
 
-        public SolarSystem(SKPoint position, string name, bool hasBeenVisited, int sceneId)
+        public SolarSystem(SKPoint position, string name, Guid sceneId)
         {
             Position = position;
             Name = name;
-            HasBeenVisited = hasBeenVisited;
             SceneId = sceneId;
         }
     }

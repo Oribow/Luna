@@ -4,7 +4,6 @@ using Luna.Biz.Models;
 using Luna.Biz.Services;
 using Luna.Death;
 using Luna.GalaxyMap;
-using Luna.Observation;
 using System;
 using System.IO;
 using System.Threading.Tasks;

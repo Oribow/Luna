@@ -19,7 +19,7 @@ namespace Luna.GalaxyMap.Testing
         public GalaxMapRenderer2(IGalaxyMapDataProvider renderData)
         {
             backgroundRenderer = new BackgroundRenderer(renderData);
-            sectorRenderer = new SectorRenderer(0f, 0f, 1, 2.1f, renderData);
+            sectorRenderer = new SectorRenderer(0f, 0f, 1, 2.0f, renderData);
             starRenderer = new StarRenderer(2f, 2.1f, 10, 10.1f, renderData);
             playerRenderer = new PlayerRenderer(renderData);
 

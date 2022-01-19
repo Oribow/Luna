@@ -1,0 +1,6 @@
+name: Magnetar's Rage
+backgroundImage: background.png
+quest:
+  yarnFile: Magnetars_Rage_1
+posX: 1281
+posY: 762

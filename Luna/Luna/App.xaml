@@ -20,7 +20,7 @@
         </ResourceDictionary>
 
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="{StaticResource Panel Item Opaque}}"/>
+            <Setter Property="BarBackgroundColor" Value="{StaticResource Panel Item Opaque}"/>
             <Setter Property="BarTextColor" Value="White"/>
         </Style>
 

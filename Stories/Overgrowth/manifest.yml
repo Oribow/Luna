@@ -1,4 +1,6 @@
 name: Overgrowth
 backgroundImage: background.png
 quest:
-  yarnFile: Overgrowth.yarn
+  yarnFile: Overgrowth
+posX: 1523
+posY: 1258

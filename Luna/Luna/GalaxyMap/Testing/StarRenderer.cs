@@ -46,14 +46,7 @@ namespace Luna.GalaxyMap.Testing
                 iPos[0] = stars[i].Position.X;
                 iPos[1] = stars[i].Position.Y;
                 starShaderInputs["iPos"] = iPos;
-                if (!stars[i].HasBeenVisited)
-                {
-                    starShaderInputs["tint"] = new float[4] { 0, 0, 1, 1 };
-                }
-                else
-                {
-                    starShaderInputs["tint"] = new float[4] { 1, 1, 1, 1 };
-                }
+                starShaderInputs["tint"] = new float[4] { 1, 0, 0, 1 };
 
                 var starShader = starEffect.ToShader(false, starShaderInputs);
                 starPaint.Shader = starShader;

@@ -5,11 +5,11 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Luna.Biz.DataAccessors;
-using Luna.Biz.DataAccessors.Scenes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Yarn;
@@ -22,17 +22,20 @@ namespace Luna.Droid.Data
         public string Name { get; }
         public string BackgroundImage { get; }
         public string PathToFolder { get; }
+        public Vector2 Position { get; }
 
         private string yarnFile;
 
 
-        public SceneData(Guid id, string name, string backgroundImage, string pathToFolder, string yarnFile)
+        public SceneData(Guid id, string name, string backgroundImage, string pathToFolder, string yarnFile, Vector2 position)
         {
             Id = id;
             Name = name;
-            BackgroundImage = backgroundImage;
-            this.yarnFile = yarnFile;
             PathToFolder = pathToFolder;
+            BackgroundImage = ResolveAssetPath(backgroundImage);
+            this.yarnFile = yarnFile;
+            
+            Position = position;
         }
 
         public string ResolveAssetPath(string imageName)

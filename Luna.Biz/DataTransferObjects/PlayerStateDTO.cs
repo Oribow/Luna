@@ -9,12 +9,12 @@ namespace Luna.Biz.DataTransferObjects
     public class PlayerStateDTO
     {
         public GameState State { get; }
-        public int CurrentSceneId { get; }
-        public int PrevSceneId { get; }
+        public Guid CurrentSceneId { get; }
+        public Guid PrevSceneId { get; }
         public DateTime LockoutEndUTC { get; }
         public DateTime LockoutStartUTC { get; }
 
-        public PlayerStateDTO(GameState state, int currentSceneId, int prevSceneId, DateTime lockoutEndUTC, DateTime lockoutStartUTC)
+        public PlayerStateDTO(GameState state, Guid currentSceneId, Guid prevSceneId, DateTime lockoutEndUTC, DateTime lockoutStartUTC)
         {
             State = state;
             CurrentSceneId = currentSceneId;

@@ -9,14 +9,12 @@ namespace Luna.Biz.DataTransferObjects
     {
         public Vector2 Position { get; }
         public string Name { get; }
-        public bool HasBeenVisited { get; }
-        public int SceneId { get; }
+        public Guid SceneId { get; }
 
-        public LocationDTO(Vector2 position, string name, bool hasBeenVisited, int sceneId)
+        public LocationDTO(Vector2 position, string name, Guid sceneId)
         {
             Position = position;
             Name = name;
-            HasBeenVisited = hasBeenVisited;
             SceneId = sceneId;
         }
     }

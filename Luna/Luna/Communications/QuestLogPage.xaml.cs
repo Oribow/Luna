@@ -13,7 +13,7 @@ namespace Luna.Communications
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuestLogPage : ContentPage
     {
-        public QuestLogPage(int sceneId)
+        public QuestLogPage(Guid sceneId)
         {
             InitializeComponent();
             var qs = App.Container.Resolve<QuestLogService>();

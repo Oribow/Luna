@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Luna.Biz.DataTransferObjects;
-using Luna.Biz.Locations;
 
 namespace Luna.Biz.Services
 {
@@ -32,8 +31,8 @@ namespace Luna.Biz.Services
 
                 var starterScene = await sceneService.CreateStarterScene(id, context);
 
-                player.CurrentScene = starterScene;
-                player.PrevScene = starterScene;
+                player.CurrentSceneId = starterScene.SceneDataId;
+                player.PrevSceneId = starterScene.SceneDataId;
                 await context.SaveChangesAsync();
             }
         }
@@ -60,7 +59,7 @@ namespace Luna.Biz.Services
             }
         }
 
-        public async Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, int sceneId)
+        public async Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, Guid sceneId)
         {
             using (var context = contextFactory.CreateDbContext())
             {
@@ -72,6 +71,8 @@ namespace Luna.Biz.Services
                 player.LockoutStartUTC = DateTime.UtcNow;
                 player.LockoutEndUTC = player.LockoutStartUTC + new TimeSpan(0, 0, 5);
                 await context.SaveChangesAsync();
+
+                await sceneService.RevealScene(playerId, sceneId, context);
 
                 return new PlayerStateDTO(player.GameState, player.CurrentSceneId.Value, player.PrevSceneId.Value, player.LockoutStartUTC, player.LockoutEndUTC);
             }
@@ -99,7 +100,6 @@ namespace Luna.Biz.Services
             using (var context = contextFactory.CreateDbContext())
             {
                 var player = await context.Players
-                    .Include(p => p.CurrentScene)
                     .Where(p => p.Id == playerId).FirstAsync();
 
                 if (player.GameState == GameState.Dead)
@@ -109,11 +109,33 @@ namespace Luna.Biz.Services
                 player.LockoutEndUTC = DateTime.UtcNow + new TimeSpan(0, 1, 0);
                 player.LockoutStartUTC = DateTime.UtcNow;
 
-                context.QuestLogs.RemoveRange(context.QuestLogs.Where(q => q.PlayerId == playerId && q.SceneDataId == player.CurrentScene.SceneDataId));
+                context.QuestLogs.RemoveRange(context.QuestLogs.Where(q => q.PlayerId == playerId && q.SceneDataId == player.CurrentSceneId));
 
                 await context.SaveChangesAsync();
 
                 return new PlayerStateDTO(player.GameState, player.CurrentSceneId.Value, player.PrevSceneId.Value, player.LockoutEndUTC, player.LockoutStartUTC);
+            }
+        }
+
+        public async Task<SceneDataInfoDTO[]> GetNextLocationOptions(int playerId)
+        {
+            using (var context = contextFactory.CreateDbContext())
+            {
+                var currSceneId = await context.Players.Where(pl => pl.Id == playerId)
+                    .Select(pl => pl.CurrentSceneId).FirstAsync();
+
+                var takenIds = await context.RevealedScenes.Where(sc => sc.PlayerId == playerId).Select(sc => sc.SceneDataId).ToArrayAsync();
+
+                int seed = currSceneId.Value.GetHashCode() + playerId;
+                Guid[] candidates = sceneService.GetRandomUnrevealedSceneDataIds(takenIds.ToHashSet(), 3, seed);
+
+                SceneDataInfoDTO[] locations = new SceneDataInfoDTO[candidates.Length];
+                for (int i = 0; i < locations.Length; i++)
+                {
+                    locations[i] = await sceneService.GetSceneDataInfo(candidates[i]);
+                }
+
+                return locations;
             }
         }
     }

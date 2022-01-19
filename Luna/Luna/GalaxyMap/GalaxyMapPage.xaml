@@ -12,11 +12,31 @@
                              OnSolarSystemClicked="GalaxyMapView_OnSolarSystemClicked"
                              OnViewMoved="GalaxyMapView_OnViewMoved"/>
         <Frame x:Name="ContextWindow" AbsoluteLayout.LayoutFlags="WidthProportional" AbsoluteLayout.LayoutBounds="50,50,0.4,AutoSize"
-               BackgroundColor="{StaticResource Panel Background Opaque}" x:DataType="galaxymap:ContextWindowViewModel"
-               IsVisible="{Binding IsVisible}">
+               BackgroundColor="{StaticResource Panel Background Opaque}"
+               IsVisible="{Binding IsContextMenuVisible}">
             <StackLayout>
-                <Label Text="Hello World" TextColor="White"/>
-                <Button Text="{Binding MainButtonText}" Command="{Binding MainButtonPressed}"/>
+                <Button Text="Explore" Command="{Binding ExploreSystem}"/>
+                <Button Text="Leave" Command="{Binding LeaveSystem}" BackgroundColor="Red"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1"
+               BackgroundColor="{StaticResource Panel Background Opaque}" Margin="50"
+               IsVisible="{Binding IsJumpSelectionVisible}">
+            <StackLayout>
+                <Label Text="Where do you want to go?" TextColor="White"/>
+                <CollectionView ItemsSource="{Binding TravelOptions}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="galaxymap:TravelOptionViewModel">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding LocationName}"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TravelHere}"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </Frame>
     </AbsoluteLayout>

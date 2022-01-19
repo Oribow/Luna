@@ -5,13 +5,13 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Luna.Biz.DataAccessors;
-using Luna.Biz.DataAccessors.Scenes;
-using Luna.Biz.DataAccessors.Scenes.Schemas;
+using Luna.Schemas;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using YamlDotNet.Serialization;
@@ -72,7 +72,7 @@ namespace Luna.Droid.Data
             using (var reader = File.OpenText(path))
             {
                 var manifest = deserializer.Deserialize<Manifest>(reader);
-                var scene = new SceneData(id, manifest.name, manifest.backgroundImage, packagePath, manifest.quest.yarnFile);
+                var scene = new SceneData(id, manifest.name, manifest.backgroundImage, packagePath, manifest.quest.yarnFile, new Vector2(manifest.posX, manifest.posY));
 
                 return scene;
             }

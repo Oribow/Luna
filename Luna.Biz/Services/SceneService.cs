@@ -6,8 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Luna.Biz.DataTransferObjects;
-using Luna.Biz.DataAccessors.Scenes;
-using Luna.Biz.Locations;
 using System.Numerics;
 using Luna.Biz.Extensions;
 
@@ -18,68 +16,57 @@ namespace Luna.Biz.Services
         IDbContextFactory<LunaContext> contextFactory;
         ISceneDataRepository sceneRepo;
 
-        Random random = new Random();
-
         internal SceneService(ISceneDataRepository sceneRepo, IDbContextFactory<LunaContext> contextFactory)
         {
             this.sceneRepo = sceneRepo;
             this.contextFactory = contextFactory;
         }
 
-        public async Task<SceneDataInfoDTO> GetSceneDataInfo(int sceneId)
+        public async Task<SceneDataInfoDTO> GetSceneDataInfo(Guid sceneId)
         {
-            using( var context = contextFactory.CreateDbContext())
+            using (var context = contextFactory.CreateDbContext())
             {
-                var ass = await context.AssignedScenes.FindAsync(sceneId);
-                var loc = await sceneRepo.GetSceneData(ass.SceneDataId);
-                return new SceneDataInfoDTO(loc.Id, loc.Name, loc.ResolveAssetPath(loc.BackgroundImage));
-            }   
+                var loc = await sceneRepo.GetSceneData(sceneId);
+                return new SceneDataInfoDTO(loc.Id, loc.Name, loc.BackgroundImage, loc.Position);
+            }
         }
 
         public async Task<LocationDTO[]> GetLocations(int playerId)
         {
             using (var context = contextFactory.CreateDbContext())
             {
-                var scenes = await context.AssignedScenes
+                var scenes = await context.RevealedScenes
                     .Where(sc => sc.PlayerId == playerId)
                     .ToArrayAsync();
 
-                return scenes.Select(sc => new LocationDTO(sc.Position, sc.LocationName, sc.HasBeenVisited, sc.Id)).ToArray();
+                return scenes.Select(sc => new LocationDTO(sc.Position, sc.MapName, sc.SceneDataId)).ToArray();
             }
         }
 
-        public async Task ArriveAtScene(int playerId, int sceneId)
+        internal Task<RevealedScene> CreateStarterScene(int playerId, LunaContext context)
         {
-            using (var context = contextFactory.CreateDbContext())
-            {
-                var scene = await context.AssignedScenes.FindAsync(sceneId);
-
-                await ArriveAtScene(playerId, scene, context, random.Next(0, 4));
-            }
+            return RevealScene(playerId, sceneRepo.ListScenes().First(), context);
         }
 
-        internal async Task<AssignedScene> CreateStarterScene(int playerId, LunaContext context)
+        internal async Task<RevealedScene> RevealScene(int playerId, Guid sceneId, LunaContext context)
         {
-            var starterSceneData = await sceneRepo.GetSceneData(sceneRepo.ListScenes().First());
-            Vector2 pos = LocationHelper.GetRandomPointInRect(Vector2.Zero, new Random());
-            var starterScene = new AssignedScene(starterSceneData.Id, pos.X, pos.Y, playerId, starterSceneData.Name);
-            context.AssignedScenes.Add(starterScene);
+            var sceneData = await sceneRepo.GetSceneData(sceneId);
+
+            var scene = new RevealedScene(playerId, sceneData.Id, sceneData.Position, sceneData.Name);
+            context.RevealedScenes.Add(scene);
             await context.SaveChangesAsync();
 
-            await ArriveAtScene(playerId, starterScene, context, 2);
-
-            await context.SaveChangesAsync();
-
-            return starterScene;
+            return scene;
         }
 
-        internal Guid[] SelectUnassignedSceneDatas(ISet<Guid> assignedSceneDataIds, int amount)
+        internal Guid[] GetRandomUnrevealedSceneDataIds(ISet<Guid> revealedSceneDataIds, int amount, int seed)
         {
             var candidates = sceneRepo.ListScenes()
-                .Where(g => !assignedSceneDataIds.Contains(g))
+                .Where(g => !revealedSceneDataIds.Contains(g))
                 .ToArray();
 
-            candidates.Shuffle(random);
+            Random r = new Random(seed);
+            candidates.Shuffle(r);
             amount = Math.Min(amount, candidates.Length);
             Guid[] result = new Guid[amount];
 
@@ -88,52 +75,6 @@ namespace Luna.Biz.Services
                 result[i] = candidates[i];
             }
             return result;
-        }
-
-        internal async Task ArriveAtScene(int playerId, AssignedScene scene, LunaContext context, int locationCountToGenerate)
-        {
-            if (scene.HasBeenVisited)
-                return;
-            scene.HasBeenVisited = true;
-            var assignedScenes = await context.AssignedScenes
-                .Where(sc => sc.PlayerId == playerId)
-                .ToArrayAsync();
-            var assignedScenesPositions = assignedScenes
-                .Select(sc => sc.Position)
-                .ToArray();
-
-            // generate new locations around this scene
-            LocationHelper locationHelper = new LocationHelper(scene.Position, assignedScenesPositions);
-
-            int limit = sceneRepo.SceneCount - assignedScenes.Length;
-
-            // if there aren't any more scenes to assign
-            // this is dangerous, what happens when new scenes get added?
-            if (limit > 0)
-            {
-                limit = Math.Min(locationCountToGenerate, limit);
-                var newPositions = locationHelper.GeneratePossibleNewLocationsAroundOwnPos(limit);
-
-                int unvisitedSceneCount = assignedScenes.Where(sc => !sc.HasBeenVisited).Count();
-
-                // if we failed to find a free space around the current location, use some force
-                if (unvisitedSceneCount == 0 && newPositions.Length == 0)
-                {
-                    newPositions = locationHelper.ForceGenerateNewLocationsAnywhere(limit);
-                }
-
-                var assignedSceneIds = assignedScenes
-                    .Select(sc => sc.SceneDataId)
-                    .ToHashSet();
-                var sceneDataToAssign = SelectUnassignedSceneDatas(assignedSceneIds, newPositions.Length);
-                for (int i = 0; i < sceneDataToAssign.Length; i++)
-                {
-                    var sceneData = await sceneRepo.GetSceneData(sceneDataToAssign[i]);
-                    context.AssignedScenes.Add(new AssignedScene(sceneDataToAssign[i], newPositions[i].X, newPositions[i].Y, playerId, sceneData.Name));
-                }
-            }
-
-            await context.SaveChangesAsync();
         }
     }
 }

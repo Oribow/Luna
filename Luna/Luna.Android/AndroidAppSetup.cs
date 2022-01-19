@@ -8,7 +8,6 @@ using Android.Widget;
 using Autofac;
 using Luna;
 using Luna.Biz.DataAccessors;
-using Luna.Biz.DataAccessors.Scenes;
 using Luna.Database;
 using Luna.Droid;
 using Luna.Droid.Data;

@@ -212,9 +212,6 @@
     <EmbeddedResource Update="Death\DeathPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Observation\ObservationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Communications\QuestLogPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -232,9 +229,6 @@
   <ItemGroup>
     <Compile Update="Communications\QuestLogPage.xaml.cs">
       <DependentUpon>QuestLogPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Observation\ObservationPage.xaml.cs">
-      <DependentUpon>ObservationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

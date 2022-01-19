@@ -1,0 +1,829 @@
+title: Start
+tags: 
+colorID: 0
+position: 533,104
+---
+As you continue your journey you unexpectedly come across something... odd to say the least.
+And by odd you mean terrifying and inexplicable as what you've come across seems to be nothing at all. More specifically, a hole in space that definitely should not be there. You stare at the emptiness of it displayed on screen and wonder what it could be. 
+You've never seen anything like it. The closest thing you've ever heard of is stories you'd been told about the early days of space exploration. Back before black holes could be detected or harnessed for space travel. Holes in sensory data that make it seem like they were consuming space-time itself. Which, funnily enough, is what the years of research more or less proved was happening. In a way.
+But this was different. The reality of the old stories was simply that the technology at the time was incapable of registering light paths in a quantum state. That breakthrough had led to the observation of the light passing into a collapsing singularity, unlocking faster then light travel. Here there was no light. Not even in a quantum state. As if it were impossible for light to exist there.
+On the one hand this is a unique theoretical impossibility that you'll likely never have another opportunity to explore. On the other it's likely that something that reality breaking will be... dangerous to say the least.
+What do you want to do?
+[[Not all mysteries are meant to be solved.|Pass]]
+[[There's no telling what you'll find and you find that prospect irresistible.|Check it out]]
+===
+title: Pass
+tags: 
+colorID: 0
+position: 231,106
+---
+As intriguing as this is you decide that sometimes your curiosity maybe shouldn't be sated. You continue on your course, watching the negative space of this mysterious hole until you travel far enough that it no longer registers on your sensors.
+===
+title: Check it out
+tags: 
+colorID: 0
+position: 541,557
+---
+Why explore space at all if you're going to ignore its most intriguing mysteries? It's impossible to lock onto the hole itself but you figure you can plot a exit point close enough. As you do warnings blare across your console. 
+[i]ANOMALY[/i]
+[i]Presence of mass detected. Readings inconclusive. Unable to determine threat level.[/i]
+You've encountered risks before but have never seen the system unable to even estimate what you will encounter. Are you sure you want to do this?
+[[Of course. You've come to appreciate the unknown.|Pass]]
+[[Maybe not. You continue on your journey. You wonder what else you'll find.|Confirm Jump]]
+===
+title: Confirm Jump
+tags: 
+colorID: 0
+position: 262,559
+---
+You punch in coordinates close to this "hole", but not too close. It may be undetectable, but anything that big is going to have enough mass to be wary of.
+You sit back as the familiar pulse of the warp drive activates and space folds and reveals infinity. Your ship dips in and you are [i]pulled[/i] as if from all directions as tendrils of color fling themselves around you.
+And then you're there. 
+You've never experienced such a substantive darkness. It feels as if you can just reach out and grasp it, pulling some away like snowball, if snow were an inpenetrable void. It reminds you of that place in the ocean where it drops suddenly, forming a great big blue fathomless hole in the sea.
+You had hoped that proximity to the anomaly would reveal something about it but to both your eyes and all your ship's sensors there's just... [i]nothing[/i].
+It's quite the conundrum. No known phenomena should come close to accomplishing anything like this. At least nothing proven. 
+
+You're reminded of an old theory referring to so called "Dark Matter". Before advanced space travel scientists were baffled at observed behaviors of the universe that didn't quite make sense. They believed that it suggested the presence of some form of unobservable matter which was [i]almost[/i] correct. The effects they observed with primitive precision were in fact being caused by matter they could not detect. What they hadn't considered was that this was because the matter in question was in another universe. They couldn't see it because it was affecting them from the outside.
+You wonder what they would think if they saw this. Now, what will you do?
+[[Send in a probe.|Send Probe A]] 
+[[Move closer and try to calibrate sensors.|Move Closer]]
+[[Perhaps this is a mystery best left unsolved. Time to go.|Turn Back]]
+===
+title: Turn Back
+tags: 
+colorID: 0
+position: -73,507
+---
+As intriguing as this is you decide that sometimes your curiosity maybe shouldn't be sated. You punch in the coordinates of a nearby system and with that the mysterious hole is behind you. You continue on your course, watching the negative space of this mysterious hole until you travel far enough that it no longer registers on your sensors.
+===
+title: Move Closer
+tags: 
+colorID: 0
+position: 256,1179
+---
+While unnerving to look at the... whatever it is seems harmless enough. The sensors may not be working but you don't feel that familiar pull you've experienced when on the cusp of a great mass' event horizon.
+You guide the ship slowly towards the void, keeping an eye on it while adjusting the sensors. If you can fine tune them the right way they might be able to pick up something the general scan missed. Which really can be anything. Anything at all. 
+What will you try first?
+[[Calibrate the sensors to detect minute changes in temperature.|Calibrate]]
+[[Send a focused beam of light and observe the results.|Light Beam]]
+[[Fire a probe. Maybe once it's inside it will pick something up.|Send Probe B]]
+[[See if you can obtain a sample of whatever this is.|Sample]]
+[[Perhaps some mysteries are better left unsolved.|Turn Back]]
+===
+title: Send Probe A
+tags: 
+colorID: 0
+position: 524,852
+---
+The obvious choice is to send in a probe. Carries many of the same advantages of being there yourself without the risk. It takes a moment to plot a course into the abyss since many of the features it uses to do so, gravity, star patterns, even anomalies without clear parameters, are just not even present.
+You finally manage something that you hope will be a straight shot into it and launch, watching as its blinking light fades disturbingly fast into its depths.
+You focus immediately on the readings but only receive a few seconds before it's swallowed up by the darkness and is lost. You display what little there is around you and try to make out what you can.
+There really isn't much. Most of the sensors come back with nothing. No light. No particles. No sound, although that's to be expected. The only thing of note is that the probe slowed down noticeably upon entering it which suggests some sort of friction or force acting upon it.
+Whatever this is, it's substantive. It's not just some trick of the light.
+You're still nowhere closer to finding exactly [i]what[/i] it is but confirming that it actually [i]is[/i], is something.
+So what's next?
+[[You might be able to get better reading if you get closer.|Move Closer]]
+[[Maybe this is a sign to turn back.|Turn Back]]
+===
+title: Calibrate
+tags: 
+colorID: 0
+position: -115,748
+---
+You might not be able to detect anything about this thing but maybe that's because you're not looking at it right. You adjust the sensors to focus on the temperature of the area. At first glance there isn't anything to see, but there could be minute variations that will take time to detect and confirm.
+
+[Wait an hour]
+
+It's been tedious but after the wait you can confirm that there are in fact minute variations in temperature localized around some sort of central core. It's hard to pinpoint with the obstruction of the darkness but there's no doubt that somewhere in all that empty black is [i]something[/i]. The faintness of the temperature variation suggests it might be quite some distance inside.
+It's not much but it helps to know that there is something to actually look for in all this mess.
+What will you do now?
+[[Send Probe B]]
+===
+title: Light Beam
+tags: 
+colorID: 0
+position: -87,1564
+---
+You've hit the void with a generalized spectral analysis and returned nothing. Perhaps if you focus the light you use for analysis into a beam it can reveal something in all this darkness.
+It's a quick adjustment, just a few inputs to squeeze the globe of light into one direction. You can see it form in front of you, a spiral of color that coalesces until it forms a brilliant white line shooting straight into the dark. It's a spectacular sight but in the end it doesn't help very much. Though intense the beam doesn't seem to have any effect at all. It simply ends just as it touches the edge of the abyss.
+Looking at your sensors, however, you see that it doesn't just dissipate. The light continues through, though it seems to swallow up any radiating light that would allow you to see it. Your computer can only sense it in a quantum state beyond and even then just below the surface of its depths.
+What little you've found out from this only raises more questions but it's a start. What would you like to try next?
+[[Calibrate]]
+[[Sample]]
+[[Send Probe B]]
+===
+title: Sample
+tags: 
+colorID: 0
+position: 286,1639
+---
+You're not sure if it's possible, or if it will help even if it is, but if this thing does have substance it may be worth it to find out just what kind of substance it is.
+You send a probe to obtain a sample and are not very surprised to see that it immediately runs into a problem. It tries to siphon off a part of the dark as it would a stellar cloud but it seems completely unaffected by the pressure differential. It tries interacting with it directly but finds that even attempting to simply capture it by rudimentary means proves ineffectual. Whatever it is seems to phase through the container as if there were nothing there.
+It appears that whatever this is, is without substance. Which would explain why you can't seem to get any readings on it, but not why you're not getting any readings about this location at all.
+In any case it seems that this isn't working. You should try something else.
+[[Calibrate]]
+[[Send Probe B]]
+[[Light Beam]]
+===
+title: Send Probe B
+tags: 
+colorID: 0
+position: 601,1224
+---
+The obvious choice is to send in a probe. Carries many of the same advantages of being there yourself without the risk. It takes a moment to plot a course into the abyss since many of the features it uses to do so, gravity, star patterns, even anomalies without clear parameters, are just not even present.
+You finally manage something that you hope will be a straight shot into it and launch, watching as its blinking light fades disturbingly fast into its depths.
+You focus immediately on the readings but only receive a few seconds before it's swallowed up by the darkness and is lost. You display what little there is around you and try to make out what you can.
+There really isn't much. Most of the sensors come back with nothing. No light. No particles. No sound, although that's to be expected. The only thing of note is that the probe slowed down noticeably upon entering it which suggests some sort of friction or force acting upon it.
+Whatever this is, it's substantive. It's not just some trick of the light.
+You're still nowhere closer to finding exactly [i]what[/i] it is but confirming that it actually [i]is[/i], is something.
+So what's next?
+[[Calibrate B]]
+[[Light Beam B]]
+[[Sample B]]
+===
+title: Light Beam B
+tags: 
+colorID: 0
+position: 891,886
+---
+You've hit the void with a generalized spectral analysis and it returned nothing. Perhaps if you focus the light you use for analysis into a beam it can reveal something in all this darkness.
+It's a quick adjustment, just a few inputs to squeeze the globe of light into one direction. You can see it form in front of you, a spiral of color that coalesces until it forms a brilliant white line shooting straight into the dark. It's a spectacular sight but in the end it doesn't help very much. Though intense the beam doesn't seem to have any effect at all. It simply ends just as it touches the edge of the abyss.
+Looking at your sensors, however, you see that it doesn't just dissipate. The light continues through, though it seems to swallow up any radiating light that would allow you to see it. Your computer can only sense it in a quantum state beyond and even then just below the surface of its depths.
+What little you've found out from this only raises more questions but it's a start. What would you like to try next?
+[[Calibrate B]]
+[[Sample B]]
+===
+title: Calibrate B
+tags: 
+colorID: 0
+position: 1155,940
+---
+You might not be able to detect anything about this thing but maybe that's because you're not looking at it right. You adjust the sensors to focus on the temperature of the area. At first glance there isn't anything to see, but there could be minute variations that will take time to detect and confirm.
+
+[Wait an hour]
+
+It's been tedious but after the wait you can confirm that there are in fact minute variations in temperature localized around some sort of central core. It's hard to pinpoint with the obstruction of the darkness but there's no doubt that somewhere in all that empty black is [i]something[/i]. The faintness of the temperature variation suggests it might be quite some distance inside.
+It's not much but it helps to know that there is something to actually look for in all this mess.
+What will you do now?
+[[It might be time to try and see what this stuff is made from.|Sample B]]
+[[Reconfigure the probe to track the temperature variation.|Reconfigure Probe]]
+[[Light Beam B]]
+===
+title: Sample B
+tags: 
+colorID: 0
+position: 901,1418
+---
+You send a probe to obtain a sample and are not very surprised to see that it immediately runs into a problem. It tries to siphon off a part of the dark as it would a stellar cloud but it seems completely unaffected by the pressure differential. It tries interacting with it directly but finds that even attempting to simply capture it by rudimentary means proves ineffectual. Whatever it is seems to phase through the container as if there were nothing there.
+Despite contrary evidence it appears that whatever this is, is without substance. Which would explain why you can't seem to get any readings on it, but not why you're not getting any readings about this location at all.
+In any case it seems that this isn't working. You should try something else. The only thing you can think of if you have a chance of obtaining a sample is using the force field around your ship to create small bubble to try to contain the dark substance. That carries its own risks however, especially since you have no idea what you're dealing with.
+[[Try using the force field to contain the unknown substance.|Force Field Containment]]
+[[Calibrate B]]
+[[Light Beam B]]
+===
+title: Force Field Containment
+tags: 
+colorID: 7
+position: 1464,1414
+---
+It's time to get creative. You're not sure if you've ever done something like this before but when has that ever stopped you from trying? You slowly position the ship closer to the dark cloud, calibrating the force field around you to emit a smaller version of itself like a bubble or a bud attached to its side. It seems to hold steady as you inch painfully towards the void, fighting all the while your fear that you will fall inside and never stop falling.
+The smaller field appears to make contact with the substance although it's hard to tell without readings. You go to open up the field to allow the substance inside but before you adjust it you gasp as the translucent shimmer that protects your ship ripples and buckles. You watch in dismay as it stretches out towards you, the protection it usually forms twisted into a grotesque weapon of inertial forces.
+It touches the ship so gently that it's a shock to watch as the metal distorts, bending like tin under its warping effects. The ship begins to crumple around it like a singularity. You watch as colors you've never seen before flare up in alien beauty, your thoughts compelled to rapture as the ship folds over you, crushing you into nothing.
+===
+title: Reconfigure Probe
+tags: 
+colorID: 0
+position: 1444,1179
+---
+It may not be much but it might be enough to act as a guide for a probe. You adjust the probe's sensors to prioritize for the temperature variation and send it along its way.
+It seems to go much the same as before. The probe enters the dark and is soon swallowed up by it. However the readings indicate a slight change in trajectory before you lose it. So it [i]can[/i] track whatever's in there, you just lose contact before that becomes useful to you.
+Now what?
+[[Maybe obtaining a sample will reveal some way to navigate this mess.|Sample C]]
+[[Now that you have something to aim at, maybe a concentrated beam of light will reveal something.|Directed Light]]
+[[You need more data. Send in more probes.|Multiple Probes]]
+===
+title: Directed Light
+tags: 
+colorID: 0
+position: 1935,1666
+---
+Now that you've got a direction maybe you can glean something from using the light beam. You input the trajectory and watch as the light field focuses itself down into a beam that cuts across the black like a knife.
+The cut is wide but shallow, revealing nothing but the shallow skin of it. Your sensors tell you that the light seems to continue through, though there's no telling how far.
+In any case the light is either missing the object inside or it's just not penetrating deep enough.
+What would you like to do?
+[[It might help to know what exactly this stuff is.|Sample C]]
+[[You need more data. Send in more probes.|Multiple Probes]]
+===
+title: Multiple Probes
+tags: 
+colorID: 0
+position: 1410,896
+---
+You've got a vague direction but finding things in space often requires more. You decide to release multiple probes at different points in order to get a more accurate fix on the object's position. They spread out in front of you, approaching the void in delicate arcs, their wakes producing trails like glowing threads loosely woven together.
+As before they all disappear quickly within its depths, but it's enough to show a trend in their trajectories. Initial calculations show a definite nexus between the points but it will take time to account for the friction inherent in the abyss. And that's assuming that there isn't anything else affecting the flight paths of the probes. With so little data to go on, anything seems possible.
+How would you like to proceed?
+[[You're tired of waiting. Head inside to check out what this is.|Go]]
+[[It's easy to get lost in space even when you can see where you're going. Let the computer complete its calculations.|Wait]]
+[[You don't know enough about this darkness to make any sort of decision. Try for a sample.|Sample C]]
+[[Directed Light]]
+===
+title: Go
+tags: 
+colorID: 0
+position: 1416,589
+---
+It seems pretty direct. All the information you have available shows that there is something there and the trajectories of the probes look like arrows all pointing in one direction towards it. You see no reason to waste any more time and decide to plot your course and head inside.
+You go cautiously forward, ready to jump the instant you feel the oh too familiar pull of an event horizon. It all seems to go well, although you can't help but think that the void growing as you near it feels like a great mouth about to swallow you.
+Still you feel nothing out of the ordinary until the field protecting your ship comes into contact with the dark. It shimmers and sizzles, crackling with a rainbow of light spreads and shatters the field, its shards slicing into you and everything around you.
+You feel a sensation as if falling into impossible depths while all around you colors you've never dreamed of ripple and then snuff out in an instant.
+===
+title: Wait
+tags: 
+colorID: 0
+position: 1956,1389
+---
+You decide it will be worth it for you to wait until the calculations are finished and verified. This might take a while.
+
+[Wait One Hour]
+
+Finally the computer completes the calculations, though of course with a very big disclaimer that the results are based on limited data and should be considered unreliable.
+The results are odd but not entirely unexpected. The final trajectories actually proved to be a little off from each other. They don't actually quite meet together but are offset just enough to suggest that the object they are tracking may be orbiting around something. This suggests two alarming facts.
+First, the object seems to be affected by something that doesn't at all register on your instruments. How that's possible is anyone's guess.
+And second. The object is distant enough that its orbit could be confused for its location.
+These two factors along with the fact that it's mired in an impenetrable cloak of black means that navigating to it will be difficult at best, if not impossible.
+Do you still wish to try?
+[[You have a more precise target than ever. If anything were to happen by hitting it with a light beam it's now.|Accurate Light]]
+[[You don't know enough about this darkness to make any sort of decision. Try for a sample.|Sample C]]
+[[Go]]
+===
+title: Accurate Light
+tags: 
+colorID: 0
+position: 1966,1116
+---
+Now you have a more or less precise location to direct your light. You pick a point in the object's "orbit" and program the spectral field to condense into a single, white hot beam.
+It pierces into the darkness but is quickly overtaken by it. You maintain the beam, unsure of what you expect to happen but confident somehow that something will.
+You're still shocked when it does. It's faint but sensors pick up a tiny flickering of light, like a spark about to sputter out. You swear you can see it yourself. A tiny white pinprick in the dark twinkling like a faded star. It's incredible. Somehow light behaves differently in this dark space, moving only in a single direction without radiating as it does in regular space. The object must be remarkably reflective to be able to send it back even if faintly.
+[[Sample D]]
+[[Use the information you've gathered to plot a course.|Incomplete Plan]]
+===
+title: Sample C
+tags: 
+colorID: 0
+position: 1158,1686
+---
+You send a probe to obtain a sample and are not very surprised to see that it immediately runs into a problem. It tries to siphon off a part of the dark as it would a stellar cloud but it seems completely unaffected by the pressure differential. It tries interacting with it directly but finds that even attempting to simply capture it by rudimentary means proves ineffectual. Whatever it is seems to phase through the container as if there were nothing there.
+Despite contrary evidence it appears that whatever this is, is without substance. Which would explain why you can't seem to get any readings on it, but not why you're not getting any readings about this location at all.
+In any case it seems that this isn't working. You should try something else. The only thing you can think of if you have a chance of obtaining a sample is using the force field around your ship to create small bubble to try to contain the dark substance. That carries its own risks however, especially since you have no idea what you're dealing with.
+Although now that you think on it, you could perhaps modify a probe to do the same thing. Though it will take time.
+[[Try using the force field to contain the unknown substance.|Force Field Containment]]
+[[Directed Light]]
+[[Modify Probe B]]
+===
+title: Sample D
+tags: 
+colorID: 0
+position: 1964,821
+---
+You send a probe to obtain a sample and are not very surprised to see that it immediately runs into a problem. It tries to siphon off a part of the dark as it would a stellar cloud but it seems completely unaffected by the pressure differential. It tries interacting with it directly but finds that even attempting to simply capture it by rudimentary means proves ineffectual. Whatever it is seems to phase through the container as if there were nothing there.
+Despite contrary evidence it appears that whatever this is, is without substance. Which would explain why you can't seem to get any readings on it, but not why you're not getting any readings about this location at all.
+In any case it seems that this isn't working. You should try something else. The only thing you can think of if you have a chance of obtaining a sample is using the force field around your ship to create small bubble to try to contain the dark substance. That carries its own risks however, especially since you have no idea what you're dealing with.
+Although now that you think on it, you could perhaps modify a probe to do the same thing. Though it will take time.
+[[Force Field Containment]]
+[[Go]]
+[[Modify Probe]]
+===
+title: Incomplete Plan
+tags: 
+colorID: 0
+position: 2479,1109
+---
+You think you've come up with enough information to be able to navigate the abyss. It will be tricky, but if all goes well you think it might work.
+You can send in a probe and it will act as a guide leading you towards the object. This will give you a rough direction as long as you keep close to it and don't lose it in the murk. Then you can lock onto the object with a beam of light to give you a more precise location to follow.
+It will likely take time but as long as you keep up with it, it should work.
+So what do you say? Want to give it a try?
+[[Go B]]
+[[Sample D]]
+[[Accurate Light]]
+===
+title: Go B
+tags: 
+colorID: 0
+position: 2476,805
+---
+All the information you have available shows that there is something there and the trajectories of the probes look like arrows all pointing in one direction towards it. You see no reason to waste any more time and decide to plot your course and head inside.
+You go cautiously forward, ready to jump the instant you feel the oh too familiar pull of an event horizon. It all seems to go well, although you can't help but think that the void growing as you near it feels like a great mouth about to swallow you.
+You shrug off the fear and shoot the probe ahead of you, preparing your light beam to fire once it receives a rough trajectory. You match its speed, watching as it plops into the black like a stone in a pond and you brace yourself to follow.
+The field protecting your ship comes into contact with the dark. It shimmers and sizzles, crackling with a rainbow of light spreads and shatters the field, its shards slicing into you and everything around you.
+You feel a sensation as if falling into impossible depths while all around you colors you've never dreamed of ripple and then snuff out in an instant.
+===
+title: Modify Probe
+tags: 
+colorID: 0
+position: 1963,545
+---
+You make adjustments in the design of the probes, replacing much of its advanced sensory hardware with force field tech. The problem is that unfortunately there is not enough room in the original probe housing to contain the tech, so the total design must be revamped.
+Such a dramatic changed in the probe's blueprint will require careful calibration of the probe production infrastructure. The computer will need at least an hour before you can start producing the new modified models.
+
+[Wait one hour]
+
+It took a while but finally you are ready to try out your new design. You send out the probe, watching is seem to shimmer like a mirage as it floats across the darkness of space and then the abyss. The probe approaches it, seemingly with trepidation as it carefully slows to its edge.
+The next part needs to be done manually. You adjust the shield around the probe remotely to reach out into the blackness in an attempt to capture some of it for study. It stretches out like a primitive arm but when it touches the surface of the dark it immediately starts to warp and buckle.
+You try to get the probe to retreat but it's already too late. The field meant to protect it turns on it and mercilessly bends and tears at it until with a strange, sudden pop it disappears.
+Whatever this darkness is, it doesn't seem to play well with force fields. You're glad you figured this out before attempting to enter it.
+[[Complete Plan]]
+===
+title: Modify Probe B
+tags: 
+colorID: 0
+position: 1154,1959
+---
+You make adjustments in the design of the probes, replacing much of its advanced sensory hardware with force field tech. The problem is that unfortunately there is not enough room in the original probe housing to contain the tech, so the total design must be revamped.
+Such a dramatic changed in the probe's blueprint will require careful calibration of the probe production infrastructure. The computer will need at least an hour before you can start producing the new modified models.
+
+[Wait one hour]
+
+It took a while but finally you are ready to try out your new design. You send out the probe, watching is seem to shimmer like a mirage as it floats across the darkness of space and then the abyss. The probe approaches it, seemingly with trepidation as it carefully slows to its edge.
+The next part needs to be done manually. You adjust the shield around the probe remotely to reach out into the blackness in an attempt to capture some of it for study. It stretches out like a primitive arm but when it touches the surface of the dark it immediately starts to warp and buckle.
+You try to get the probe to retreat but it's already too late. The field meant to protect it turns on it and mercilessly bends and tears at it until with a strange, sudden pop it disappears.
+Whatever this darkness is, it doesn't seem to play well with force fields. You're glad you figured this out before attempting to enter it.
+[[Incomplete Plan B]]
+[[Try to obtain a sample conventionally again.|Sample C]]
+[[Directed Light]]
+===
+title: Incomplete Plan B
+tags: 
+colorID: 0
+position: 1467,2016
+---
+You think you've come up with enough information to be able to navigate the abyss. It will be tricky, but if all goes well you think it might work.
+You can send in a probe and it will act as a guide leading you towards the object. This will give you a rough direction as long as you keep close to it and don't lose it in the murk. Then you'll lower your shields so as to not interact with the dark space. Hopefully that will be enough to safely pass through.
+It will likely take time but as long as you keep up with it, it should work.
+So what do you say? Want to give it a try?
+[[Lost]]
+===
+title: Lost
+tags: 
+colorID: 0
+position: 1789,2063
+---
+You decide there's no time like the present. You fire a pre-built sensor probe after configuring it and then follow after it, making sure that your speed is synchronized.
+The barrier field stays up until the last second as you want to minimize the risk of colliding with space debris. You just hope the risk is less inside. Still, it's a relief when both the probe and you enter inside without problems.
+The darkness is overwhelming, as if a great big cloud had dissolved everything and is slowly doing to the same to you. Without anything to reference it feels as if you're not moving at all. Simply stuck like a fly in a web. But all the readings show that you and the probe are moving with plenty of speed.
+Still, at sublight speeds you are likely half a day or more away from the object. The computer is locked onto the probe and the speed is perfectly in sync. You'll just have to wait and hope it works.
+
+[Wait 12 Hours]
+
+It's hard to tell any time has passed at all. Every second was consumed by the black, an unceasing backdrop in which you and the probe have hung motionless for eternity. If it weren't for the displays in front of you, you wouldn't know if it actually had been twelve hours.
+You want this to stop. You feel like at any moment the curtain will open, revealing something horrible that will swallow you whole. At this point you would almost welcome it.
+But there's nothing. Your eyes dart around for anything to look at. Anything to move toward. But there's... nothing.
+Maybe there was nothing here all along. At this point you're not sure you can find your way back out and you don't know what will happen if you try to make a jump.
+What should you do?
+[[Jump]]
+[[Be Patient]]
+===
+title: Jump
+tags: 
+colorID: 0
+position: 2079,2055
+---
+There's no point in being afraid. As far as you know this is the only way out of this mess. You punch in familiar coordinates and listen to the rising hum as the engines spin up. Once ready you activate the jump and are instantly shorn in all directions, your molecules scattered and lost in the void.
+===
+title: Be Patient
+tags: 
+colorID: 0
+position: 1790,2315
+---
+You weren't operating on exact coordinates to begin with. No need to panic. Perhaps it will just take a little longer until you reach your destination.
+You do your best to suppress the feeling that the darkness isn't somehow leaking into the ship, crawling over your skin like spiders.
+
+[Wait One Hour]
+
+Still nothing. Although time feels meaningless in this place it also feels as if it is slipping away from you. The itching feeling on your skin has become a gnawing. You don't know how much longer you can take this.
+[[Jump]]
+[[Wait Longer]]
+===
+title: Wait Longer
+tags: 
+colorID: 0
+position: 1936,2572
+---
+It has to be here. It [i]has[/i] to. The cabin of your ship feels cold and you shudder as the darkness continues to leak in. All the sound around you seems muffled and it's getting hard to breathe.
+
+[Wait One Hour]
+
+It isn't here. For a moment you thought you saw it like a faint yet colorful eclipse emerging in front of you, but then you blinked and you realized it was your mind playing tricks on you. So desperate for [i]something[/i] to see that it started to make things up.
+It hasn't exactly stopped.
+The dark continues mercilessly eating at you. You itch at your skin but it has become red, sore, bleeding. You shiver against the cold even though your displays insist life support should be at a comfortable level. It's filled the cabin, slowly suffocating you.
+You can no longer hold your building panic in check. You have to get out of here.
+[[Jump]]
+[[Escape]]
+===
+title: Escape
+tags: 
+colorID: 0
+position: 1658,2576
+---
+You know you shouldn't do it. Know it's only the product of a desperate, panicked mind. And yet somehow you can't bring yourself to care. Knowing that it means your death you eject from the cabin into the darkness. You look down and watch as the ship sinks until it is consumed by the dark.
+At last you are truly alone, rocketing through an endless abyss, your only light the engine the propels you to nowhere at all.
+You feel that you still can't breathe and realize the dark has seeped into your helmet as well.
+There's only one choice. Only one.
+You're surprised how you don't even hesitate as you unlock your helmet, lifting it from your head. The cold stabs at your face as you breathe out. Already you can feel death taking you.
+And yet, as you find yourself giving yourself over to the black you find that it isn't dark at all. There [i]is[/i] light here. So deep and warm and blue that it seems as unlight. And yet, now that you are truly one with it, without anything to filter it between you, you can finally see its glow.
+You smile as its lights begins to refract on the crystals forming over your eyes. And with that, you are gone.
+===
+title: Complete Plan
+tags: 
+colorID: 0
+position: 1975,241
+---
+You think you've come up with enough information to be able to navigate the abyss. It will be tricky, but if all goes well you think it might work.
+You can send in a probe and it will act as a guide leading you towards the object. This will give you a rough direction as long as you keep close to it and don't lose it in the murk. You'll lower your shields so as to not interact with the dark space. Hopefully that will be enough to safely pass through. Then you can lock onto the object with a beam of light to give you a more precise location to follow.
+It will likely take time but as long as you keep up with it, it should work.
+So what do you say? Want to give it a try?
+[[Turn Back]]
+[[Station]]
+===
+title: Station
+tags: 
+colorID: 0
+position: 2088,-122
+---
+You decide there's no time like the present. You fire a pre-built sensor probe after configuring it and then follow after it, making sure that your speed is synchronized.
+The barrier field stays up until the last second as you want to minimize the risk of colliding with space debris. You just hope the risk is less inside. Still, it's a relief when both the probe and you enter inside without problems.
+The darkness is overwhelming, as if a great big cloud had dissolved everything and is slowly doing to the same to you. Without anything to reference it feels as if you're not moving at all. Simply stuck like a fly in a web. But all the readings show that you and the probe are moving with plenty of speed.
+Still, at sublight speeds you are likely half a day or more away from the object. The computer is locked onto the probe and the speed is perfectly in sync. You activate the light beam, surprised that you manage to catch the object right away. Now you're sure you're not imagining it. It winks at you like a guiding star.
+Now you'll just have to wait and hope it works.
+
+[Wait 12 Hours]
+
+It's strange traveling in silence for so long, with nothing to see but a slowly growing light. As you get closer to the object you try now and again to capture it with sensors. The only thing you've been able to discover is that it's not a planet or star or any sort of celestial object. The shape of it is too precise. It has to be artificial.
+Finally your scanners are able to reach it and you confirm it is indeed so. Unless of course somehow a meteor managed to form into a perfect sphere with many intricate layers that slide against each other with perfect precision. It looks like it could be a station. You wonder if you're being watched.
+Though terrifying it's almost a relief to see that you're not alone. What would you like to do?
+[[Jump]]
+[[Hail]]
+[[Approach]]
+===
+title: Hail
+tags: 
+colorID: 0
+position: 2275,-413
+---
+You've come this far. Are you really too afraid to even try to talk to these people? You send out a hailing frequency, hoping that whoever is inside will be able to understand and respond. You wonder what kind of people live in such a desolate place. Too late you wonder if they do so as an extreme measure to make sure they're left alone.
+The silence from your hail seems to confirm this. What should you do?
+[[Approach]]
+[[Jump]]
+===
+title: Approach
+tags: 
+colorID: 8
+position: 2368,335
+---
+Encouraged by the fact that whoever is inside hasn't shot you down you decide to approach the station. You receive no word from those inside but as you get closer the layers start to sort of peel away, revealing an opening for your ship to dock inside.
+You're a little off put by how easy this is. Are they really so welcoming or is this a trap?
+[[Jump]]
+[[Continue]]
+===
+title: Continue
+tags: 
+colorID: 0
+position: 2661,332
+---
+You've come this far. Too far to turn back just because a door opens itself for you. You go to set a course to dock only to find that it seems they've already done it for you. Hopefully that's a good sign.
+Your ship sails smoothly into the hollow and you are soon brought into the docking bay where it lands without any impact whatsoever. You're not sure you've ever had a landing so smooth.
+Outside the ship you notice how quiet and sparse everything is. The docking bay only has room for one ship and barely enough for you to walk around it. The walls are plain, smooth metal totally lacking in any ornamentation. The only break in the surface is a narrow seam in the wall across from you that you assume is a door to the rest of the station.
+You think about how you'll open it and find yourself not very surprised that it opens itself. What does surprise you is that it opens to a small room, little more than a cell, with what looks like a throne of metal conduit set in its center. There doesn't appear to be another way out.
+With a sense of unease but also the realization that at this point you have little choice, you walk inside. You hesitate at the door, unwilling to let it close behind you. Also, you're not sure you like the sound of that growing hum all around you.
+[[Call Out]]
+[[Walk Inside]]
+===
+title: Call Out
+tags: 
+colorID: 0
+position: 2956,170
+---
+You're not sure if this isn't part of some sort of alien greeting procedure but it would be nice to at least try to talk to someone. You call out, not sure who exactly would hear you.
+In response, deep blue lights start to glow on the conduit throne. Something in the way it pulses seems to be calling you to it. No one answers you.
+Well? Should you sit?
+[[Walk Inside]]
+[[Sit]]
+===
+title: Walk Inside
+tags: 
+colorID: 0
+position: 2955,487
+---
+It's a little late to be hesitating at this point. You walk further inside, trying your hardest not to panic as the door slides shut behind you. You tell yourself it did so in a calm, soothing way, rather than abruptly and with malice.
+As you near the throne blue lights start to glow. Dimly at first but stronger as you near it.
+[[Call Out B]]
+[[Back Up]]
+[[Sit]]
+===
+title: Back Up
+tags: 
+colorID: 0
+position: 3613,732
+---
+You decide that something reacting to you might mean it could be threatening you. You freeze and notice that the glow remains the same, stopping even pulsing. A few tentative steps backwards confirms it as the lights dim. The conduit is definitely responding to you. The question is if it's positively or negatively.
+[[Call Out B]]
+[[Retreat]]
+[[Sit]]
+===
+title: Call Out B
+tags: 
+colorID: 0
+position: 2953,785
+---
+You're not sure if this isn't part of some sort of alien greeting procedure but it would be nice to at least try to talk to someone. You call out, not sure who exactly would hear you.
+In response, deep blue lights start to glow on the conduit throne. Something in the way it pulses seems to be calling you to it. No one answers you.
+Well? Should you sit?
+[[Retreat]]
+[[Sit]]
+===
+title: Retreat
+tags: 
+colorID: 0
+position: 3327,1006
+---
+You've had enough of this game. Time to leave.
+Except when you turn to go for once the door doesn't obediently open for you. Well, whatever is going on here it seems you are well and truly committed now.
+[[Sit]]
+===
+title: Sit
+tags: 
+colorID: 0
+position: 3591,253
+---
+Seems like there's nothing for you to do except sit down. As you near the throne it glows brighter and brighter until you can see a sort of bubble surrounding it. The light was somehow refracting, forming what you can only guess is some kind of display for what you hope is an interface.
+Slowly, deliberately, and not without a heap of doubt you sit, remarking for a moment how it seems to fit you perfectly, as if it were made for you.
+The bubble that surrounds you ripples furiously, like the sea during a hurricane. You feel the conduit shift below you, hugging you gently and yet with insistence. You get the sense that you can rise at any time, and yet oddly don't feel the need to.
+A high pitched whine echoes to you from the distance. It takes a moment but you recognize it as voice. Alien for sure but something with rhythm and pattern. You feel a slight tingle in the base of your skull and the voice resolves slowly into words you can recognize.
+[i]Operator... unknown...[/i] 
+[i]please... calibrate...[/i] 
+[i]aperture...[/i]
+[[Who are the known Operators?|Operators]]
+[[Aperture? Is this some kind of surveillance station?|Aperture]]
+[[How do you calibrate anything from here?|How]]
+===
+title: Operators
+tags: 
+colorID: 1
+position: 3586,-47
+---
+[i]Many... species...[/i]
+[i]Much... time...[/i]
+[i]You... unique...[/i]
+[i]Curious...[/i]
+[[What's curious? How are you unique?|Organic]]
+[[Aperture? Is this some kind of surveillance station?|Aperture]]
+[[How do you calibrate anything from here?|How]]
+===
+title: Aperture
+tags: 
+colorID: 0
+position: 3902,254
+---
+][/i[i]Space... Many...[/i]
+[i]Aperture... Misaligned...[/i]
+[i]Cannot... Observe...[/i]
+[[Who are the known Operators?|Operators]]
+[[How do you calibrate anything from here?|How]]
+[[Observe what?|Everything]]
+===
+title: How
+tags: 
+colorID: 0
+position: 3907,-45
+---
+[i]Focus... mind...?[/i]
+[i]Organic...? Curious...[/i]
+[i]Anomaly... paradox...[/i]
+[i]Organic...? Sapience...?[/i]
+[i]Anomaly... paradox...[/i]
+[[Organic life is an anomaly?|Organic]]
+[[Who are the known Operators?|Operators]]
+[[Aperture? Is this some kind of surveillance station?|Aperture]]
+===
+title: Organic
+tags: 
+colorID: 0
+position: 3587,-334
+---
+[i]Organic... random...[/i]
+[i]Basis... sapience...[/i]
+[i]Foundation...[/i]
+[i]Not... whole...[/i]
+[i]Impossible...[/i]
+[[What was the nature of the Operators?|Nature]]
+[[Impossible? You could say the same about this thing but you're both here.|Impossible]]
+===
+title: Everything
+tags: 
+colorID: 0
+position: 4158,256
+---
+[i]Everything...[/i]
+[[Who are the known Operators?|Operators]]
+[[How do you calibrate anything from here?|How]]
+===
+title: Nature
+tags: 
+colorID: 0
+position: 3905,-336
+---
+[i]Life... emerges...[/i]
+[i]Chaos...[/i]
+[i]Order... manufactured...[/i]
+[i]Life... sapience...[/i]
+[i]You... chaos...[/i]
+[i]Yet... order...[/i]
+[i]Impossible...[/i]
+[[Impossible? You could say the same about this thing but you're both here.|Impossible]]
+===
+title: Impossible
+tags: 
+colorID: 0
+position: 3581,-639
+---
+[i]Curious... true...[/i]
+[i]Possibilities... endless...[/i]
+[i]It has been a long time since I've been reminded of that.[/i]
+[[You're starting to sound human|Human]]
+[[What was the nature of the Operators?|Nature]]
+===
+title: Human
+tags: 
+colorID: 0
+position: 3890,-642
+---
+A figure appears amid the ripples. You think it's supposed to be you but the image shifts constantly, as if you were watching whatever this thing's imagination was coming up when thinking of you.
+[i]Am I? I hadn't quite noticed. This is all very new to me. I believe your... point as you call it may have 'broken the ice' so to speak between us.[/i]
+[i]Funny things these words. They mean so much more than they seem.[/i]
+[[Who are you?|Who]]
+[[What is this place?|Nexus]]
+===
+title: Nexus
+tags: 
+colorID: 0
+position: 4186,-640
+---
+[i]A Nexus.[/i]
+The figure leaves the statement like that as if it answers everything but then gets visibly annoyed when it senses you do not understand. Funny how quickly it picks up some things but not others.
+[i]Ah, I see. Your species is abnormally unaware of the nature of the multiverse. No wonder you have to use words to understand one another.[/i]
+[i]This place is a Nexus. A point in which the fabrics of multiple realities fold upon themselves into a multi-spacial singularity. This facility was built to take advantage of this phenomena in order to peer into alternate universes.[/i]
+[[Who]]
+[[How does it work?|Magic]]
+===
+title: Who
+tags: 
+colorID: 0
+position: 3888,-912
+---
+[i]I may sound human to you right now but I'm not sure I qualify as a 'who' in your book. In any case I think words lack the ability to adequately convey the answer to that question even under normal circumstances.[/i]
+[i]In your terms I am somewhat a caretaker. I once helped to construct this place. But that was before I gave up my form and bound myself here.[/i]
+[[Are you a prisoner?|Prisoner]]
+[[Nexus]]
+===
+title: Prisoner
+tags: 
+colorID: 0
+position: 3888,-1218
+---
+[i]A prisoner? No. In this place I have the time and freedom to see the whole splendor of creation unfold right in front of me. Part of my binding is that I never desire to leave. Surprises like yourself make it worthwhile.[/i]
+[[Nexus]]
+===
+title: Magic
+tags: 
+colorID: 0
+position: 4472,-626
+---
+[i]The facility has quantum apertures that when adjusted allow an observer to limit the spectrum in which they are observing the multiverse.[/i]
+[[Can you see this for yourself?|Try]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===
+title: Try
+tags: 
+colorID: 0
+position: 4552,-908
+---
+[i]The multiverse is a very big place for a little organic paradox[/i]
+[i]Even at a very limited aperture I'm not sure your mind could take the strain of the information.[/i]
+[[How are you a paradox exactly?|Paradox]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+[[You haven't come all this way not to at least try|Try Anyway]]
+===
+title: Paradox
+tags: 
+colorID: 0
+position: 4901,-578
+---
+[i]Organic life has existed in endless multitudes across the multiverse forever. Organic material simply comes together at some point and forms the basis of what you call life.[/i]
+[i]Though I've never seen anything develop like the brain you have. I think that's what makes you different.[/i]
+[[Maybe that's what will let you see into the multiverse|Try Anyway]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===
+title: Try Anyway
+tags: 
+colorID: 8
+position: 4407,-1220
+---
+[i]Very well. I admit I am curious to see the multiverse through your lens. I will go as slowly as I am able. I cannot know how much will be too much for you to handle. Are you sure you wish to do this?[/i]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+[[You understand the risk. Do it.|Multiverse]]
+===
+title: Leave
+tags: 
+colorID: 0
+position: 4975,-905
+---
+You ask the being if you can leave.
+[i]Of course. I never meant to keep you here against your will. I was merely curious. You are the most unique thing I have encountered in a very long time. I hope this meeting was as memorable for you as it was for me.[/i]
+[i]I've uploaded a flight path that will see you safely outside of the Nexus. Make sure you don't use your jump drives until then.[/i]
+You feel the insistent hugging of the conduit all around you relax and find you can stand. You approach the door with apprehension but as promised it opens for you, leading you back to your ship.
+You take a moment to look back at the open door. You cannot know what you are leaving behind. But maybe it is better this way.
+You board your ship and just as you sit the layers of metal unfurl once more and you are eased out once more into the dark. As promised the flight path lights up on your monitor. How it could track anything in this you can't possibly know. You can only be grateful it gave you this way out since you had no idea how you would escape in the first place.
+It will take hours for your ship to escape the abyss. You might as well get some rest. You program the autopilot to follow your flight path and jump upon reaching your destination and then close your eyes. It's not long before you are asleep.
+===
+title: Multiverse
+tags: 
+colorID: 0
+position: 5220,-1250
+---
+[i]I'm not sure you do...[/i]
+The figure looks sad before it dissolves, returning back into maelstrom of light all around you.
+It's slow at first, slow and insidious as transitioning from awake to asleep. As if watching the formation of a dream you see the ripples start to converge into shapes. Vague at first but getting clearer.
+There are stars. So many stars. Stars superimposed by stars so many times they fill the void of space so that there is no black but one vast sheet of rippling light, full to the brim with color, And yet, impossibly, between this saturated sea of suns is stuffed an obscene myriad of planets.
+It all writhes like a vast, shapeless heart until it cuts off suddenly. You're left short of breath.
+[i]You see? Even I did not know your perception was so limited.[/i]
+[[Was that the multiverse?|Perception]]
+[[You still want to try. Maybe start with just one universe?|Keep Going]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===
+title: Perception
+tags: 
+colorID: 0
+position: 5529,-1195
+---
+[i]No. That was as much of the multiverse that you could comprehend before your brain started to overload.[/i]
+[[Try it this time but go for smaller. One universe at a time.|Keep Going]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===
+title: Keep Going
+tags: 
+colorID: 1
+position: 5092,-1526
+---
+[i]That is more limiting than I thought possible... But it just might work.[/i]
+The figure dissolves once more from the display, the ripples dancing chaotically all around you. This time though, you notice that they start to fall into a sort of pattern. A rhythm that swishes like the skirts of a flamenco dancer as she spins. You feel yourself being eased into... somewhere...
+And like falling into a dream you're there.
+The size of any universe is daunting. There is more space than can be conceived of, let alone explored. And yet here you are seeing it all. Trillions of burning suns and molten planets. Frozen comets and fire and void and the silent screaming of the expanding, imploding, colliding, dispersing galaxies.
+You can see it splitting, tearing, forming again like cells dividing and combining to form the building blocks of life. You hear the murmur of ten billion worlds. Life thrumming as it spreads across the planets and reaches out towards space. It all comes together in a discordant susurrus that plays upon your spine.
+You try to focus on the details but as you do your awareness seems to split like endless prisms so that you become only aware of the whole of whatever you want to focus on. Instead of seeing your home planet you see all planets displayed in countless windows in your mind. Instead of your people you see all the peoples populating all the corners of the universe. Every attempt to adjust, to limit the information makes it worse, your thoughts compiling till you are helpless to them, each addition sending a shock to your brain.
+[i]Enough.[/i]
+It cuts you off, appearing like a reprimanding father to you.
+[i]I keep telling you that this is too much for you.[/i]
+[[You can't explain why, but you're pretty sure the being showed you your own universe. You'd like to see an alternate one.|Alternate]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===
+title: Alternate
+tags: 
+colorID: 0
+position: 4832,-1533
+---
+[i]I gave you the easy one and it still almost overwhelmed you. You think you're ready to see other, more unexpected possibilities?[/i]
+[[You've explored all sorts of places in this universe. How can you not try and peek into another?|Explore]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===
+title: Explore
+tags: 
+colorID: 0
+position: 4568,-1530
+---
+The being is far less polite this time and quickly thrusts you into the stormy chaos of an unfamiliar universe.
+This one has an abundance of plasma. Instead of igniting and exploding, apparently this universe began as a deluge of plasma. You see rivers of it spanning lightyears, a network of glowing strings of light.
+And what was in those things. Creatures large and with one great eye so huge that it looks like a mouth. The creature seems to girded by what you could only describe as a mechanical ant-hill. Insect like machines cover it from head to toe, seeming to mine something from its skin. From all appearances it doesn't seem to mind.
+There are creatures beyond count swimming freely in these rivers. Some of the greater beasts guide the flows, causing them to damn up and swirl into lakes and vast oceans.
+You're struck by this universe's disparate beauty and with this opening up on your mind to the possibilities of the multiverse you feel as if a gentle push with your mind will open up its secrets to you.
+Do you think you're ready?
+[[Ready or not you have to see this.|Push]]
+[[You're definitely not ready.|No]]
+===
+title: Push
+tags: 
+colorID: 0
+position: 4567,-1810
+---
+You've come this far. Without entirely knowing how you manage to 'push' against the aperture of this universe and extend it beyond. The same overwhelming picture of the endless stars emerges once more and yet somehow this time you can see even more.
+They don't just hand motionless in the ether. Rather they flit like sparks shooting off a fire. Spinning like leaves in the wind during an inferno. You can feel the whole multiverse flood into you, the roiling of existence pervading the entirety of your body, lifting you up while crushing you into oblivion.
+It's more than a thousand minds could hold and it's all flooding mercilessly into you. There is no stopping it. At last your mind breaks and is left vulnerable to the onslaught of the multiverse. Wave upon wave of conflicting realities that leave you lost in a spiral of agony and ecstasy.
+You will never leave.
+===
+title: No
+tags: 
+colorID: 0
+position: 4309,-1526
+---
+[i]A wise decision. I believe you were at the limits of your perception. Anything further would have been too much for you.[/i]
+[[You suddenly feel an urge to prove this thing wrong.|Push]]
+[[You believe you've had enough of this strange, oddly condescending being|Leave]]
+===

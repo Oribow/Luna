@@ -1,0 +1,6 @@
+name: Auto Bomb
+backgroundImage: background.png
+quest:
+  yarnFile: AutoBomb
+posX: 1135
+posY: 865

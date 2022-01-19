@@ -10,7 +10,6 @@ using Luna.Biz.DataTransferObjects;
 using Luna.Biz.Models;
 using Luna.Biz.QuestPlayer;
 using System.IO;
-using Luna.Biz.DataAccessors.Scenes;
 
 namespace Luna.Biz.Services
 {
@@ -29,7 +28,7 @@ namespace Luna.Biz.Services
             this.sceneService = sceneService;
         }
 
-        public async Task<IQuestLogSession> GetOrCreateQuestLogSession(int playerId, int sceneId)
+        public async Task<IQuestLogSession> GetOrCreateQuestLogSession(int playerId, Guid sceneId)
         {
             var sceneDataInfo = await sceneService.GetSceneDataInfo(sceneId);
             var scene = await sceneRepo.GetSceneData(sceneDataInfo.Id);

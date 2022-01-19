@@ -1,5 +1,6 @@
 ﻿using Luna.Biz.DataTransferObjects;
 using Luna.Biz.Services;
+using Luna.Communications;
 using Luna.Extensions;
 using Luna.GalaxyMap.Testing;
 using SkiaSharp;
@@ -36,11 +37,31 @@ namespace Luna.GalaxyMap
             get => playerPosition;
             set => SetProperty(ref playerPosition, value);
         }
+        public bool IsContextMenuVisible
+        {
+            get => isContextMenuVisible;
+            set => SetProperty(ref isContextMenuVisible, value);
+        }
+        public ICommand ExploreSystem { get; }
+        public ICommand LeaveSystem { get; }
+        public bool IsJumpSelectionVisible
+        {
+            get => isJumpSelectionVisible;
+            set => SetProperty(ref isJumpSelectionVisible, value);
+        }
+        public IReadOnlyList<TravelOptionViewModel> TravelOptions
+        {
+            get => travelOptions;
+            set => SetProperty(ref travelOptions, value);
+        }
 
         SKRect mapBounds;
         PlayerPosition playerPosition;
         IReadOnlyCollection<SolarSystem> solarSystems;
         IReadOnlyCollection<PointOfInterest> sectors;
+        bool isContextMenuVisible = false;
+        bool isJumpSelectionVisible = false;
+        IReadOnlyList<TravelOptionViewModel> travelOptions;
 
         readonly SceneService sceneService;
         readonly PlayerService playerService;
@@ -50,42 +71,32 @@ namespace Luna.GalaxyMap
             this.sceneService = sceneService;
             this.playerService = playerService;
 
+            ExploreSystem = new Command(HandleExploreSystem);
+            LeaveSystem = new Command(HandleLeaveSystem);
+
             Sectors = new PointOfInterest[] {
                     new PointOfInterest("Core Sector", new SKPoint(0, 0), false),
                     new PointOfInterest("Aquatos Sector", new SKPoint(500, -200), false),
                     new PointOfInterest("Helios Sector", new SKPoint(-400, 300), false) };
 
-            MessagingCenter.Subscribe<PlayerService>(this, "player_started_traveling", (sender) => LoadPlayerData());
+            MessagingCenter.Subscribe<PlayerService>(this, "player_started_traveling", (sender) => LoadData());
 
-            LoadLocationData();
+            LoadData();
         }
 
-        private async Task LoadLocationData()
+        private async Task LoadData()
         {
             var locs = await sceneService.GetLocations(App.PlayerId);
-            SolarSystems = locs.Select(ls => new SolarSystem(ls.Position.ToSKPoint(), ls.Name, ls.HasBeenVisited, ls.SceneId)).ToArray();
+            SolarSystems = locs.Select(ls => new SolarSystem(ls.Position.ToSKPoint(), ls.Name, ls.SceneId)).ToArray();
 
             UpdateMapBounds();
-            await LoadPlayerData();
-        }
 
-        private async Task LoadPlayerData()
-        {
             var playerState = await playerService.GetPlayersState(App.PlayerId);
 
             var curPlayerScene = SolarSystems.Where(s => s.SceneId == playerState.CurrentSceneId).First();
             var prevPlayerScene = SolarSystems.Where(s => s.SceneId == playerState.PrevSceneId).First();
 
             PlayerPosition = new PlayerPosition(curPlayerScene, prevPlayerScene, playerState.LockoutEndUTC, playerState.LockoutStartUTC);
-
-            if (PlayerPosition.IsTraveling)
-            {
-                Device.StartTimer(PlayerPosition.ArrivalUTC - DateTime.UtcNow, () => { OnPlayerArrives(); return false; });
-            }
-            else if (!PlayerPosition.Position.HasBeenVisited)
-            {
-                OnPlayerArrives();
-            }
         }
 
         private void UpdateMapBounds()
@@ -109,13 +120,28 @@ namespace Luna.GalaxyMap
             MapBounds = new SKRect(min.X, min.Y, max.X, max.Y);
         }
 
-        private async Task OnPlayerArrives()
+        private void HandleExploreSystem()
         {
-            if (PlayerPosition.Position.HasBeenVisited)
-                return;
+            IsContextMenuVisible = false;
+            App.Current.MainPage.Navigation.PushAsync(new QuestLogPage(PlayerPosition.Position.SceneId));
+        }
 
-            await sceneService.ArriveAtScene(App.PlayerId, PlayerPosition.Position.SceneId);
-            await LoadLocationData();
+        private async void HandleLeaveSystem()
+        {
+            IsContextMenuVisible = false;
+            IsJumpSelectionVisible = true;
+
+            var options = await playerService.GetNextLocationOptions(App.PlayerId);
+            TravelOptions = options.Select(op => new TravelOptionViewModel(op, HandleTravelHere))
+                .ToArray();
+        }
+
+        private async void HandleTravelHere(Guid sceneId)
+        {
+            IsJumpSelectionVisible = false;
+            IsContextMenuVisible = false;
+            await playerService.LetPlayerTravelTo(App.PlayerId, sceneId);
+            await LoadData();
         }
     }
 }

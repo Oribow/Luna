@@ -11,8 +11,9 @@ namespace Luna.Biz.Services
         Task CreatePlayer(int id);
         Task<bool> DoesPlayerExist(int id);
         Task<PlayerStateDTO> GetPlayersState(int playerId);
-        Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, int sceneId);
+        Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, Guid sceneId);
         Task RevivePlayer(int playerId);
         Task<PlayerStateDTO> KillPlayer(int playerId);
+        Task<SceneDataInfoDTO[]> GetNextLocationOptions(int playerId);
     }
 }

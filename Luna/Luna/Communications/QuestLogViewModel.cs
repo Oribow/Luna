@@ -4,8 +4,6 @@ using Luna.Biz.QuestPlayer;
 using Luna.Biz.QuestPlayer.Messages;
 using Luna.Biz.Services;
 using Luna.Communications.Messages;
-using Luna.Extensions;
-using Luna.Observation;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -77,7 +75,7 @@ namespace Luna.Communications
             OnContinue = nextMessage;
         }
 
-        public async Task LoadQuestLog(int sceneId)
+        public async Task LoadQuestLog(Guid sceneId)
         {
             questSession = await questService.GetOrCreateQuestLogSession(App.PlayerId, sceneId);
             var history = (await questSession.GetHistory()).ToArray();

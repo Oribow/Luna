@@ -29,7 +29,7 @@ namespace Luna.GalaxyMap
         public GalaxyMapPage()
         {
             InitializeComponent();
-            
+
             playerService = App.Container.Resolve<PlayerService>();
 
             BindingContext = new GalaxyMapViewModel(App.Container.Resolve<SceneService>(), playerService);
@@ -46,12 +46,11 @@ namespace Luna.GalaxyMap
         private void OpenContextWindow(SolarSystem solarSystem)
         {
             var vm = (GalaxyMapViewModel)BindingContext;
-            if (vm.PlayerPosition == null || vm.PlayerPosition.IsTraveling)
+            if (vm.PlayerPosition == null || vm.PlayerPosition.IsTraveling || vm.PlayerPosition.Position != solarSystem)
                 return;
 
             SKPoint targetPos = CanvasCoordToXamarin(GalaxyMapView.CanvasPointToViewPoint(solarSystem.Position));
-            ContextWindow.IsVisible = true;
-
+           
             SKPoint offset = SKPoint.Empty;
             if (targetPos.X > GalaxyMapView.Width * 0.5f)
                 offset.X = -(float)ContextWindow.Width;
@@ -60,15 +59,15 @@ namespace Luna.GalaxyMap
             targetPos += offset;
 
             AbsoluteLayout.SetLayoutBounds(ContextWindow, new Rectangle(targetPos.X, targetPos.Y, 0.4, AbsoluteLayout.AutoSize));
-            if (vm.PlayerPosition.Position == solarSystem)
-                ContextWindow.BindingContext = new VisitContextWindowViewModel(solarSystem.SceneId);
-            else
-                ContextWindow.BindingContext = new JumpContextWindow(solarSystem.SceneId, playerService);
+
+            vm.IsContextMenuVisible = true;
         }
 
         private void CloseContextWindow()
         {
-            ContextWindow.IsVisible = false;
+            var vm = (GalaxyMapViewModel)BindingContext;
+            vm.IsContextMenuVisible = false;
+            vm.IsJumpSelectionVisible = false;
         }
 
         private void GalaxyMapView_OnSolarSystemClicked(SolarSystem obj)

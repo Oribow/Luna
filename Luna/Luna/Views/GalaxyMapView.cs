@@ -113,7 +113,7 @@ namespace Luna.Views
 
             return new SKPoint(coor.X, coor.Y);
         }
-
+            
         private void OnSizeChanged(object sender, EventArgs e)
         {
             var centerPoint = new SKPoint(this.CanvasSize.Width / 2, this.CanvasSize.Height / 2);
@@ -151,6 +151,8 @@ namespace Luna.Views
                     return;
                 }
             }
+
+            OnViewMoved?.Invoke();
         }
     }
 }

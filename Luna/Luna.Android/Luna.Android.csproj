@@ -80,7 +80,6 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\testdata.zip" />
     <None Include="Resources\AboutResources.txt" />
-    <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +93,10 @@
     <ProjectReference Include="..\..\Luna.Biz\Luna.Biz.csproj">
       <Project>{4CE917BD-F94A-4BED-B02C-A2C05BBCD86B}</Project>
       <Name>Luna.Biz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Luna.Schemas\Luna.Schemas.csproj">
+      <Project>{F7D34A99-CD2B-46B2-9415-D018776C6223}</Project>
+      <Name>Luna.Schemas</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\YarnSpinner\YarnSpinner.csproj">
       <Project>{AB355357-21EE-4FCF-9A31-58A4C5899F2B}</Project>

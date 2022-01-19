@@ -28,6 +28,11 @@ namespace Luna.Services
             return ((IPlayerService)gameStateService).DoesPlayerExist(id);
         }
 
+        public Task<SceneDataInfoDTO[]> GetNextLocationOptions(int playerId)
+        {
+            return ((IPlayerService)gameStateService).GetNextLocationOptions(playerId);
+        }
+
         public Task<PlayerStateDTO> GetPlayersState(int playerId)
         {
             return ((IPlayerService)gameStateService).GetPlayersState(playerId);
@@ -41,7 +46,7 @@ namespace Luna.Services
             return state;
         }
 
-        public async Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, int sceneId)
+        public async Task<PlayerStateDTO> LetPlayerTravelTo(int playerId, Guid sceneId)
         {
             var state = await gameStateService.LetPlayerTravelTo(playerId, sceneId);
 
