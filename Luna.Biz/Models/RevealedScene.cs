@@ -19,7 +19,7 @@ namespace Luna.Biz.Models
         [NotMapped]
         public Vector2 Position
         {
-            get => new Vector2(PositionY, PositionY);
+            get => new Vector2(PositionX, PositionY);
             set { PositionX = value.X; PositionY = value.Y; }
         }
         public string MapName { get; set; }

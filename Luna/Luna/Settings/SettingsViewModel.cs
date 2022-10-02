@@ -7,8 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
-using Xamarin.Essentials;
+//using Xamarin.Essentials;
 using Xamarin.Forms;
+using Luna.Services;
 
 namespace Luna.Settings
 {
@@ -20,11 +21,13 @@ namespace Luna.Settings
         private bool resetInProgress = false;
         IDbContextFactory<LunaContext> contextFactory;
         PlayerService playerService;
+        IEmailService emailService;
 
-        public SettingsViewModel(IDbContextFactory<LunaContext> contextFactory, PlayerService playerService)
+        public SettingsViewModel(IDbContextFactory<LunaContext> contextFactory, PlayerService playerService, IEmailService emailService)
         {
             this.contextFactory = contextFactory;
             this.playerService = playerService;
+            this.emailService = emailService;
 
             ResetData = new Command(HandleResetData, () => !resetInProgress);
             ContactUs = new Command(HandleContactUs);
@@ -39,26 +42,9 @@ namespace Luna.Settings
             await ((App)App.Current).OpenLandingPage();
         }
 
-        public async void HandleContactUs()
+        public void HandleContactUs()
         {
-            try
-            {
-                var message = new EmailMessage
-                {
-                    Subject = "Feedback",
-                    Body = "Hi StrangeVoid-team,\n",
-                    To = new List<string>() { "lyra-app@outlook.com" },
-                };
-                await Email.ComposeAsync(message);
-            }
-            catch (FeatureNotSupportedException fbsEx)
-            {
-                // Email is not supported on this device
-            }
-            catch (Exception ex)
-            {
-                // Some other exception occurred
-            }
+            emailService.OpenEmailClient("lyra-app@outlook.com", "Feedback", "Hi StrangeVoid-team,");
         }
     }
 }

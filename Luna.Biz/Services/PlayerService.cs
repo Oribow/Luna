@@ -33,6 +33,7 @@ namespace Luna.Biz.Services
 
                 player.CurrentSceneId = starterScene.SceneDataId;
                 player.PrevSceneId = starterScene.SceneDataId;
+                player.GameState = GameState.Intro;
                 await context.SaveChangesAsync();
             }
         }
@@ -69,7 +70,8 @@ namespace Luna.Biz.Services
                 player.PrevSceneId = player.CurrentSceneId;
                 player.CurrentSceneId = sceneId;
                 player.LockoutStartUTC = DateTime.UtcNow;
-                player.LockoutEndUTC = player.LockoutStartUTC + new TimeSpan(0, 0, 5);
+                player.LockoutEndUTC = player.LockoutStartUTC + (player.TravelCounter == 0 ? new TimeSpan(0, 0, 30) : new TimeSpan(6, 0, 0));
+                player.TravelCounter++;
                 await context.SaveChangesAsync();
 
                 await sceneService.RevealScene(playerId, sceneId, context);
@@ -106,7 +108,7 @@ namespace Luna.Biz.Services
                     throw new InvalidOperationException("Player is already dead");
 
                 player.GameState = GameState.Dead;
-                player.LockoutEndUTC = DateTime.UtcNow + new TimeSpan(0, 1, 0);
+                player.LockoutEndUTC = DateTime.UtcNow + new TimeSpan(0, 0, 30);
                 player.LockoutStartUTC = DateTime.UtcNow;
 
                 context.QuestLogs.RemoveRange(context.QuestLogs.Where(q => q.PlayerId == playerId && q.SceneDataId == player.CurrentSceneId));
@@ -136,6 +138,18 @@ namespace Luna.Biz.Services
                 }
 
                 return locations;
+            }
+        }
+
+        public async Task PlayerCompletedIntro(int playerId)
+        {
+            using (var context = contextFactory.CreateDbContext())
+            {
+                var player = await context.Players
+                    .Where(p => p.Id == playerId).FirstAsync();
+
+                player.GameState = GameState.Alive;
+                await context.SaveChangesAsync();
             }
         }
     }

@@ -13,6 +13,8 @@ namespace Luna.Biz.Services
 {
     public class SceneService
     {
+        const string StarterSceneId = "31d8a726-0000-4e11-acad-1474434b2d21";
+
         IDbContextFactory<LunaContext> contextFactory;
         ISceneDataRepository sceneRepo;
 
@@ -45,7 +47,7 @@ namespace Luna.Biz.Services
 
         internal Task<RevealedScene> CreateStarterScene(int playerId, LunaContext context)
         {
-            return RevealScene(playerId, sceneRepo.ListScenes().First(), context);
+            return RevealScene(playerId, Guid.Parse(StarterSceneId), context);
         }
 
         internal async Task<RevealedScene> RevealScene(int playerId, Guid sceneId, LunaContext context)

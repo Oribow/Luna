@@ -10,12 +10,16 @@ namespace Luna.GalaxyMap
         public SKPoint Position { get; }
         public string Name { get; }
         public Guid SceneId { get; }
+        public float Scale { get; }
+        public SKColor Tint { get; }
 
-        public SolarSystem(SKPoint position, string name, Guid sceneId)
+        public SolarSystem(SKPoint position, string name, Guid sceneId, float scale, SKColor tint)
         {
             Position = position;
             Name = name;
             SceneId = sceneId;
+            Scale = scale;
+            Tint = tint;
         }
     }
 }

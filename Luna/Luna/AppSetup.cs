@@ -38,8 +38,8 @@ namespace Luna
             var contextFactory = container.Resolve<IDbContextFactory<LunaContext>>();
             var playerService = container.Resolve<PlayerService>();
 
-            await GameCreator.StartNewGame(contextFactory, playerService);
-            //await GameCreator.EnsureGameExist(contextFactory, playerService);
+            //await GameCreator.StartNewGame(contextFactory, playerService);
+            await GameCreator.EnsureGameExist(contextFactory, playerService);
         }
     }
 }

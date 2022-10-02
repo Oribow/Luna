@@ -67,7 +67,10 @@ namespace Luna.Droid.Data
 
                 string completeFileName = Path.Combine(BasePath, fileName);
                 Directory.CreateDirectory(Path.GetDirectoryName(completeFileName));
-                
+
+                if (File.Exists(completeFileName))
+                    File.Delete(completeFileName);
+
                 using (var streamIn = file.Open())
                 using (var streamOut = File.OpenWrite(completeFileName))
                 {

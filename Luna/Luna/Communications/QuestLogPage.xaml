@@ -47,7 +47,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <AbsoluteLayout>
-            <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Source="background_g509a92707_1920.jpg" Aspect="AspectFill"/>
+            <Image AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Source="{Binding BackgroundImage}" Aspect="AspectFill"/>
             <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Spacing="0">
                 <CollectionView ItemsSource="{Binding DisplayMessages}"
                                 ItemTemplate="{StaticResource messageTemplateSelector}"

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using Yarn;
@@ -38,7 +39,7 @@ namespace YarnCompilerTool
                 program = result.Program;
                 defaultStringTable = result.StringTable;
 
-                
+
             }
             catch (Exception pe)
             {
@@ -71,13 +72,17 @@ namespace YarnCompilerTool
             }
 
             // write byte code
-            using (FileStream f = File.OpenWrite(Path.ChangeExtension(file, "yrc")))
+            string byteFileName = Path.ChangeExtension(file, "yrc");
+            if (File.Exists(byteFileName)) File.Delete(byteFileName);
+            using (FileStream f = File.OpenWrite(byteFileName))
             {
                 program.WriteTo(f);
             }
 
             // write string table
-            using (StreamWriter writer = new StreamWriter(File.OpenWrite(Path.ChangeExtension(file, ".csv"))))
+            string stringTableFileName = Path.ChangeExtension(file, ".csv");
+            if (File.Exists(stringTableFileName)) File.Delete(stringTableFileName);
+            using (StreamWriter writer = new StreamWriter(File.OpenWrite(stringTableFileName)))
             {
                 var lines = defaultStringTable.Select(s => $"{s.Key};{s.Value.text};");
                 foreach (var line in lines)
@@ -104,6 +109,18 @@ namespace YarnCompilerTool
                 content = Regex.Replace(content, $"\\|{nodeName}]]", $"|{improvedNodeName}]]");
                 content = Regex.Replace(content, $"^title: {nodeName}$", $"title: {improvedNodeName}", RegexOptions.Multiline | RegexOptions.IgnoreCase);
             }
+
+            const string optionsPattern = @"\[\[(.*?)\|(.*?)\]\]";
+            var bm = Regex.Match(content, optionsPattern, RegexOptions.Multiline | RegexOptions.IgnoreCase);
+            while (bm.Success)
+            {
+                string label = bm.Groups[1].Value;
+                string dst = bm.Groups[2].Value;
+
+                content = Regex.Replace(content, @$"\[\[({Regex.Escape(label)})\|({Regex.Escape(dst)})\]\]", $"-> {label}\n  <<jump {dst}>>");
+                bm = Regex.Match(content, optionsPattern, RegexOptions.Multiline | RegexOptions.IgnoreCase);
+            }
+            Log.Information(content);
             return content;
         }
     }

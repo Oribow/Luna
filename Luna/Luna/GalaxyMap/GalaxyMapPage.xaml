@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:galaxymap="clr-namespace:Luna.GalaxyMap" xmlns:views="clr-namespace:Luna.Views"
+             xmlns:galaxymap="clr-namespace:Luna.GalaxyMap" xmlns:views="clr-namespace:Luna.Views" xmlns:settings="clr-namespace:Luna.Settings"
              x:Class="Luna.GalaxyMap.GalaxyMapPage"
              x:DataType="galaxymap:GalaxyMapViewModel"
              NavigationPage.HasNavigationBar="False">
@@ -11,8 +11,10 @@
                              Sectors="{Binding Sectors}" x:Name="GalaxyMapView"
                              OnSolarSystemClicked="GalaxyMapView_OnSolarSystemClicked"
                              OnViewMoved="GalaxyMapView_OnViewMoved"/>
+        <settings:SettingsButton BackgroundColor="Black" AbsoluteLayout.LayoutBounds="0,0"/>
+        
         <Frame x:Name="ContextWindow" AbsoluteLayout.LayoutFlags="WidthProportional" AbsoluteLayout.LayoutBounds="50,50,0.4,AutoSize"
-               BackgroundColor="{StaticResource Panel Background Opaque}"
+               BackgroundColor="{StaticResource Panel Background}"
                IsVisible="{Binding IsContextMenuVisible}">
             <StackLayout>
                 <Button Text="Explore" Command="{Binding ExploreSystem}"/>
@@ -20,22 +22,26 @@
             </StackLayout>
         </Frame>
 
-        <Frame AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1"
-               BackgroundColor="{StaticResource Panel Background Opaque}" Margin="50"
+        <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5"
+               BackgroundColor="{StaticResource Panel Background}"
                IsVisible="{Binding IsJumpSelectionVisible}">
             <StackLayout>
-                <Label Text="Where do you want to go?" TextColor="White"/>
-                <CollectionView ItemsSource="{Binding TravelOptions}">
+                <Label Text="Where do you want to go?" TextColor="White" FontSize="Title"/>
+                <Label Text="WARNING: You cant come back here!" TextColor="Red"/>
+                <CollectionView ItemsSource="{Binding TravelOptions}" HeightRequest="200" Margin="0,20,0,0">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="galaxymap:TravelOptionViewModel">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding LocationName}"/>
-                                <StackLayout.GestureRecognizers>
+                            <Frame BorderColor="White" BackgroundColor="{StaticResource Panel Item Opaque}">
+                                <Label Text="{Binding LocationName}" TextColor="White"/>
+                                <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding TravelHere}"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
+                                </Frame.GestureRecognizers>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
                 </CollectionView>
             </StackLayout>
         </Frame>

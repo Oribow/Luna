@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace Luna.Communications.Messages
 {

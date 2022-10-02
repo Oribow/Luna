@@ -1,4 +1,5 @@
-﻿using SkiaSharp;
+﻿using Luna.GalaxyMap.Testing;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ namespace Luna.GalaxyMap
 {
     class UIRenderer
     {
-        GalaxyMapViewModel mapData;
+        IGalaxyMapDataProvider mapData;
 
-        public UIRenderer(GalaxyMapViewModel mapData)
+        public UIRenderer(IGalaxyMapDataProvider mapData)
         {
             this.mapData = mapData;
         }
@@ -39,7 +40,7 @@ namespace Luna.GalaxyMap
                     TextSize = 50
                 };
 
-                canvas.DrawText("ETA: " + mapData.PlayerPosition.ETA.ToString(@"hh\:mm\:ss"), new SKPoint(0, 60), font);
+                canvas.DrawText("ETA: " + mapData.PlayerPosition.ETA.ToString(@"hh\:mm\:ss"), new SKPoint(120, 60), font);
             }
         }
     }

@@ -14,6 +14,7 @@ namespace Luna.GalaxyMap.Testing
             this.dataProvider = dataProvider;
         }
 
-        public abstract void Draw(SKCanvas canvas, float zoomLevel);
+        public abstract void Draw1(SKCanvas canvas, float zoomLevel, float time);
+        public virtual void Draw2(SKCanvas canvas, float zoomLevel, float time) { }
     }
 }

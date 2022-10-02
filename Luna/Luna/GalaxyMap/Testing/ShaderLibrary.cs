@@ -144,9 +144,9 @@ uniform half4 tint;
 half4 main(float2 fragcoord) {
   float2 uv = (fragcoord - iPos.xy) / iResolution.y;
   float d = length(uv);
-  float m = 0.03 / d;
+  float m = 0.02 / d;
   m *= _smoothstep(0.5, 0.2, d);
-  return tint * m;
+  return tint  * m;
 }";
 
         public static SKRuntimeEffect Compile(string shader)

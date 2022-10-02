@@ -9,9 +9,9 @@ namespace Luna.Extensions
 {
     static class SKBitmapExtensions
     {
-        public static SKBitmap LoadBitmapResource(Type type, string resourceID)
+        public static SKBitmap LoadBitmapResource(string resourceID)
         {
-            Assembly assembly = type.GetTypeInfo().Assembly;
+            Assembly assembly = typeof(SKBitmapExtensions).GetTypeInfo().Assembly;
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceID))
             {

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Luna.Biz;
 using Luna.Biz.Services;
+using Luna.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace Luna.Settings
 
             var contextFactory = App.Container.Resolve<IDbContextFactory<LunaContext>>();
             var playerService = App.Container.Resolve<PlayerService>();
-            BindingContext = new SettingsViewModel(contextFactory, playerService);
+            var emailService = App.Container.Resolve<IEmailService>();
+            BindingContext = new SettingsViewModel(contextFactory, playerService, emailService);
         }
 
         private async void ResetDataButton_Clicked(object sender, EventArgs e)

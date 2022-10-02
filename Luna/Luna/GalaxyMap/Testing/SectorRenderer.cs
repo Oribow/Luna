@@ -1,4 +1,5 @@
-﻿using SkiaSharp;
+﻿using Luna.Extensions;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,7 @@ namespace Luna.GalaxyMap.Testing
             Color = Color.White.ToSKColor(),
             TextAlign = SKTextAlign.Center
         };
-        SKPaint starPaint = new SKPaint() {
-            BlendMode = SKBlendMode.Plus
-        };
+        SKBitmap locationMarker;
         SKRuntimeEffectUniforms starShaderInputs;
         SKRuntimeEffect starEffect;
 
@@ -41,27 +40,17 @@ namespace Luna.GalaxyMap.Testing
             var stars = dataProvider.SolarSystems;
 
             // draw stars
-            float starSize = 50;
-            float starRad = 50 * 0.5f;
-            float[] iPos = new float[2];
+            float markerSize = 35f / zoomLevel;
+            float halfMarkerSize = markerSize * 0.5f;
             for (int i = 0; i < stars.Count; i++)
             {
-                iPos[0] = stars[i].Position.X;
-                iPos[1] = stars[i].Position.Y;
-                starShaderInputs["iPos"] = iPos;
-                starShaderInputs["tint"] = new float[4] { 1, 0, 0, 1 };
-
-                var starShader = starEffect.ToShader(false, starShaderInputs);
-                starPaint.Shader = starShader;
-                canvas.DrawRect(stars[i].Position.X - starRad, stars[i].Position.Y - starRad, starSize, starSize, starPaint);
+                var rect = new SKRect(stars[i].Position.X - halfMarkerSize, stars[i].Position.Y - halfMarkerSize, stars[i].Position.X + halfMarkerSize, stars[i].Position.Y + halfMarkerSize);
+                canvas.DrawBitmap(locationMarker, rect);
             }
         }
 
         private void LoadShaders() {
-            starEffect = ShaderLibrary.Compile(ShaderLibrary.Star);
-            starShaderInputs = new SKRuntimeEffectUniforms(starEffect);
-            starShaderInputs["iResolution"] = new float[2] { 50, 50 };
-            starShaderInputs["iPos"] = new float[2];
+            locationMarker = SKBitmapExtensions.LoadBitmapResource("Luna.GalaxyMap.Assets.location_marker.png");
         }
     }
 }

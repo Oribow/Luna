@@ -94,7 +94,7 @@ namespace YarnCompilerTool
                 while (!reader.EndOfStream)
                 {
                     string line = reader.ReadLine();
-                    var parts = line.Split("\t");
+                    var parts = line.Split(",");
 
                     float x = float.Parse(parts[0]);
                     float y = float.Parse(parts[1]);
@@ -117,10 +117,10 @@ namespace YarnCompilerTool
             using (var stream = File.OpenWrite("./positions.csv"))
             using (var writer = new StreamWriter(stream))
             {
-                writer.WriteLine("x\ty\tfree");
+                writer.WriteLine("x,y,taken");
                 foreach (var loc in locations)
                 {
-                    writer.WriteLine($"{loc.Position.X}\t{loc.Position.Y}\t{loc.WasTaken}");
+                    writer.WriteLine($"{loc.Position.X},{loc.Position.Y},{loc.WasTaken}");
                 }
             }
         }

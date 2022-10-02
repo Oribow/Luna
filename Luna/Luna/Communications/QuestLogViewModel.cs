@@ -73,12 +73,14 @@ namespace Luna.Communications
             nextMessage = new Command(Continue, () => ReadyForNextMessage && !HasReachedEnd);
 
             OnContinue = nextMessage;
+            BackgroundImage = "background_g509a92707_1920";
         }
 
         public async Task LoadQuestLog(Guid sceneId)
         {
             questSession = await questService.GetOrCreateQuestLogSession(App.PlayerId, sceneId);
             var history = (await questSession.GetHistory()).ToArray();
+            BackgroundImage = questSession.DefaultBackgroundImage;
 
             for (int iMsg = 0; iMsg < history.Length; iMsg++)
                 ProcessMessage(history[iMsg]);

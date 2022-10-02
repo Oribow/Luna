@@ -12,6 +12,7 @@ using Luna.Database;
 using Luna.Droid;
 using Luna.Droid.Data;
 using Luna.Droid.Services;
+using Luna.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace Luna.Droid
                 .As<SceneDataRepository>()
                 .SingleInstance();
             builder.RegisterType<AndroidNotificationManager>().As<INotificationManager>().SingleInstance();
+            builder.RegisterType<EmailService>().As<IEmailService>().SingleInstance();
         }
     }
 }

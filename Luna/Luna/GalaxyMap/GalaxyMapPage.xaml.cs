@@ -22,8 +22,6 @@ namespace Luna.GalaxyMap
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GalaxyMapPage : ContentPage
     {
-        Stopwatch stopwatch = new Stopwatch();
-
         readonly PlayerService playerService;
 
         public GalaxyMapPage()
@@ -33,6 +31,11 @@ namespace Luna.GalaxyMap
             playerService = App.Container.Resolve<PlayerService>();
 
             BindingContext = new GalaxyMapViewModel(App.Container.Resolve<SceneService>(), playerService);
+        }
+
+        protected override void OnAppearing()
+        {
+            GalaxyMapView.CenterOnPlayer = true;
         }
 
         private SKPoint CanvasCoordToXamarin(SKPoint coor)

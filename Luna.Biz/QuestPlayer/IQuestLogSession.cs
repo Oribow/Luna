@@ -8,6 +8,7 @@ namespace Luna.Biz.QuestPlayer
 {
     public interface IQuestLogSession
     {
+        string DefaultBackgroundImage { get; }
         Task<Message> Continue();
         void SelectOption(int option);
         Task<IEnumerable<Message>> GetHistory();

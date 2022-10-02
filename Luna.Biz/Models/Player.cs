@@ -7,7 +7,8 @@ namespace Luna.Biz.Models
     public enum GameState
     {
         Alive,
-        Dead
+        Dead,
+        Intro
     }
 
     internal class Player
@@ -19,6 +20,8 @@ namespace Luna.Biz.Models
 
         public Guid? CurrentSceneId { get; internal set; }
         public Guid? PrevSceneId { get; internal set; }
+
+        public int TravelCounter { get; internal set; }
 
         private Player() { }
 

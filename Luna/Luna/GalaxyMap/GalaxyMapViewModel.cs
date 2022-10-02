@@ -87,7 +87,24 @@ namespace Luna.GalaxyMap
         private async Task LoadData()
         {
             var locs = await sceneService.GetLocations(App.PlayerId);
-            SolarSystems = locs.Select(ls => new SolarSystem(ls.Position.ToSKPoint(), ls.Name, ls.SceneId)).ToArray();
+
+            /*var newLocs = new LocationDTO[100];
+            Random random = new Random();
+            for (int i = 0; i < 100; i++)
+            {
+                if (i < locs.Length)
+                    newLocs[i] = locs[i];
+                else
+                    newLocs[i] = new LocationDTO(new Vector2((float)(random.NextDouble() * 3000), (float)(random.NextDouble() * 3000)), "Name", Guid.NewGuid());
+            }*/
+            SolarSystems = locs.Select(ls =>
+            {
+                Random random = new Random(ls.SceneId.GetHashCode());
+                var starInstance = StarClass.GenerateStarInstance(random);
+
+                return new SolarSystem(ls.Position.ToSKPoint(), ls.Name, ls.SceneId, starInstance.Scale, starInstance.Tint);
+            }
+            ).ToArray();
 
             UpdateMapBounds();
 

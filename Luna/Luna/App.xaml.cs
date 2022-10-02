@@ -4,6 +4,7 @@ using Luna.Biz.Models;
 using Luna.Biz.Services;
 using Luna.Death;
 using Luna.GalaxyMap;
+using Luna.Introduction;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -35,6 +36,9 @@ namespace Luna
                     break;
                 case GameState.Dead:
                     MainPage = new NavigationPage(new DeathPage());
+                    break;
+                case GameState.Intro:
+                    MainPage = new NavigationPage(new IntroductionPage());
                     break;
                 default:
                     throw new Exception("No page specified for game state");

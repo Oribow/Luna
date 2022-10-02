@@ -30,20 +30,22 @@ namespace Luna.GalaxyMap.Testing
             LoadShaders();
         }
 
-        public override void Draw(SKCanvas canvas, float zoomLevel)
+        public override void Draw1(SKCanvas canvas, float zoomLevel, float time)
         {
             //canvas.Clear(Color.Black.ToSKColor());
-            /*SKPoint offset = new SKPoint(TileColumns * TileSize * 0.5f, TileRows * TileSize * 0.5f);
+           /*
+            SKPoint offset = new SKPoint(TileColumns * TileSize * 0.5f, TileRows * TileSize * 0.5f);
             for (int x = 0; x < TileRows; x++)
             {
                 for (int y = 0; y < TileColumns; y++)
                 {
                     canvas.DrawBitmap(tiles[x, y], new SKPoint(TileSize * x, TileSize * y) - offset);
                 }
-            }*/
-
+            }
+           */
+            
             var localBounds = canvas.LocalClipBounds;
-
+            /*
             // draw star field on top
             starFieldShaderInputs["iResolution"] = new float[] { localBounds.Width, localBounds.Height };
             starFieldShaderInputs["iZoom"] = new float[] { zoomLevel };
@@ -51,7 +53,7 @@ namespace Luna.GalaxyMap.Testing
 
             var starFieldShader = starFieldEffect.ToShader(false, starFieldShaderInputs);
             var combinedShader = SKShader.CreateCompose(starFieldShader, backgroundShader, SKBlendMode.Plus);
-
+            */
             starFieldPaint.Shader = backgroundShader;
             canvas.DrawRect(localBounds, starFieldPaint);
         }
@@ -64,7 +66,7 @@ namespace Luna.GalaxyMap.Testing
                 for (int y = 0; y < TileColumns; y++)
                 {
                     int i = x + y * TileRows;
-                    tiles[x, y] = SKBitmapExtensions.LoadBitmapResource(GetType(), $"Luna.GalaxyMap.Assets.Background.tile{i:000}.png");
+                    tiles[x, y] = SKBitmapExtensions.LoadBitmapResource($"Luna.GalaxyMap.Assets.Background.tile{i:000}.png");
                 }
             }
         }
@@ -72,8 +74,8 @@ namespace Luna.GalaxyMap.Testing
         private void LoadShaders()
         {
             // background
-            var background = SKBitmapExtensions.LoadBitmapResource(GetType(), "Luna.GalaxyMap.Assets.Nebula Blue.png");
-            backgroundShader = SKShader.CreateBitmap(background, SKShaderTileMode.Mirror, SKShaderTileMode.Mirror);
+            var background = SKBitmapExtensions.LoadBitmapResource("Luna.GalaxyMap.Assets.Nebula Blue.png");
+            backgroundShader = SKShader.CreateBitmap(background, SKShaderTileMode.Repeat, SKShaderTileMode.Repeat, SKMatrix.CreateScale(1f, 1f));
 
             // starfield
             starFieldEffect = ShaderLibrary.Compile(ShaderLibrary.StarFieldBackground);

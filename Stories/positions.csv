@@ -1,7 +1,7 @@
-x	y	free
-1135	865	True
-1281	762	True
-1523	1258	True
-123	889	True
-719	422	False
-1001	961	False
+x,y,taken
+0,0,True
+200,-200,True
+500,-100,True
+300,300,True
+-200,200,True
+-100,500,True

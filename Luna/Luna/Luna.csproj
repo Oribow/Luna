@@ -85,6 +85,7 @@
     <None Remove="GalaxyMap\Assets\Background\tile061.png" />
     <None Remove="GalaxyMap\Assets\Background\tile062.png" />
     <None Remove="GalaxyMap\Assets\Background\tile063.png" />
+    <None Remove="GalaxyMap\Assets\location_marker.png" />
     <None Remove="GalaxyMap\Assets\Nebula Blue.jpg" />
     <None Remove="GalaxyMap\Assets\Nebula Blue.png" />
     <None Remove="GalaxyMap\Assets\Nebula Blue_ws.jpg" />
@@ -172,6 +173,7 @@
     <EmbeddedResource Include="GalaxyMap\Assets\Background\tile061.png" />
     <EmbeddedResource Include="GalaxyMap\Assets\Background\tile062.png" />
     <EmbeddedResource Include="GalaxyMap\Assets\Background\tile063.png" />
+    <EmbeddedResource Include="GalaxyMap\Assets\location_marker.png" />
     <EmbeddedResource Include="GalaxyMap\Assets\Nebula Blue.jpg" />
     <EmbeddedResource Include="GalaxyMap\Assets\Nebula Blue.png" />
     <EmbeddedResource Include="GalaxyMap\Assets\Nebula Blue_ws.jpg" />
@@ -192,7 +194,6 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -215,6 +216,9 @@
     <EmbeddedResource Update="Communications\QuestLogPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Introduction\IntroductionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Settings\SettingsButton.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -230,5 +234,9 @@
     <Compile Update="Communications\QuestLogPage.xaml.cs">
       <DependentUpon>QuestLogPage.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GalaxyMap\Assets\Planets\" />
   </ItemGroup>
 </Project>

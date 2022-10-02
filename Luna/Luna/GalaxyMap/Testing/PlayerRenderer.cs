@@ -11,21 +11,34 @@ namespace Luna.GalaxyMap.Testing
     class PlayerRenderer : Renderer
     {
         SKBitmap playerShipTexture;
+        SKPoint prevOffset;
 
         public PlayerRenderer(IGalaxyMapDataProvider provider) : base(provider)
         {
             Load();
         }
 
-        public override void Draw(SKCanvas canvas, float zoomLevel)
+        public override void Draw1(SKCanvas canvas, float zoomLevel, float time)
         {
             if (dataProvider.PlayerPosition == null)
                 return;
 
-            float halfPlayerSize = 50 / zoomLevel;
-            SKPoint playerPos = GetPlayerPos();
+            SKPoint offset;
+            if (!dataProvider.PlayerPosition.IsTraveling)
+            {
+                const float circleRad = 60;
+                const float speed = 0.4f;
+                offset = new SKPoint(MathF.Sin(time * speed), MathF.Cos(time * speed)).Mult(circleRad);
+            }
+            else {
+                offset = new SKPoint(MathF.Max(0, prevOffset.X - 1), MathF.Max(0, prevOffset.Y - 1));
+            }
+
+            const float halfPlayerSize = 25;
+            SKPoint playerPos = GetPlayerPos() + offset;
             var rect = new SKRect(playerPos.X - halfPlayerSize, playerPos.Y - halfPlayerSize, playerPos.X + halfPlayerSize, playerPos.Y + halfPlayerSize);
             canvas.DrawBitmap(playerShipTexture, rect);
+            prevOffset = offset;
         }
 
         private SKPoint GetPlayerPos()
@@ -43,7 +56,7 @@ namespace Luna.GalaxyMap.Testing
 
         private void Load()
         {
-            playerShipTexture = SKBitmapExtensions.LoadBitmapResource(GetType(), "Luna.GalaxyMap.Assets.spaceship.png");
+            playerShipTexture = SKBitmapExtensions.LoadBitmapResource("Luna.GalaxyMap.Assets.spaceship.png");
         }
     }
 }

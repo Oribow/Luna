@@ -21,6 +21,8 @@ namespace Luna.Views
 
         public static readonly BindableProperty PlayerPositionProperty = BindableProperty.Create(nameof(PlayerPosition), typeof(PlayerPosition), typeof(GalaxyMapView), null);
 
+        
+
         public static readonly BindableProperty SectorsProperty = BindableProperty.Create(nameof(Sectors), typeof(IReadOnlyList<PointOfInterest>), typeof(GalaxyMapView), new PointOfInterest[0]);
 
         public static readonly BindableProperty SolarSystemClickedCommandProperty = BindableProperty.Create(nameof(SolarSystemClickedCommand), typeof(ICommand), typeof(GalaxyMapView));
@@ -55,7 +57,9 @@ namespace Luna.Views
         {
             get => (ICommand)GetValue(ViewMovedCommandProperty);
             set => SetValue(ViewMovedCommandProperty, value);
-        }
+        } 
+
+        public bool CenterOnPlayer { get; set; }
 
         public event Action<SolarSystem> OnSolarSystemClicked;
         public event Action OnViewMoved;
@@ -72,8 +76,8 @@ namespace Luna.Views
             mapRenderer = new GalaxMapRenderer2(this);
             scene = new SKBetterScene(mapRenderer)
             {
-                MaxScale = 5,
-                MinScale = 0.3f,
+                MaxScale = 1f,
+                MinScale = 1f,
             };
 
             var touchEffect = new TouchEffect();
@@ -90,14 +94,19 @@ namespace Luna.Views
                 MaxFramesPerSecond = 30,
             };
             sceneGestureResponder.StartResponding();
-
-            SizeChanged += OnSizeChanged;
-            OnSizeChanged(null, null);
         }
 
         public SKPoint CanvasPointToViewPoint(SKPoint canvasPoint)
         {
             return scene.GetViewPointFromCanvasPoint(canvasPoint);
+        }
+
+        public void CenterViewOn(SKPoint point)
+        {
+            scene.MoveToPoint(new SKPoint(
+                point.X - CanvasSize.Width * 0.5f,
+                point.Y - CanvasSize.Height * 0.5f
+                ));
         }
 
         private void TouchEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs args)
@@ -114,11 +123,6 @@ namespace Luna.Views
             return new SKPoint(coor.X, coor.Y);
         }
             
-        private void OnSizeChanged(object sender, EventArgs e)
-        {
-            var centerPoint = new SKPoint(this.CanvasSize.Width / 2, this.CanvasSize.Height / 2);
-            scene.ScreenCenter = centerPoint;
-        }
 
         private void TouchGestureRecognizer_OnPan(object sender, PanEventArgs args)
         {
@@ -131,7 +135,12 @@ namespace Luna.Views
 
         protected override void OnPaintSurface(SKPaintGLSurfaceEventArgs e)
         {
-            base.OnPaintSurface(e);
+            if (CenterOnPlayer)
+            {
+                CenterViewOn(PlayerPosition.Position.Position);
+                CenterOnPlayer = false;
+            }
+
             //DebugDrawer.Instance.LogFrame();
             scene.Render(e.Surface.Canvas);
             //uiRenderer.Render(args.Surface.Canvas);
@@ -140,7 +149,7 @@ namespace Luna.Views
 
         private void TouchGestureRecognizer_OnTap(object sender, TapEventArgs args)
         {
-            const float maxDist = 25 * 25;
+            const float maxDist = 60 * 60;
             SKPoint tapPos = scene.GetCanvasPointFromViewPoint(args.ViewPoint);
             foreach (var system in ((GalaxyMapViewModel)BindingContext).SolarSystems)
             {

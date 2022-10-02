@@ -10,7 +10,7 @@ namespace Luna.ValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return string.IsNullOrEmpty((string)value);
+            return !string.IsNullOrEmpty((string)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

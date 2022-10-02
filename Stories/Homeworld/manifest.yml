@@ -1,0 +1,6 @@
+name: Homeworld
+backgroundImage: background.png
+quest:
+  yarnFile: Homeworld
+posX: 500
+posY: -100

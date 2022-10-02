@@ -2,5 +2,5 @@ name: The Deep Dark
 backgroundImage: background.png
 quest:
   yarnFile: The_Deep_Dark
-posX: 123
-posY: 889
+posX: -100
+posY: 500

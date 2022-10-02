@@ -21,7 +21,7 @@ namespace Luna.GalaxyMap.Testing
             this.maxEdge1 = maxEdge1;
         }
 
-        public override void Draw(SKCanvas canvas, float zoomLevel)
+        public override void Draw1(SKCanvas canvas, float zoomLevel, float time)
         {
             if (zoomLevel < minEdge0 || zoomLevel > maxEdge1)
                 return;

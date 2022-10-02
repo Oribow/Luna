@@ -20,6 +20,8 @@ namespace Luna.Biz.QuestPlayer
         ISceneData scene;
         MessageSerializer messageSerializer;
 
+        public string DefaultBackgroundImage => scene.BackgroundImage;
+
         public QuestLogSession(IDbContextFactory<LunaContext> contextFactory, int questLogId, IMessageSource messageSource, MessageSerializer messageSerializer, ISceneData scene)
         {
             this.contextFactory = contextFactory;

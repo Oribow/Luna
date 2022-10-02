@@ -2,5 +2,5 @@ name: Overgrowth
 backgroundImage: background.png
 quest:
   yarnFile: Overgrowth
-posX: 1523
-posY: 1258
+posX: -200
+posY: 200
